@@ -1,0 +1,538 @@
+﻿<Page x:Class="VIKGroundStation.Page_Pid_Para"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="900"
+      Title="Page_Pid_Para">
+
+    <Grid Margin="2" Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row ="1" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ROLL_GYRO_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_ROLL_GYRO_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_GYRO_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_ROLL_GYRO_P"   Value="120" Delay="0" Minimum="50" Maximum="300"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_ROLL_GYRO_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_GYRO_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_ROLL_GYRO_P" Text="120" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="2" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ROLL_ANGLE_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_ROLL_ANGLE_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_ANGLE_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_ROLL_ANGLE_P"   Value="450" Delay="0" Minimum="200" Maximum="700"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_ROLL_ANGLE_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_ANGLE_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_ROLL_ANGLE_P" Text="450" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="3" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ROLL_GYRO_D}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_ROLL_ZUNI_DECREASE" Content="-"  BorderBrush="White"  Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_ZUNI_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_ROLL_ZUNI"   Value="6" Delay="0" Minimum="0" Maximum="20"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_ROLL_ZUNI_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_ROLL_ZUNI_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_ROLL_ZUNI" Text="6" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="5" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_PITCH_GYRO_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_PITCH_GYRO_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_GYRO_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_PITCH_GYRO_P"   Value="120" Delay="0" Minimum="50" Maximum="300"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_PITCH_GYRO_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_GYRO_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_PITCH_GYRO_P" Text="120" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="6" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_PITCH_ANGLE_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_PITCH_ANGLE_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_ANGLE_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_PITCH_ANGLE_P"   Value="450" Delay="0" Minimum="200" Maximum="700"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_PITCH_ANGLE_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_ANGLE_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_PITCH_ANGLE_P" Text="450" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="7" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_PITCH_GYRO_D}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_PITCH_ZUNI_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_ZUNI_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_PITCH_ZUNI"   Value="6" Delay="0" Minimum="0" Maximum="20"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_PITCH_ZUNI_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_PITCH_ZUNI_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_PITCH_ZUNI" Text="6" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="9" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_YAW_GYRO_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_YAW_GYRO_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_GYRO_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_YAW_GYRO_P"   Value="350" Delay="0" Minimum="100" Maximum="600"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_YAW_GYRO_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_GYRO_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_YAW_GYRO_P" Text="350" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="10" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_YAW_ANGLE_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_YAW_ANGLE_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_ANGLE_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_YAW_ANGLE_P"   Value="450" Delay="0" Minimum="200" Maximum="700"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_YAW_ANGLE_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_ANGLE_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_YAW_ANGLE_P" Text="450" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="11" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_YAW_GYRO_D}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_YAW_ZUNI_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_ZUNI_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_YAW_ZUNI"   Value="6" Delay="0" Minimum="0" Maximum="20"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_YAW_ZUNI_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_YAW_ZUNI_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_YAW_ZUNI" Text="6" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="13" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ALT_DIST_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_VERTICAL_DIST_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_DIST_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_VERTICAL_DIST_P"   Value="80" Delay="0" Minimum="20" Maximum="150"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_VERTICAL_DIST_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_DIST_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_VERTICAL_DIST_P" Text="80" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="14" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ALT_VEL_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_VERTICAL_SPEED_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_SPEED_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_VERTICAL_SPEED_P"   Value="300" Delay="0" Minimum="200" Maximum="500"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_VERTICAL_SPEED_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_SPEED_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_VERTICAL_SPEED_P" Text="300" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="15" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ALT_ACC_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_VERTICAL_ACC_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_ACC_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_VERTICAL_ACC_P"   Value="25" Delay="0" Minimum="10" Maximum="100"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_VERTICAL_ACC_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_ACC_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_VERTICAL_ACC_P" Text="25" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="16" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_ALT_ACC_I}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_VERTICAL_ACC_I_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_ACC_I_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_VERTICAL_ACC_I"   Value="15" Delay="0" Minimum="5" Maximum="50"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_VERTICAL_ACC_I_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_VERTICAL_ACC_I_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_VERTICAL_ACC_I" Text="15" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="18" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_HORIZON_DIST_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_HORIZON_DIST_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_DIST_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_HORIZON_DIST_P"   Value="80" Delay="0" Minimum="50" Maximum="150"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_HORIZON_DIST_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_DIST_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_HORIZON_DIST_P" Text="80" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="19" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_HORIZON_VEL_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_HORIZON_SPEED_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_SPEED_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_HORIZON_SPEED_P"   Value="120" Delay="0" Minimum="80" Maximum="200"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_HORIZON_SPEED_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_SPEED_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_HORIZON_SPEED_P" Text="120" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="20" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_HORIZON_ACC_P}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_HORIZON_ACC_P_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_ACC_P_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_HORIZON_ACC_P"   Value="25" Delay="0" Minimum="10" Maximum="100"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_HORIZON_ACC_P_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_ACC_P_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_HORIZON_ACC_P" Text="25" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="21" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_HORIZON_SPEED_I}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_HORIZON_ACC_I_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_ACC_I_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_HORIZON_ACC_I"   Value="20" Delay="0" Minimum="0" Maximum="50"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_HORIZON_ACC_I_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_ACC_I_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Name="TextBlock_HORIZON_ACC_I" Text="20" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row ="23" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_BRAKE_K}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="BTN_HORIZON_BREAK_DECREASE" Content="-"  BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_BREAK_DECREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Slider Height="20"  x:Name="SLIDER_HORIZON_BREAK"   Value="20" Delay="0" Minimum="10" Maximum="20"  SmallChange="1" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="BTN_HORIZON_BREAK_INCREASE" Content="+"   BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="22"  Width="20" Click="BTN_HORIZON_BREAK_INCREASE_Click"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBlock  Name="TextBlock_HORIZON_BREAK" Text="20" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2">
+                    <Button x:Name="BTN_GET_BASIC_PID" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="80" Click="BTN_GET_BASIC_PID_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Button x:Name="BTN_SET_BASIC_PID" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Height="25"  Width="80" Click="BTN_SET_BASIC_PID_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

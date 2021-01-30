@@ -1,0 +1,394 @@
+﻿<Page x:Class="VIKGroundStation.Page_Camera_Setting"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d"       
+      Title="Page_Camera_Setting" d:DesignHeight="800" d:DesignWidth="1000">
+
+    <Grid Background="Black" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row='1' Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="150*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_CAMERA_SELECT}" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="2">
+                <ComboBox Name="Camera_Select_Combox" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center"   VerticalAlignment="Center"  Width="300" Height="25" SelectionChanged="Camera_Select_Combox_Changed"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row='3' Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_PANG_XIANG_NUM}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox  Name="TextBox_Pang_Xiang_Num" Text="4096" Height="20" Width="80" BorderBrush="White" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBlock  Text="{DynamicResource TITLE_HANG_XIANG_NUM}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox  Name="TextBox_Hang_Xiang_Num" Text="2160" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="5">
+                <TextBlock  Text="{DynamicResource TITLE_XIANG_YUAN_SIZE}" Height="20"  FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="6">
+                <TextBox  Name="TextBox_Xiang_Yuan_Size" Height="20" Width="80" Text="3" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="7">
+                <TextBlock  Text="um" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_PANG_XIANG_COVER}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox  Name="TextBox_Pang_Xiang_Cover_Rate" Text="80" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBlock  Text="{DynamicResource TITLE_HANG_XIANG_COVER}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox  Name="TextBox_Hang_Xiang_Cover_Rate" Text="80" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="5">
+                <TextBlock  Text="{DynamicResource TITLE_XIANG_YUAN_RESOLUTION}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20"/>
+
+            </Grid>
+            <Grid Grid.Column="6">
+                <TextBox  Name="TextBox_CCD_Resolution" Text="5" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="7" >
+                <TextBlock  Text="cm" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="124*"/>
+                <ColumnDefinition Width="125"/>
+                <ColumnDefinition Width="324*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="124*"/>
+                <ColumnDefinition Width="125*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="75*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" >
+                <TextBlock  Text="Camera ID" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="2" >
+                <TextBox  Name="TextBox_Camera_ID" Height="25" Width="300" BorderBrush="White" FontSize="15"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Button x:Name="BTN_ADD_CAMERA" Content="{DynamicResource TITLE_ADD}" Height="25" Width="80" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_ADD_CAMERA_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="5">
+                <Button x:Name="BTN_DELETE_CAMERA" Content="{DynamicResource TITLE_DELETE}" Height="25" Width="80" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_DELETE_CAMERA_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="5" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_FOCUSE}" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox  Name="TextBox_Focuses" Text="20" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBlock  Text="mm" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            </Grid>
+            <Grid Grid.Column="6">
+                <Button x:Name="BTN_Camera_Caculate" Content="{DynamicResource TITLE_CALCULATE}" Height="25" Width="80" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_Camera_Caculate_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="6" Margin="0,5,0,5" Background="#ff00b7ee" Height="2">
+        </Grid>
+        <Grid Grid.Row="7" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_PID_ALT}" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox  Name="TextBox_Wpt_Alt" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black" />
+            </Grid>
+            <Grid Grid.Column="3" Margin="5">
+                <TextBlock  Text="m" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBlock  Text="{DynamicResource TITLE_WPT_SPACE}" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+            <Grid Grid.Column="5">
+                <TextBox  Name="TextBox_Hang_Jian_Ju" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="6" Margin="5">
+                <TextBlock  Text="m" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="8" Margin="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <TextBlock  Text="{DynamicResource TITLE_PIC_INTERVAL}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox  Name="TextBox_Pic_Interval_Dist" Height="20" Width="80" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black"/>
+            </Grid>
+            <Grid Grid.Column="3" Margin="5">
+                <TextBlock  Text="m" FontSize="14" Height="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="BTN_Camera_Setting_Ok" Content="{DynamicResource TITLE_OK}" Height="25" Width="80" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_Camera_Setting_Ok_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="9" Margin="0,5,0,5" Background="#ff00b7ee" Height="2">
+        </Grid>
+        <!--拍照方式-->
+        <Grid Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="4">
+                <TextBlock Name="TextBlock_Pwm_On" Text="PWM_ON" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="5">
+                <TextBlock Name="TextBlock_Pwm_Off" Text="PWM_OFF" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+        </Grid>
+        <!--拍照方式-->
+        <Grid Grid.Row="11">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="{DynamicResource TITLE_PICTURE_TRIGGER}" FontSize="14" Height="20"  FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ComboBox Name="Paizhao_Mode_Combox" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center"   VerticalAlignment="Center"  Width="100" Height="25" SelectionChanged="Paizhao_Mode_Combox_Changed"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBlock  Text="{DynamicResource TITLE_PICTURE_TRIGGER_TIME}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox  Name="TextBox_Pic_Trigger_Time_On" Text="200" Height="20" Width="60" BorderBrush="White" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox  Name="TextBox_Pic_Pwm_On_Time"  Text ="1800" Height="20" Width="60" BorderBrush="White" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black" />
+            </Grid>
+            <Grid Grid.Column="5">
+                <TextBox  Name="TextBox_Pic_Pwm_Off_Time" Text ="1200" Height="20" Width="60" BorderBrush="White" FontSize="14"  FontWeight="SemiBold" TextAlignment="Center" Foreground="White" Background="Black" />
+            </Grid>
+            <Grid Grid.Column="6">
+                <Button x:Name="BTN_PAI_ZHAO_MODE" Content="{DynamicResource TITLE_SET}" Height="25" Width="80" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White" Click="BTN_PAI_ZHAO_MODE_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                                <GradientStop Color="Silver" Offset="0.0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

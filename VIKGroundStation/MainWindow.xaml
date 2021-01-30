@@ -1,0 +1,616 @@
+﻿<Window x:Class="VIKGroundStation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource TITLE_COMPANY_NAME}" Height="800" Width="1366"  WindowState="Maximized" Loaded="Main_Window_Loaded"   WindowStyle="None" Background="Black" MouseDown="Window_MouseDown" Icon="VK_DESKTOP.ico" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <!-- 主菜单 -->
+        <Grid Grid.Row="0" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <!-- 机型设置 -->
+            <Grid x:Name="MENUE_PLANE_SETTING" Grid.Column="0"  >
+                <Button x:Name="MENUE_BTN_PLANE_SETTINGS"   Content="{DynamicResource TITLE_MENUE_FLY_SETTINGS}"   FontSize="15" FontWeight="SemiBold" Foreground="White"  Background="Black" Click="MENUE_BTN_PLANE_SETTINGS_Click"  VerticalAlignment="Center"/>
+            </Grid>
+            <!-- 飞行检测 -->
+            <Grid x:Name="MENUE_FLY_INFO" Grid.Column="1">
+                <Button x:Name="MENUE_BTN_FLY_INFO" Content="{DynamicResource TITLE_MENUE_FLY_INFOR}"  FontSize="15" FontWeight="SemiBold" Foreground="White" Background="Black" Click="MENUE_BTN_FLY_INFO_Click"  VerticalAlignment="Center"/>
+            </Grid>
+            <!--任务设置-->
+            <Grid x:Name="MENUE_TASK_SETTING" Grid.Column="2">
+                <Button x:Name="MENUE_BTN_TASK_SETTING" Content="{DynamicResource TITLE_MENUE_TASK_FUNCTION}"  FontSize="15" FontWeight="SemiBold" Foreground="White" Background="Black" Click="MENUE_BTN_TASK_SETTING_Click"  VerticalAlignment="Center"/>
+            </Grid>
+            <!--地图切换-->
+            <Grid x:Name="MENUE_2D_3D" Grid.Column="3">
+                <Button x:Name="MENUE_BTN_2D_3D" Content="2D"  FontSize="15" FontWeight="SemiBold" Foreground="White" Background="Black" Click="MENUE_BTN_2D_3D_Click"  VerticalAlignment="Center"/>
+            </Grid>
+            <!-- 航线设置 -->
+            <Grid x:Name="MENUE_WPT_PLAN" Grid.Column="4">
+                <Button x:Name="MENUE_BTN_WPT_PLAN" Content="{DynamicResource TITLE_MENUE_WPT_PLAN}"   FontSize="15" FontWeight="SemiBold" Foreground="White"  Background="Black" Click="MENUE_BTN_WPT_PLAN_Click" VerticalAlignment="Center"/>
+            </Grid>
+            <!-- 通信设置 -->
+            <Grid x:Name="MENUE_LINK_SET" Grid.Column="5">
+                <Button x:Name="MENUE_BTN_LINK_SET" Content="{DynamicResource TITLE_MENUE_LINK_SET}"  FontSize="15" FontWeight="SemiBold" Foreground="White" Background="Black" Click="MENUE_BTN_LINK_SET_Click"  VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <ComboBox Name="combox_language"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" FontSize="15"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_language_Changed"/>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <ComboBox Name="combox_map_type"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100" FontSize="15"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_map_type_Changed"/>
+            </Grid>
+            <Grid Grid.Column="9" >
+                <TextBlock Name="TextBlock_Version"  HorizontalAlignment="Center"  VerticalAlignment="Center"  Foreground="White" FontSize="15" FontWeight="SemiBold" />
+            </Grid>
+            <Grid  Grid.Column="10" Margin="2">
+                <Button x:Name="BTN_WND_MIN"  BorderBrush="Black"   Click="BTN_WND_MIN_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/window_min.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid  Grid.Column="11" Margin="2">
+                <Button x:Name="BTN_WND_NORMAL"  BorderBrush="Black"   Click="BTN_WND_NORMAL_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/window_normal.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid  Grid.Column="12" Margin="2">
+                <Button x:Name="BTN_WND_MAX"  BorderBrush="Black" Click="BTN_WND_MAX_Click"  >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/window_max.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid  Grid.Column="13" Margin="0">
+                <Button x:Name="BTN_WND_EXIT"  BorderBrush="Black"  Click="BTN_WND_EXIT_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/exit.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <!-- 主要功能显示区 -->
+        <Grid Grid.Row="1" Name="GRID_SHOW_PLANE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="103*"/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Name="GRID_MAIN_SHOW" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="1010*"/>
+                    <ColumnDefinition Width="269*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Name="frmMainShow" NavigationUIVisibility="Hidden" Grid.ColumnSpan="3" Margin="0,0,0.333,0"></Frame>
+            </Grid>
+            <Grid Grid.Column="1" Background="Black" Name="GRID_PLANE_ID">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_ONE"  Content=" 1 "  BorderBrush="Orange" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_ONE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_TWO"  Content=" 2 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_TWO_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="2" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_THREE"  Content=" 3 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_THREE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="3" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_FOUR"  Content=" 4 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_FOUR_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="4" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_FIVE"  Content=" 5 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_FIVE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="5" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_SIX"  Content=" 6 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_SIX_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="6" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_SEVEN"  Content=" 7 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_SEVEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="7" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_EIGHT"  Content=" 8 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_EIGHT_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="8" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_NINE"  Content=" 9 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_NINE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="9" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_TEN"  Content="10 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_TEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="10" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_ELEVEN"  Content="11 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_ELEVEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="11" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_TWELVE"  Content="12 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_TWELVE_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="12" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_THIRTEEN"  Content="13 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_THIRTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="13" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_FOURTEEN"  Content="14 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_FOURTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="14" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_FIFTEEN"  Content="15 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_FIFTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="15" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_SIXTEEN"  Content="16 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_SIXTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="16" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_SEVENTEEN"  Content="17 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_SEVENTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="17" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_EIGHTEEN"  Content="18 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_EIGHTEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="18" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_NINETEEN"  Content="19 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_NINETEEN_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="19" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_TWENTY"  Content="20 "  BorderBrush="Black" FontSize="20" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_TWENTY_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="20" Margin="0,2,0,2">
+                    <Button x:Name="BTN_SELECT_PLANE_ALL"  Content="全部 "  BorderBrush="Black" FontSize="16" Foreground="White"   FontWeight="SemiBold" Click="BTN_SELECT_PLANE_ALL_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                        <Setter Property="UIElement.Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

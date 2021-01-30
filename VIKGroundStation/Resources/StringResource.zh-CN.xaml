@@ -1,0 +1,598 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="TITLE_COMPANY_NAME">微克智飞无人机地面控制系统 V3.0</sys:String>
+    
+    <sys:String x:Key="TITLE_YES">是</sys:String>
+    <sys:String x:Key="TITLE_NO">否</sys:String>
+    <sys:String x:Key="TITLE_EXIT">退出</sys:String>
+    <sys:String x:Key="TITLE_OK">确定</sys:String>
+    <sys:String x:Key="TITLE_WINDOW_MINIMUM">最小化</sys:String>
+    <sys:String x:Key="TITLE_CANCEL">取消</sys:String>
+    <sys:String x:Key="TITLE_CALCULATE">计算</sys:String>
+    <sys:String x:Key="TITLE_BACK">后退</sys:String>
+    
+    <sys:String x:Key="TITLE_PLAY_BACK_DATA">数据回放</sys:String>
+    <sys:String x:Key="TITLE_VOLT_STATIC">电压:</sys:String>
+    <sys:String x:Key="TITLE_HORIZONTAL_VEL_STATIC">水平速度:</sys:String>
+    <sys:String x:Key="TITLE_VERTICAL_VEL_STATIC">爬升速度:</sys:String>
+    <sys:String x:Key="TITLE_DIST_TARGET_WPT_STATIC">目标距离:</sys:String>
+    <sys:String x:Key="TITLE_TARGET_ALT_STATIC">目标高度:</sys:String>
+    <sys:String x:Key="TITLE_DIST_HOME_STATIC">回家距离:</sys:String>
+    <sys:String x:Key="TITLE_VERSION_SETTINGS">版本设置</sys:String>
+
+    <sys:String x:Key="TITLE_CALIBRATE_INDICATION">校准指令</sys:String>
+    <sys:String x:Key="TITLE_FLY_INDICATION">飞行指令</sys:String>
+    <sys:String x:Key="TITLE_DOWN_LOAD_PIC_POS">下载拍照POS</sys:String>
+    <sys:String x:Key="TITLE_DOWN_LOAD_FLY_DATA">下载飞行数据</sys:String>
+    <sys:String x:Key="TITLE_DOWN_LOAD_LOG">下载飞行日志</sys:String>
+    <sys:String x:Key="TITLE_YUN_TAI_CONTROL">云台控制</sys:String>
+    <sys:String x:Key="TITLE_VIEW_CENTRAL">一键居中</sys:String>
+
+    <sys:String x:Key="TITLE_WPT_PROPERTY">航点属性</sys:String>
+    <sys:String x:Key="TITLE_LONGITUDE">经度</sys:String>
+    <sys:String x:Key="TITLE_LATITUDE">纬度</sys:String>
+    <sys:String x:Key="TITLE_SEA_LEVEL_ALT">海拔</sys:String>
+    <sys:String x:Key="TITLE_ALTITUDE">高度</sys:String>
+    <sys:String x:Key="TITLE_SPEED">速度</sys:String>
+    <sys:String x:Key="TITLE_WPT_TASK">任务</sys:String>
+    <sys:String x:Key="TITLE_WPT_TURN_MODE">转弯</sys:String>
+    <sys:String x:Key="TITLE_WPT_ALL">全部</sys:String>
+    <sys:String x:Key="TITLE_TASK_DEFAULT">无任务</sys:String>
+    <sys:String x:Key="TITLE_WPT_NUM">航点序号</sys:String>
+    <sys:String x:Key="TITLE_WPT_SPACE">行间距</sys:String>
+    <sys:String x:Key="TITLE_NO_TASK">无任务</sys:String>
+    <sys:String x:Key="TITLE_PIC_BY_TIME">按时拍照</sys:String>
+    <sys:String x:Key="TITLE_PIC_BY_DIST">按距拍照</sys:String>
+    <sys:String x:Key="TITLE_WPT_HEADING">机头指向</sys:String>
+    <sys:String x:Key="TITLE_WPT_CIRCLE_SPEED">环绕速度</sys:String>
+    <sys:String x:Key="TITLE_CIRCLE_RADIUS">环绕半径</sys:String>
+    <sys:String x:Key="TITLE_CIRCLE_DIRECTION">环绕方向</sys:String>
+    <sys:String x:Key="TITLE_CIRCLE_TIMES">环绕圈数</sys:String>
+    <sys:String x:Key="TITLE_ALT_TYPE">高度类型</sys:String>
+    <sys:String x:Key="TITLE_HEADING">机头指向</sys:String>
+
+    <sys:String x:Key="TITLE_AUTO_TURN">协调转弯</sys:String>
+    <sys:String x:Key="TITLE_HOVER">悬停</sys:String>
+    <sys:String x:Key="TITLE_LOCK_HEAD_TURN">锁定机头</sys:String>
+    <sys:String x:Key="TITLE_THROW">抛物</sys:String>
+    <sys:String x:Key="TITLE_LANDING">降落</sys:String>
+    <sys:String x:Key="TITLE_HORIZON_CIRCLE">水平环绕</sys:String>
+    <sys:String x:Key="TITLE_VERTICAL_CIRCLE">垂直环绕</sys:String>
+    <sys:String x:Key="TITLE_EXIT_WPT">退出航线</sys:String>
+    <sys:String x:Key="TITLE_REPEAT_WPT">循环航线</sys:String>
+
+    <sys:String x:Key="TITLE_FLY_MODE">飞行模式</sys:String>
+
+    <sys:String x:Key="TITLE_WPT_PLAN">航线规划</sys:String>
+    <sys:String x:Key="TITLE_MAP_DOWN_LOAD">下载功能</sys:String>
+    <sys:String x:Key="TITLE_MANUAL_WPT">手动规划</sys:String>
+    <sys:String x:Key="TITLE_AUTO_WPT">自动规划</sys:String>
+    <sys:String x:Key="TITLE_FORBID_AREA">禁飞区</sys:String>
+    <sys:String x:Key="TITLE_GET_LOCAL_WPT">航线加载</sys:String>
+    <sys:String x:Key="TITLE_ID">ID</sys:String>
+    <sys:String x:Key="TITLE_WPT_TASK_FUNCTION">任务</sys:String>
+    <sys:String x:Key="TITLE_TASK_TIME">间隔</sys:String>
+    <sys:String x:Key="TITLE_WPT_STOP_TIME">时间</sys:String>
+    <sys:String x:Key="TITLE_DELETE_WPT">删除航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_SAVE">保存航线</sys:String>
+    <sys:String x:Key="TITLE_WPT_OPEN">打开航线</sys:String>
+    <sys:String x:Key="TITLE_WPT_UPLOAD">上传航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_DOWNLOAD">下载航点</sys:String>
+    <sys:String x:Key="TITLE_ESTIMATED_TIME">预计时间</sys:String>
+    <sys:String x:Key="TITLE_WPT_TOTAL_DIST">总距离:</sys:String>
+    <sys:String x:Key="TITLE_WPT_TOTAL_TIME">总时间:</sys:String>
+    <sys:String x:Key="TITLE_WPT_TOTAL_ACREAGE">总面积:</sys:String>
+    <sys:String x:Key="TITLE_YUN_TAI_LEFT">云台向左</sys:String>
+    <sys:String x:Key="TITLE_YUN_TAI_RIGHT">云台向右</sys:String>
+    <sys:String x:Key="TITLE_YUN_TAI_MID">云台归中</sys:String>
+    <sys:String x:Key="TITLE_ADD_WPT">添加航点</sys:String>
+    <sys:String x:Key="TITLE_EXIT_WPT_PLAN">航点结束</sys:String>
+
+    <sys:String x:Key="TITLE_LINK_LOST">通讯中断</sys:String>
+    <sys:String x:Key="TITLE_BACK_HOME_ALT">返航高度</sys:String>
+    <sys:String x:Key="TITLE_PROTECTED_VOLT_LEVEL1">一级保护电压</sys:String>
+    <sys:String x:Key="TITLE_PROTECTED_VOLT_LEVEL2">二级保护电压</sys:String>
+    <sys:String x:Key="TITLE_CIRCLE_RADIU">兴趣点R</sys:String>
+    <sys:String x:Key="TITLE_LED_INDICATOR">提示灯</sys:String>
+    <sys:String x:Key="TITLE_MAG_ERROR">磁偏角</sys:String>
+    <sys:String x:Key="TITLE_READ">读取</sys:String>
+    <sys:String x:Key="TITLE_SET">设置</sys:String>
+    <sys:String x:Key="TITLE_SAVE">保存</sys:String>
+    <sys:String x:Key="TITLE_PLANE_TYPE_SETTINGS">机型设置</sys:String>
+    <sys:String x:Key="TITLE_REMOTOR_SETTINGS">遥控设置</sys:String>
+    <sys:String x:Key="TITLE_PID_SETTINGS">PID设置</sys:String>
+    <sys:String x:Key="TITLE_MOTOR_TEST">电机检测</sys:String>
+
+    <sys:String x:Key="TITLE_ELEVATOR">升降</sys:String>
+    <sys:String x:Key="TITLE_AILERON">副翼</sys:String>
+    <sys:String x:Key="TITLE_THROTTLE">油门</sys:String>
+    <sys:String x:Key="TITLE_RUDDER">方向</sys:String>
+    <sys:String x:Key="TITLE_GPS">GPS</sys:String>
+    <sys:String x:Key="TITLE_ATTITUDE">姿态</sys:String>
+    <sys:String x:Key="TITLE_CIRCLE_ONE_POINT">定点绕飞</sys:String>
+    <sys:String x:Key="TITLE_AUTO_HEAD">智能机头</sys:String>
+    <sys:String x:Key="TITLE_LOCK_HEAD">机头锁定</sys:String>
+    <sys:String x:Key="TITLE_REMOTOR_LOST">FS失控</sys:String>
+    <sys:String x:Key="TITLE_ALL_RIGHT">待命</sys:String>
+    <sys:String x:Key="TITLE_START_CALIBRATION">开始校准</sys:String>
+    <sys:String x:Key="TITLE_END_CALIBRATION">结束校准</sys:String>
+
+    <sys:String x:Key="TITLE_ATTITUDE_ROLL">横滚</sys:String>
+    <sys:String x:Key="TITLE_ATTITUDE_PITCH">俯仰</sys:String>
+    <sys:String x:Key="TITLE_ATTITUDE_MAG_HEAD">航向</sys:String>
+    <sys:String x:Key="TITLE_GYRO_PID">基础感度</sys:String>
+    <sys:String x:Key="TITLE_ATTITUDE_PID">姿态感度</sys:String>
+    <sys:String x:Key="TITLE_ADVANCED_SETTINGS">高级设置</sys:String>
+
+    <sys:String x:Key="TITLE_PID_I_KX">误差系数</sys:String>
+    <sys:String x:Key="TITLE_PID_I_MAX">误差量</sys:String>
+    <sys:String x:Key="TITLE_PID_GYRO_D_KX">增稳系数</sys:String>
+    <sys:String x:Key="TITLE_PID_DIST_P">位置</sys:String>
+    <sys:String x:Key="TITLE_PID_SPEED_P">速度</sys:String>
+    <sys:String x:Key="TITLE_PID_ACC_P">加速度</sys:String>
+    <sys:String x:Key="TITLE_PID_ACC_I">加速补偿</sys:String>
+    <sys:String x:Key="TITLE_PID_HORIZONTAL">水平</sys:String>
+    <sys:String x:Key="TITLE_PID_ALT">高度</sys:String>
+
+    <sys:String x:Key="TITLE_MOTOR1">M1</sys:String>
+    <sys:String x:Key="TITLE_MOTOR2">M2</sys:String>
+    <sys:String x:Key="TITLE_MOTOR3">M3</sys:String>
+    <sys:String x:Key="TITLE_MOTOR4">M4</sys:String>
+    <sys:String x:Key="TITLE_MOTOR5">M5</sys:String>
+    <sys:String x:Key="TITLE_MOTOR6">M6</sys:String>
+    <sys:String x:Key="TITLE_MOTOR7">M7</sys:String>
+    <sys:String x:Key="TITLE_MOTOR8">M8</sys:String>
+    <sys:String x:Key="TITLE_TEST">检查</sys:String>
+
+	<sys:String x:Key="TITLE_VERSION_MULTI_MOTORS">旋翼版本</sys:String>
+    <sys:String x:Key="TITLE_VERSION_FIX_WING">固定翼版本</sys:String>
+
+    <sys:String x:Key="TITLE_UNLOCK">一键解锁</sys:String>
+    <sys:String x:Key="TITLE_AUTO_TAKE_OFF">自动起飞</sys:String>
+    <sys:String x:Key="TITLE_START_WPT">开始航线</sys:String>
+    <sys:String x:Key="TITLE_DUAN_DIAN">断点继续</sys:String>
+    <sys:String x:Key="TITLE_ZHI_DIAN">指点飞行</sys:String>
+    <sys:String x:Key="TITLE_INTERRUPUT_WPT">暂停航线</sys:String>
+    <sys:String x:Key="TITLE_CONTINUE_WPT">继续航线</sys:String>
+    <sys:String x:Key="TITLE_BACK_HOME">返航</sys:String>
+    <sys:String x:Key="TITLE_STILL_LAND">降落</sys:String>
+    <sys:String x:Key="TITLE_FLIED_TIME">已飞时间:</sys:String>
+    <sys:String x:Key="TITLE_FLIED_DIST">已飞距离:</sys:String>
+    <sys:String x:Key="TITLE_TARGET_WPT_NUM">目标航点:</sys:String>
+    <sys:String x:Key="TITLE_TARGET_WPT_DIST">航点距离:</sys:String>
+    <sys:String x:Key="TITLE_AIR_SPEED">空速:</sys:String>
+    <sys:String x:Key="TITLE_LINK_STATUS">链接:</sys:String>
+
+    <sys:String x:Key="TITLE_CI_CALIBRATE">磁校准</sys:String>
+    <sys:String x:Key="TITLE_HORIZONTAL_CALIBRATE">水平校准</sys:String>
+    <sys:String x:Key="TITLE_FORWARD_AN_ZHUANG">前安装</sys:String>
+    <sys:String x:Key="TITLE_RIGHT_AN_ZHUANG">右安装</sys:String>
+    <sys:String x:Key="TITLE_BACK_AN_ZHUANG">后安装</sys:String>
+    <sys:String x:Key="TITLE_LEFT_AN_ZHUANG">左安装</sys:String>
+
+    <sys:String x:Key="TITLE_TAKE_PIC">拍照</sys:String>
+    <sys:String x:Key="TITLE_PIC_NUM">照片总数:</sys:String>
+    <sys:String x:Key="TITLE_DELETE_PIC_POS">删除POS点</sys:String>
+    <sys:String x:Key="TITLE_TEMPERATURE">温度:</sys:String>
+
+    <sys:String x:Key="TITLE_UP_SHIFT">上移</sys:String>
+    <sys:String x:Key="TITLE_DOWN_SHIFT">下移</sys:String>
+    <sys:String x:Key="TITLE_LEFT_SHIFT">左移</sys:String>
+    <sys:String x:Key="TITLE_RIGHT_SHIFT">右移</sys:String>
+
+    <sys:String x:Key="TITLE_BASIC_SETTINGS">基础设置</sys:String>
+    <sys:String x:Key="TITLE_USUAL_PLANE_TYPE">常规机型</sys:String>
+    <sys:String x:Key="TITLE_PLANE_TYPE_TRIGGLE">三角翼</sys:String>
+    <sys:String x:Key="TITLE_PLANE_TYPE_V_TAIL">V尾翼</sys:String>
+    <sys:String x:Key="TITLE_LINK_LOST_TIME">通讯失联时间</sys:String>
+    <sys:String x:Key="TITLE_TAKE_OFF_ALT">起飞高度</sys:String>
+    <sys:String x:Key="TITLE_PIC_INTERVAL">拍照间隔</sys:String>
+    <sys:String x:Key="TITLE_TURN_DIST">转弯距离</sys:String>
+    <sys:String x:Key="TITLE_ANGLE_SETTINGS">角度设置</sys:String>
+    <sys:String x:Key="TITLE_SPEED_SETTINGS">速度设置</sys:String>
+
+    <sys:String x:Key="TITLE_AUTO_TAKE_OFF_PITCH_ANGLE">自动起飞迎角</sys:String>
+    <sys:String x:Key="TITLE_MAX_DESCEND_RATE">最大下降率</sys:String>
+    <sys:String x:Key="TITLE_MAX_CLIMB_RATE">最大爬升率</sys:String>
+    <sys:String x:Key="TITLE_AUTO_TAKE_OFF_SPEED">自动起飞速度</sys:String>
+    <sys:String x:Key="TITLE_CRUISE_SPEED">巡航速度</sys:String>
+    <sys:String x:Key="TITLE_PID_ADJUST">感度调节</sys:String>
+
+    <sys:String x:Key="TITLE_RUDDER_SIGNAL">舵机信号</sys:String>
+    <sys:String x:Key="TITLE_REMOTER">遥控器</sys:String>
+    <sys:String x:Key="TITLE_START_CALIBRATE">开始校准</sys:String>
+    <sys:String x:Key="TITLE_STOP_CALIBRATE">结束校准</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_MID_POS">摇杆中位</sys:String>
+
+    <sys:String x:Key="TITLE_NO_REVERSE">正向</sys:String>
+    <sys:String x:Key="TITLE_REVERSE">反向</sys:String>
+    <sys:String x:Key="TITLE_MAX">最大</sys:String>
+    <sys:String x:Key="TITLE_RETURN_DEFAULT">还原</sys:String>
+    <sys:String x:Key="TITLE_MID">中位</sys:String>
+    <sys:String x:Key="TITLE_MIN">最小</sys:String>
+    <sys:String x:Key="TITLE_ENGINE_STOP">灭车</sys:String>
+
+    <sys:String x:Key="TITLE_PREPARE_DOWN_LOAD">准备下载第</sys:String>
+    <sys:String x:Key="TITLE_GRADE">级</sys:String>
+    <sys:String x:Key="TITLE_OFF_LINE_DOWN_LOAD">离线下载</sys:String>
+
+    <sys:String x:Key="TITLE_SAVE_FILE_SUCCESS">保存成功</sys:String>
+    <sys:String x:Key="TITLE_SET_ALL_WPT_PROPERTY">请设置所有航点属性！</sys:String>
+    <sys:String x:Key="TITLE_WPT_UPLOAD_SUCCESS">上传成功！</sys:String>
+    <sys:String x:Key="TITLE_END_MANUAL_WPT">手动规划中，是否结束？</sys:String>
+    <sys:String x:Key="TITLE_END_AUTO_WPT">智能规划中，是否结束？</sys:String>
+    <sys:String x:Key="TITLE_WPT_IS_UPLOADING">正在上传航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_IS_DOWN_LOADING">正在下载航点</sys:String>
+    <sys:String x:Key="TITLE_PIC_POS_IS_DOWN_LOADING">正在下载POS点</sys:String>
+    <sys:String x:Key="TITLE_WPT_UPLOAD_FAIL">上传失败！</sys:String>
+
+    <sys:String x:Key="TITLE_FORBIDEN_AREA_UPLOAD_SUCCESS">禁飞区上传成功</sys:String>
+
+    <sys:String x:Key="TITLE_READ_PLAY_BACK_DATA_FAIL">下载飞行数据失败</sys:String>
+    <sys:String x:Key="TITLE_READ_POS_FAIL">下载POS失败</sys:String>
+    
+    <sys:String x:Key="TITLE_NO_WPT_TO_UPLOAD">没有待上传的航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_EDIT_END">请结束航点编辑</sys:String>
+
+    <sys:String x:Key="TITLE_CONNECT">连接</sys:String>
+    <sys:String x:Key="TITLE_BEGIN">开始</sys:String>
+    <sys:String x:Key="TITLE_PAUSE">暂停</sys:String>
+    <sys:String x:Key="TITLE_END">结束</sys:String>
+    <sys:String x:Key="TITLE_DISCONNECT">断开</sys:String>
+    <sys:String x:Key="TITLE_ENABLE">开启</sys:String>
+    <sys:String x:Key="TITLE_DISABLE">关闭</sys:String>
+
+    <sys:String x:Key="TITLE_WARNNING_NO_IMU">无IMU数据</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_DMA_ERROR">IMU传输错误</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_REMOTOR_BTN_ERROR">遥控器拨键位置错误</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_LOW_BATTERY">电压低报警</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_REDIO_LOST">电台丢失报警</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_GPS_LOST">GPS丢星</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_ACC_ERROR">加速度警告，请重新上电</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_SPEED_ERROR">速度警告，请等待搜星</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_NOISE_ERROR">飞行器震动大，请尽快降落</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_HIGH_TEMPERATURE">飞控高温,请尽快降落</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_VERSION_ERROR">飞控和IMU版本不兼容，请联系厂商</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_REMOTOR_SIGNAL_ERROR">遥控器信号错误</sys:String>
+    <sys:String x:Key="TITLE_WARNNING_ALT_LIMIT">飞行高度达到禁飞上限</sys:String>
+
+    <sys:String x:Key="TITLE_ALT_CONTROL_STATIC">高度控制:</sys:String>
+    <sys:String x:Key="TITLE_ZHEN_DONG_STATIC">震动系数:</sys:String>
+    <sys:String x:Key="TITLE_MOTOR_BALANCE_STATIC">电机平衡:</sys:String>
+    <sys:String x:Key="TITLE_BASIC_STATIC">油门输出:</sys:String>
+    <sys:String x:Key="TITLE_GPS_ALT">GPS高度:</sys:String>
+    <sys:String x:Key="TITLE_GPS_YAW">GPS 航向:</sys:String>
+    <sys:String x:Key="TITLE_ALT_RADAR_DIST">高度雷达:</sys:String>
+    <sys:String x:Key="TITLE_FRONT_RADAR_DIST">前雷达:</sys:String>
+    <sys:String x:Key="TITLE_BACK_RADAR_DIST">后雷达:</sys:String>
+
+    <sys:String x:Key="TITLE_STATUS_OK">正常</sys:String>
+    <sys:String x:Key="TITLE_STATUS_NOT_OK">异常</sys:String>
+    <sys:String x:Key="TITLE_STATUS_GOOD">好</sys:String>
+    <sys:String x:Key="TITLE_STATUS_BAD">差</sys:String>
+
+    <sys:String x:Key="TITLE_GPS_LOST_WARNNING">断开</sys:String>
+    <sys:String x:Key="TITLE_GPS_ERROR_WARNNING">异常</sys:String>
+    <sys:String x:Key="TITLE_BARO_BAD_WARNNING">气压计异常</sys:String>
+    <sys:String x:Key="TITLE_GYRO1_WARNNING">陀螺1异常</sys:String>
+    <sys:String x:Key="TITLE_GYRO2_WARNNING">陀螺2异常</sys:String>
+    <sys:String x:Key="TITLE_ACC1_WARNNING">加速度计1异常</sys:String>
+    <sys:String x:Key="TITLE_ACC2_WARNNING">加速度计2异常</sys:String>
+    <sys:String x:Key="TITLE_MAG_WARNNING">磁干扰</sys:String>
+
+    <sys:String x:Key="TITLE_WPT_SHIFT">平移航线</sys:String>
+    <sys:String x:Key="TITLE_WPT_DOWN_LOAD">航线下载</sys:String>
+    <sys:String x:Key="TITLE_WPT_DOWN_LOAD_FAIL">航线下载失败</sys:String>
+    <sys:String x:Key="TITLE_WPT_DOWN_LOAD_SUCC">航线下载成功</sys:String>
+    <sys:String x:Key="TITLE_WPT_DRAG_AREA_START">选择平移航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_DRAG_AREA_END">选择航点结束</sys:String>
+
+    <sys:String x:Key="TITLE_SHOW_ROUTE">航迹</sys:String>
+	<sys:String x:Key="TITLE_SHOW_2D_MAP">2D显示</sys:String>
+	<sys:String x:Key="TITLE_SHOW_3D_MAP">3D显示</sys:String>
+	<sys:String x:Key="TITLE_PLEASE_CLOSE_SERIAL">请断开飞控链接</sys:String>
+
+    <sys:String x:Key="TITLE_MUILT_SETTINGS">旋翼设置</sys:String>
+    <sys:String x:Key="TITLE_FIX_WING_SETTINGS">固定翼设置</sys:String>
+    <sys:String x:Key="TITLE_FILTER_PARA">噪声抑制</sys:String>
+
+    <sys:String x:Key="TITLE_DAISU_PARA">电机怠速</sys:String>
+    <sys:String x:Key="TITLE_DAISU_VERY_H">高</sys:String>
+    <sys:String x:Key="TITLE_DAISU_H">较高</sys:String>
+    <sys:String x:Key="TITLE_DAISU_MID">中</sys:String>
+    <sys:String x:Key="TITLE_DAISU_LOW">较低</sys:String>
+    <sys:String x:Key="TITLE_DAISU_VERY_LOW">低</sys:String>
+
+    <sys:String x:Key="TITLE_RATA_PARA">雷达系数</sys:String>
+    <sys:String x:Key="TITLE_LANGUAGE_CH">Chinese</sys:String>
+    <sys:String x:Key="TITLE_LANGUAGE_EN">English</sys:String>
+
+    <sys:String x:Key="TITLE_FORCE_LANDING">一键降落</sys:String>
+    <sys:String x:Key="TITLE_WPT_OUTOF_RANGE">航点数超出范围</sys:String>
+    <sys:String x:Key="TITLE_WARN_NO_WPT_SPACE">请设置行间距</sys:String>
+
+    <sys:String x:Key="TITLE_SELECT_COM_NUM">选择串口</sys:String>
+    <sys:String x:Key="TITLE_GPS_BIAS">GPS安装偏差</sys:String>
+
+    <sys:String x:Key="TITLE_CAMERA_SELECT">相机列表</sys:String>
+    <sys:String x:Key="TITLE_HANG_XIANG_NUM">航向像元数</sys:String>
+    <sys:String x:Key="TITLE_PANG_XIANG_NUM">旁向像元数</sys:String>
+    <sys:String x:Key="TITLE_HANG_XIANG_COVER">航向重叠率(%)</sys:String>
+    <sys:String x:Key="TITLE_PANG_XIANG_COVER">旁向重叠率(%)</sys:String>
+    <sys:String x:Key="TITLE_XIANG_YUAN_SIZE">像元大小</sys:String>
+    <sys:String x:Key="TITLE_XIANG_YUAN_RESOLUTION">分辨率</sys:String>
+    <sys:String x:Key="TITLE_FOCUSE">焦距</sys:String>
+    <sys:String x:Key="TITLE_PICTURE_TRIGGER">拍照方式</sys:String>
+    <sys:String x:Key="TITLE_PICTURE_TRIGGER_TIME">触发时间</sys:String>
+
+    <sys:String x:Key="TITLE_CONTROLLER_CURRENT_VERSION">当前控制固件版本:</sys:String>
+    <sys:String x:Key="TITLE_CONTROLLER_NEW_VERSION">最新控制固件版本:</sys:String>
+    <sys:String x:Key="TITLE_IMU_CURRENT_VERSION">当前IMU固件版本:</sys:String>
+    <sys:String x:Key="TITLE_IMU_NEW_VERSION">最新IMU固件版本:</sys:String>
+    <sys:String x:Key="TITLE_UPDATE_CONTROLLER">升级控制固件</sys:String>
+    <sys:String x:Key="TITLE_UPDATE_IMU">升级IMU固件</sys:String>
+    <sys:String x:Key="TITLE_CONTROL_UPDATE_SUCCESS">主控升级成功</sys:String>
+    <sys:String x:Key="TITLE_IMU_UPDATE_SUCCESS">IMU升级成功</sys:String>
+    <sys:String x:Key="TITLE_CONTROL_UPDATE_FAIL">主控升级失败</sys:String>
+    <sys:String x:Key="TITLE_IMU_UPDATE_FAIL">IMU升级失败</sys:String>
+    <sys:String x:Key="TITLE_EQUIPMENT_NAME">飞控名称:</sys:String>
+    <sys:String x:Key="TITLE_EQUIPMENT_NO">飞控序列号:</sys:String>
+
+    <sys:String x:Key="TITLE_MAX_ANGLE_MODE">最大角度:</sys:String>
+    <sys:String x:Key="TITLE_MAX_HORI_VEL_GPS_MODE">GPS模式最大飞行速度:</sys:String>
+    <sys:String x:Key="TITLE_MAX_CLIMB_VEL_REMOTER_MODE">遥控模式最大爬升速度:</sys:String>
+    <sys:String x:Key="TITLE_MAX_DOWN_VEL_REMOTER_MODE">遥控模式最大下降速度:</sys:String>
+    <sys:String x:Key="TITLE_BASE_THROTTLE">悬停油门:</sys:String>
+    <sys:String x:Key="TITLE_LIMIT_ALT1">一级高度限制:</sys:String>
+    <sys:String x:Key="TITLE_LIMIT_ALT2">二级高度限制:</sys:String>
+    <sys:String x:Key="TITLE_MAX_YAW_RATE">最大锁尾角速度:</sys:String>
+    <sys:String x:Key="TITLE_AD0_BIAS">电压偏差:</sys:String>
+    <sys:String x:Key="TITLE_FORBIDDEN_AREA">禁飞区:</sys:String>
+    <sys:String x:Key="TITLE_DIST_LIMIT">距离限制:</sys:String>
+    <sys:String x:Key="TITLE_FOLLOW_DIST">跟随距离:</sys:String>
+    <sys:String x:Key="TITLE_MAX_CLIMB_RATE_AUTO">自动飞行最大爬升速率:</sys:String>
+    <sys:String x:Key="TITLE_MAX_DOWN_RATE_AUTO">自动飞行最大下降速率:</sys:String>
+    <sys:String x:Key="TITLE_MIN_DOWN_RATE_AUTO">返航落地下降速率:</sys:String>
+    <sys:String x:Key="TITLE_MAX_CRUISE_VEL_AUTO">最大巡航速度:</sys:String>
+
+    <sys:String x:Key="TITLE_SELECT_SERIAL_MODE">请选择串口通信模式</sys:String>
+    <sys:String x:Key="TITLE_SELECT_NET_MODE">请选择网络通信模式</sys:String>
+
+    <sys:String x:Key="TITLE_REPLAY_PROGRESS">进度:</sys:String>
+    <sys:String x:Key="TITLE_REPLAY_RATE">速度:</sys:String>
+    <sys:String x:Key="TITLE_MENUE_SELECT_PLAY_DATA_TYPE">请选择回放数据类型</sys:String>
+
+    <sys:String x:Key="TITLE_MENUE_FLY_SETTINGS">飞行参数</sys:String>
+    <sys:String x:Key="TITLE_MENUE_WPT_PLAN">航线规划</sys:String>
+    <sys:String x:Key="TITLE_MENUE_FLY_INFOR">飞行监测</sys:String>
+    <sys:String x:Key="TITLE_MENUE_TASK_FUNCTION">任务功能</sys:String>
+    <sys:String x:Key="TITLE_MENUE_LINK_SET">通信设置</sys:String>
+    <sys:String x:Key="TITLE_MENUE_EXIT">退出</sys:String>
+
+    <sys:String x:Key="TITLE_YAW">航向</sys:String>
+    <sys:String x:Key="TITLE_LEFT">左</sys:String>
+    <sys:String x:Key="TITLE_RIGHT">右</sys:String>
+    <sys:String x:Key="TITLE_FU">俯</sys:String>
+    <sys:String x:Key="TITLE_YANG">仰</sys:String>
+
+    <sys:String x:Key="TITLE_END_WPT_PLAN_INSTRUCTION">请点击“O”结束当前航线规划！</sys:String>
+    <sys:String x:Key="TITLE_FLY_INFORMATION">飞行信息</sys:String>
+    <sys:String x:Key="TITLE_GPS_INFORMATION">GPS信息</sys:String>
+    <sys:String x:Key="TITLE_RADAR_INFORMATION">雷达信息</sys:String>
+
+    <sys:String x:Key="TITLE_SELECT_DARG_AREA">请选择要拖拽的航点</sys:String>
+    <sys:String x:Key="TITLE_WPT_FLY_TIMES">航线次数:</sys:String>
+    <sys:String x:Key="TITLE_IN_FORBIDDEN_AREA">当前位置处于禁飞区，不能解锁起飞</sys:String>
+    <sys:String x:Key="TITLE_MC_COM_CONFIG">MC_COM配置</sys:String>
+
+    <sys:String x:Key="TITLE_PLANE_SETTINGS">机型设置</sys:String>
+    <sys:String x:Key="TITLE_FIX_DIRECTION">安装方向</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_CALIBRATE">遥控器校准</sys:String>
+    <sys:String x:Key="TITLE_PID_PARA">PID参数</sys:String>
+    <sys:String x:Key="TITLE_FLY_PARA">飞行参数</sys:String>
+    <sys:String x:Key="TITLE_SKYLINE_SPACE">行间距</sys:String>
+    <sys:String x:Key="TITLE_SKYLINE_ROTATE">方向角</sys:String>
+    <sys:String x:Key="TITLE_IMU_INFORMATION">Imu信息</sys:String>
+    <sys:String x:Key="TITLE_FUNCTION_INDICATION">任务指令</sys:String>
+    <sys:String x:Key="TITLE_FLY_TO_POINT">指点飞行</sys:String>
+    <sys:String x:Key="TITLE_CAMERA_CONTROL">相机控制</sys:String>
+    <sys:String x:Key="TITLE_DELETE_FLY_WAY">删除航迹</sys:String>
+    <sys:String x:Key="TITLE_OPEN_PARACHUTE">开伞</sys:String>
+    <sys:String x:Key="TITLE_KEY_BOARD_SHIFT">键盘控制</sys:String>
+    <sys:String x:Key="TITLE_GPS_FOLLOW">跟飞模式</sys:String>
+    <sys:String x:Key="TITLE_SET_HOME">设置返航点</sys:String>
+    <sys:String x:Key="TITLE_SET_FOCUS_PT">设置聚焦点</sys:String>
+    <sys:String x:Key="TITLE_DOWNLOAD_MAP">下载地图</sys:String>
+    <sys:String x:Key="TITLE_PLAY_BACK">数据回放</sys:String>
+    <sys:String x:Key="TITLE_DATA_ANALYSIS">数据分析</sys:String>
+    <sys:String x:Key="TITLE_HEAD_TYPE">航向类型:</sys:String>
+    <sys:String x:Key="TITLE_DOUBLE_ANTENA">双天线测向</sys:String>
+    <sys:String x:Key="TITLE_COMPASS">磁罗盘</sys:String>
+
+    <sys:String x:Key="TITLE_CONTROL">控制</sys:String>
+    <sys:String x:Key="TITLE_EDIT">编辑</sys:String>
+    <sys:String x:Key="TITLE_LOW_VALUE">低值</sys:String>
+    <sys:String x:Key="TITLE_HIGH_VALUE">高值</sys:String>
+    <sys:String x:Key="TITLE_NAME">名称</sys:String>
+    <sys:String x:Key="TITLE_DELETE">删除</sys:String>
+    <sys:String x:Key="TITLE_ADD">添加</sys:String>
+    <sys:String x:Key="TITLE_2_SECTORS">2段开关</sys:String>
+    <sys:String x:Key="TITLE_3_SECTORS">3段开关</sys:String>
+
+    <sys:String x:Key="TITLE_STARTUP_SETTINGS">开机设置</sys:String>
+    <sys:String x:Key="TITLE_FIRMWARE_UPDATE">固件升级</sys:String>
+    <sys:String x:Key="TITLE_TRANSPARENT_TRANSMISSION">透传</sys:String>
+    <sys:String x:Key="TITLE_RADAR_OBSTACLE_AVOIDANCE">雷达避障</sys:String>
+    <sys:String x:Key="TITLE_DATA_DOWN_LOAD">数据下载</sys:String>
+    <sys:String x:Key="TITLE_CAMERA_SETTINGS">相机设置</sys:String>
+
+    <sys:String x:Key="TITLE_MEASURE_DIST">距离测量</sys:String>
+    <sys:String x:Key="TITLE_INVALID">无效</sys:String>
+
+    <sys:String x:Key="TITLE_REMOTER_INDICATION_HOME">遥控器命令返航</sys:String>
+    <sys:String x:Key="TITLE_GCS_INDICATION_HOME">地面站指令返航</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_RRROR_HOME">遥控器错误返航</sys:String>
+    <sys:String x:Key="TITLE_LOW_VOLT_HOME">低电压返航</sys:String>
+    <sys:String x:Key="TITLE_LINK_LOST_HOME">地面通信中断返航</sys:String>
+    <sys:String x:Key="TITLE_RTK_LOST_HOME">RTK丢失返航</sys:String>
+    <sys:String x:Key="TITLE_NO_PESTICIDE_HOME">药量低返航</sys:String>
+    <sys:String x:Key="TITLE_ROCK_LOST_HOME">摇杆信号丢失返航</sys:String>
+    <sys:String x:Key="TITLE_LIMIT_ALT_HOME">触碰高度限制返航</sys:String>
+    <sys:String x:Key="TITLE_INFRARED_INVALID_HOME">雷达失效返航</sys:String>
+    <sys:String x:Key="TITLE_HIGH_TEMPERATURE_HOME">飞控温度过高返航</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_LOST_HOME">遥控器断开返航</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_FS_HOME">遥控器FS保护返航</sys:String>
+    <sys:String x:Key="TITLE_FORBIDDEN_AREA_HOME">触碰禁飞区返航</sys:String>
+
+    <sys:String x:Key="TITLE_ANTENNA_DIRECTION">双天线安装方向</sys:String>
+    <sys:String x:Key="TITLE_ANTENNA_FRONT_BACK">前后安装</sys:String>
+    <sys:String x:Key="TITLE_ANTENNA_LEFT_RIGHT">左右安装</sys:String>
+
+    <sys:String x:Key="TITLE_KMZ_WPT_TYPE">生成航线</sys:String>
+    <sys:String x:Key="TITLE_KMZ_BOUND_TYPE">生成边界</sys:String>
+
+    <sys:String x:Key="TITLE_FOLLOW_FLY">跟随飞行</sys:String>
+    <sys:String x:Key="TITLE_FOLLOW_START">开始跟随</sys:String>
+    <sys:String x:Key="TITLE_FOLLOW_END">结束跟随</sys:String>
+    <sys:String x:Key="TITLE_FOLLOW_TAKE_OFF">车载起飞</sys:String>
+    <sys:String x:Key="TITLE_FOLLOW_LANDIND">车载降落</sys:String>
+    <sys:String x:Key="TITLE_SAT_NUM">GPS卫星数</sys:String>
+
+    <sys:String x:Key="TITLE_MAG_CALIBRATE_XY">正在水平面磁校准</sys:String>
+    <sys:String x:Key="TITLE_MAG_CALIBRATE_XZ">正在垂直面磁校准</sys:String>
+    <sys:String x:Key="TITLE_MAG_CALIBRATE_SUCCESS">磁校准成功</sys:String>
+    <sys:String x:Key="TITLE_MAG_CALIBRATE_FAIL">磁校准失败</sys:String>
+
+    <sys:String x:Key="TITLE_LINK_MODE">链接模式</sys:String>
+    <sys:String x:Key="TITLE_SERIAL_LINK">串口</sys:String>
+    <sys:String x:Key="TITLE_NET_LINK">网络</sys:String>
+    <sys:String x:Key="TITLE_PLANE_TYPE">飞行器类型</sys:String>
+    <sys:String x:Key="TITLE_MULTI_MOTOR">多旋翼</sys:String>
+    <sys:String x:Key="TITLE_FIX_WING">固定翼</sys:String>
+    <sys:String x:Key="TITLE_VERTICAL_LAUNCH">垂起固定翼</sys:String>
+    <sys:String x:Key="TITLE_CONFIRM_KEYBOARD_CONTROL">开启键盘控制？</sys:String>
+
+    <sys:String x:Key="TITLE_FORBID_COUNT_ERROR">禁飞区点数不大于8</sys:String>
+    <sys:String x:Key="TITLE_DELETE_FORBID">删除禁飞区</sys:String>
+    <sys:String x:Key="TITLE_UPLOAD_FORBID">上传禁飞区</sys:String>
+    <sys:String x:Key="TITLE_DOWNLOAD_FORBID">下载禁飞区</sys:String>
+
+    <sys:String x:Key="TITLE_ROLL_PITCH_ANGLE">横滚俯仰角度</sys:String>
+    <sys:String x:Key="TITLE_ROLL_PITCH_GYRO">横滚俯仰陀螺</sys:String>
+    <sys:String x:Key="TITLE_MAGNETOMETER">磁力计</sys:String>
+    <sys:String x:Key="TITLE_PWM_IN">遥控器输入</sys:String>
+    <sys:String x:Key="TITLE_PWM_OUT">电机输出</sys:String>
+    
+    <sys:String x:Key="TITLE_TARGET_ROLL">目标横滚</sys:String>
+    <sys:String x:Key="TITLE_CURRENT_ROLL">当前横滚</sys:String>
+    <sys:String x:Key="TITLE_TARGET_PITCH">目标俯仰</sys:String>
+    <sys:String x:Key="TITLE_CURRENT_PITCH">当前俯仰</sys:String>
+    <sys:String x:Key="TITLE_ROLL_GYRO">横滚陀螺</sys:String>
+    <sys:String x:Key="TITLE_PITCH_GYRO">俯仰陀螺</sys:String>
+    <sys:String x:Key="TITLE_TARGET_YAW">目标航向</sys:String>
+    <sys:String x:Key="TITLE_CURRENT_YAW">当前航向</sys:String>
+    <sys:String x:Key="TITLE_YAW_GYRO">航向陀螺</sys:String>
+    <sys:String x:Key="TITLE_EW_ACC">东西加速度</sys:String>
+    <sys:String x:Key="TITLE_EW_SPEED">东西速度</sys:String>
+    <sys:String x:Key="TITLE_NS_ACC">南北加速度</sys:String>
+    <sys:String x:Key="TITLE_NS_SPEED">南北速度</sys:String>
+    <sys:String x:Key="TITLE_TARGET_CLIMB">目标爬升速度</sys:String>
+    <sys:String x:Key="TITLE_CURRENT_CLIMB">当前爬升速度</sys:String>
+    <sys:String x:Key="TITLE_CURRENT_ALT">飞行高度</sys:String>
+    <sys:String x:Key="TITLE_UP_ACC">天向加速度</sys:String>
+    <sys:String x:Key="TITLE_UP_VEL">天向速度</sys:String>
+    <sys:String x:Key="TITLE_EW_VEL">东西速度</sys:String>
+    <sys:String x:Key="TITLE_NS_VEL">南北速度</sys:String>
+
+    <sys:String x:Key="TITLE_DAISU_ENABLE_VOICE">开启语音</sys:String>
+    <sys:String x:Key="TITLE_OBSTACLE_RADAR">避障雷达</sys:String>
+
+    <sys:String x:Key="TITLE_CLOCK_WISE">顺时针</sys:String>
+    <sys:String x:Key="TITLE_COUNTER_CLOCK_WISE">逆时针</sys:String>
+
+    <sys:String x:Key="TITLE_ROLL_GYRO_P">横滚基础</sys:String>
+    <sys:String x:Key="TITLE_ROLL_ANGLE_P">横滚姿态</sys:String>
+    <sys:String x:Key="TITLE_ROLL_GYRO_D">横滚增稳</sys:String>
+
+    <sys:String x:Key="TITLE_PITCH_GYRO_P">俯仰基础</sys:String>
+    <sys:String x:Key="TITLE_PITCH_ANGLE_P">俯仰姿态</sys:String>
+    <sys:String x:Key="TITLE_PITCH_GYRO_D">俯仰增稳</sys:String>
+
+    <sys:String x:Key="TITLE_YAW_GYRO_P">航向基础</sys:String>
+    <sys:String x:Key="TITLE_YAW_ANGLE_P">航向姿态</sys:String>
+    <sys:String x:Key="TITLE_YAW_GYRO_D">航向增稳</sys:String>
+
+    <sys:String x:Key="TITLE_ALT_DIST_P">高度距离系数</sys:String>
+    <sys:String x:Key="TITLE_ALT_VEL_P">垂直速度系数</sys:String>
+    <sys:String x:Key="TITLE_ALT_ACC_P">垂直加速系数</sys:String>
+    <sys:String x:Key="TITLE_ALT_ACC_I">垂直加速误差</sys:String>
+
+    <sys:String x:Key="TITLE_HORIZON_DIST_P">水平距离系数</sys:String>
+    <sys:String x:Key="TITLE_HORIZON_VEL_P">水平速度系数</sys:String>
+    <sys:String x:Key="TITLE_HORIZON_ACC_P">水平加速系数</sys:String>
+    <sys:String x:Key="TITLE_HORIZON_SPEED_I">水平误差系数</sys:String>
+    <sys:String x:Key="TITLE_BRAKE_K">刹车系数</sys:String>
+
+    <sys:String x:Key="TITLE_RELATIVE_ALT">相对高度</sys:String>
+    <sys:String x:Key="TITLE_ABSOLUTE_ALT">绝对高度</sys:String>
+    <sys:String x:Key="TITLE_CHANGE_ALT">变高度</sys:String>
+    <sys:String x:Key="TITLE_CHANGE_SPEED">变速度</sys:String>
+    <sys:String x:Key="TITLE_CANCEL_CHANGE_ALT">取消变高</sys:String>
+    <sys:String x:Key="TITLE_CANCEL_CHANGE_SPEED">取消变速</sys:String>
+    <sys:String x:Key="TITLE_WPT_CIRCLE_TIMES">航线循环</sys:String>
+    <sys:String x:Key="TITLE_CHANGE_WPT">变航点</sys:String>
+
+    <sys:String x:Key="TITLE_SAFE_VOLT_LEVEL1">一级保护电压</sys:String>
+    <sys:String x:Key="TITLE_SAFE_VOLT_LEVEL2">二级保护电压</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_LOST">遥控器中断</sys:String>
+    <sys:String x:Key="TITLE_PROTECT_ACTION">保护动作</sys:String>
+
+    <sys:String x:Key="TITLE_PLANE_FOCUS">飞机聚焦</sys:String>
+    <sys:String x:Key="TITLE_GIMBLE_FOCUS">云台聚焦</sys:String>
+    <sys:String x:Key="TITLE_FOCUS">聚焦</sys:String>
+
+    <sys:String x:Key="TITLE_SKYWAY_NO">航线编号</sys:String>
+
+    <sys:String x:Key="TITLE_BASE_MODE">工作模式</sys:String>
+    <sys:String x:Key="TITLE_BASE_POS_TYPE">定位状态</sys:String>
+    <sys:String x:Key="TITLE_BASE_HEADING_TYPE">定向状态</sys:String>
+    <sys:String x:Key="TITLE_MODE_ROVER">流动站</sys:String>
+    <sys:String x:Key="TITLE_MODE_FIX_BASE">固定基站</sys:String>
+    <sys:String x:Key="TITLE_MODE_MOVING_BASE">移动基站</sys:String>
+
+    <sys:String x:Key="TITLE_GNSS_NONE">未定位</sys:String>
+    <sys:String x:Key="TITLE_GNSS_SINGLE">单点定位</sys:String>
+    <sys:String x:Key="TITLE_GNSS_FLOAT">RTK浮点解</sys:String>
+    <sys:String x:Key="TITLE_GNSS_FIX">RTK固定解</sys:String>
+
+    <sys:String x:Key="TITLE_FRONT_DIST">前后距离</sys:String>
+    <sys:String x:Key="TITLE_RIGHT_DIST">左右距离</sys:String>
+    <sys:String x:Key="TITLE_YAW_ERROR">航向偏差</sys:String>
+    <sys:String x:Key="TITLE_GET_BASE_VERSION">基站产品信息</sys:String>
+    <sys:String x:Key="TITLE_ALLIGN_STATUS">跟随锁定状态</sys:String>
+    <sys:String x:Key="TITLE_ALLIGH_UNLOCK">跟随未锁定</sys:String>
+    <sys:String x:Key="TITLE_ALLIGH_LOCK">跟随锁定</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_TYPE">遥控器类型</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_RIGHT_THROTTLE">右手油门</sys:String>
+    <sys:String x:Key="TITLE_REMOTER_LEFT_THROTTLE">左手油门</sys:String>
+
+    <sys:String x:Key="TITLE_HEAD_SHIFT">前移</sys:String>
+    <sys:String x:Key="TITLE_BACK_SHIFT">后移</sys:String>
+    <sys:String x:Key="TITLE_LEFT_ROTATE">左旋</sys:String>
+    <sys:String x:Key="TITLE_RIGHT_ROTATE">右旋</sys:String>
+    <sys:String x:Key="TITLE_OBSTACLE_FRONT">前方障碍物</sys:String>
+    <sys:String x:Key="TITLE_OBSTACLE_BACK">后方障碍物</sys:String>
+
+    <sys:String x:Key="TITLE_TCP_LINK">TCP通信</sys:String>
+    <sys:String x:Key="TITLE_UDP_LINK">UDP转发</sys:String>
+    <sys:String x:Key="TITLE_RETURN_CIRCLE_PT">返航盘旋点</sys:String>
+    <sys:String x:Key="TITLE_USB_HID_VK">微克摇杆</sys:String>
+    <sys:String x:Key="TITLE_USB_HID_HUA_ZHI_YI">华之翼T30S</sys:String>
+
+    <sys:String x:Key="TITLE_FIRMWARE_NOT_CORRECT">升级固件文件不匹配</sys:String>
+    <sys:String x:Key="TITLE_DATA_RESOURCE">数据源</sys:String>
+    <sys:String x:Key="TITLE_BASE_STATION">RTK基站</sys:String>
+    <sys:String x:Key="TITLE_FLIGHT_CONTROL">飞控</sys:String>
+</ResourceDictionary>

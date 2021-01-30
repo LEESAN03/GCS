@@ -1,0 +1,86 @@
+﻿<Page x:Class="VIKGroundStation.Page_Task_Function"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="Page_Task_Function">
+
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column ="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,2,0,2" Name="GRID_VERSION_MANAGE">
+                <Button x:Name="BTN_VERSION_MANAGE"   BorderBrush="black" FontSize="30" Foreground="White"  ToolTip="{DynamicResource TITLE_FIRMWARE_UPDATE}"  Click="BTN_VERSION_MANAGE_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/firmware_update.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <!-- 相机设置-->
+            <Grid Grid.Row="1" Margin="0,2,0,2" Name="GRID_CAMERA_SETTINGS">
+                <Button x:Name="BTN_CAMERA_SETTINGS"   BorderBrush="black" FontSize="30" Foreground="White"  ToolTip="{DynamicResource TITLE_CAMERA_SETTINGS}"  Click="BTN_CAMERA_SETTINGS_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="8">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/camera_setting.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column ="1">
+            <Border BorderBrush="#ff00b7ee" BorderThickness="2"   CornerRadius="5,5,5,5" Grid.RowSpan="2">
+                <ContentPresenter  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <Frame Name="Frm_Task_Function" NavigationUIVisibility="Hidden" Grid.RowSpan="2"></Frame>
+        </Grid>
+    </Grid>
+</Page>

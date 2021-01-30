@@ -1,0 +1,603 @@
+﻿<Window x:Class="VIKGroundStation.Window_Skyway"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VIKGroundStation"
+        mc:Ignorable="d"
+        Title="Window_Skyway" Height="650" Width="400"   WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="Manual" Foreground="White" ShowInTaskbar="False" Background="#50103090" MouseDown="Window_MouseDown">
+    <Grid  Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <!-- 航线列表 -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ListView  Name="wpt_list_box" SelectionChanged="lvwOverallViewWayPointInfo_SelectionChanged"   FontSize="12"  FontWeight="SemiBold" BorderBrush="White" Foreground="White" Background="#50103090" >
+                    <ListView.View>
+                        <GridView  >
+                            <GridViewColumn Width="40" Header="{DynamicResource TITLE_ID}" DisplayMemberBinding="{Binding Path=NumberId}"/>
+                            <GridViewColumn Width="40" Header="{DynamicResource TITLE_ALTITUDE}"  DisplayMemberBinding="{Binding Path=alt}"/>
+                            <GridViewColumn Width="40" Header="{DynamicResource TITLE_SPEED}" DisplayMemberBinding="{Binding Path=speed}"/>
+                            <GridViewColumn Width="80" Header="{DynamicResource TITLE_WPT_TASK_FUNCTION}"  DisplayMemberBinding="{Binding Path=str_renwu}"/>
+                            <GridViewColumn Width="40" Header="{DynamicResource TITLE_TASK_TIME}"  DisplayMemberBinding="{Binding Path=pic_interval}"/>
+                            <GridViewColumn Width="80" Header="{DynamicResource TITLE_FLY_MODE}"  DisplayMemberBinding="{Binding Path=str_turn_mode}"/>
+                            <GridViewColumn Width="40" Header="{DynamicResource TITLE_WPT_STOP_TIME}"  DisplayMemberBinding="{Binding Path=turn_time}"/>
+                            <GridViewColumn  Header="{DynamicResource TITLE_WPT_HEADING}"  DisplayMemberBinding="{Binding Path=wpt_heading}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <TextBlock Name="Text_Total_Wpt_Dist" Text="{DynamicResource TITLE_WPT_TOTAL_DIST}" TextAlignment="Left" Foreground="White" FontSize="11" FontWeight="SemiBold"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <TextBlock Name="Text_Total_Wpt_Time" Text="{DynamicResource TITLE_WPT_TOTAL_TIME}" TextAlignment="Center" Foreground="White" FontSize="11" FontWeight="SemiBold"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <TextBlock Name="Text_Total_Wpt_Acreage" Text="{DynamicResource TITLE_WPT_TOTAL_ACREAGE}" TextAlignment="Center" Foreground="White" FontSize="11" FontWeight="SemiBold"></TextBlock>
+                </Grid>
+            </Grid>
+        </Grid>
+        <!--航点属性-->
+        <Grid Grid.Row="1" Margin ="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="20*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="3"  Background="#ff00b7ee" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <TextBlock  Text="{DynamicResource TITLE_SKYWAY_NO}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1"  >
+                    <ComboBox Name="combox_skyway_no"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="60"  FontSize="14"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_skyway_no_Changed"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,2,0,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_LONGITUDE}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <TextBox x:Name="TextBox_WptLon" Height="22" Width="100" Background="#50103090" BorderBrush="White" Foreground="White" Text="116.0000000" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBlock  Text="{DynamicResource TITLE_LATITUDE}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                </Grid>
+                <Grid Grid.Column="3" >
+                    <TextBox x:Name="TextBox_WptLat" Height="22" Width="100" Background="#50103090" BorderBrush="White" Foreground="White" Text="40.0000000" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,3,0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <TextBlock  Text="{DynamicResource TITLE_ALTITUDE}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBox x:Name="TextBox_WptAlt"  Height="22" Width="70" Background="#50103090" BorderBrush="White" Foreground="White" Text="50" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <TextBlock  Text="m" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3" >
+                    <TextBlock  Text="{DynamicResource TITLE_SPEED}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4" >
+                    <TextBox x:Name="TextBox_WptSpeed"  Height="22" Width="70" Background="#50103090" BorderBrush="White" Foreground="White" Text="5" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="5" >
+                    <TextBlock  Text="m/s" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Margin="0,3,0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_WPT_TURN_MODE}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ComboBox Name="combox_turn_mode"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="90"  FontSize="14"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_turn_mode_Changed"/>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <TextBox x:Name="TextBox_Turn_Time" Height="22" Width="50" Background="#50103090" BorderBrush="White" Foreground="White" Text="3" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3" Margin="2">
+                    <TextBlock x:Name="TextBlock_Turn_Time"  Text="s" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4" >
+                    <TextBox x:Name="TextBox_Turn_Heading" Height="22" Width="50" Background="#50103090" BorderBrush="White" Foreground="White" Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="5" Margin="2">
+                    <TextBlock x:Name="TextBlock_Turn_Heading"  Text="°" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="0,3,0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_WPT_TASK}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <ComboBox Name="combox_task"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" FontSize="14"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_task_Changed"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBox x:Name="TextBox_Task_Time" Height="22" Width="50" Background="#50103090" BorderBrush="White" Foreground="White" Text="3" FontSize="14" FontWeight="SemiBold" TextAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3" Margin="2">
+                    <TextBlock x:Name="TextBlock_Task_Interval"  Text="m" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <ComboBox Name="combox_alt_type"   HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" FontSize="14"  FontWeight="SemiBold" Focusable="False" SelectionChanged="combox_alt_type_Changed"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Margin="0,3,0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock  Text="{DynamicResource TITLE_WPT_NUM}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBlock x:Name="TextBlock_Wpt_Num" Text="1" FontSize="14" Height="18" Width="50" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Button Name="Btn_All_Wpt"  Content="{DynamicResource TITLE_WPT_ALL}" Height="22" Width="60" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_All_Wpt_Click"  >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Silver" Offset="0.0" />
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                    <GradientStop Color="Silver" Offset="0.0" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button Name="Btn_Wpt_Change_OK"  Content="{DynamicResource TITLE_OK}" Height="22" Width="60" BorderThickness="3" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Wpt_Change_OK_Click"  >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Silver" Offset="0.0" />
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                    <GradientStop Color="Silver" Offset="0.0" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="7" Margin="0,1,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <Button Name="Btn_Save_Wpt"  Content="{DynamicResource TITLE_WPT_SAVE}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Save_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Name="Btn_Open_Wpt"  Content="{DynamicResource TITLE_WPT_OPEN}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Open_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Button Name="Btn_Add_Wpt"  Content="+" BorderThickness="1" Height="22" Width="40" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White"  ToolTip="{DynamicResource TITLE_ADD_WPT}" Click="Btn_Add_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Popup x:Name="Pop_Add_Wpt" PopupAnimation="Fade"  Width="100" Height="100"  Placement="Right" AllowsTransparency="True" StaysOpen="False" IsOpen="False">
+                        <StackPanel >
+                            <Button Margin="3" x:Name="Btn_Add_Manual" Content="{DynamicResource TITLE_MANUAL_WPT}" BorderThickness="0" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Add_Manual_Click"  >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background" Background="DarkCyan">
+                                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Margin="3" x:Name="Btn_Add_Auto" Content="{DynamicResource TITLE_AUTO_WPT}" BorderThickness="0" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Add_Auto_Click" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background" Background="DarkCyan">
+                                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Margin="3" x:Name="Btn_Add_Forbid" Content="{DynamicResource TITLE_FORBID_AREA}" BorderThickness="0" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Add_Forbid_Click" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background" Background="DarkCyan">
+                                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </Popup>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="8" Margin="0,1,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button Name="Btn_Upload_Wpt"  Content="{DynamicResource TITLE_WPT_UPLOAD}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Upload_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Name="Btn_Download_Wpt"  Content="{DynamicResource TITLE_WPT_DOWNLOAD}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Download_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Button Name="Btn_Delete_Wpt"  Content="-" Height="22" Width="40" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White"  ToolTip="{DynamicResource TITLE_DELETE_WPT}"  Click="Btn_Delete_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="9" Margin="0,1,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="Btn_Shift_Wpt"  Content="{DynamicResource TITLE_WPT_SHIFT}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Shift_Wpt_Click" Grid.ColumnSpan="2">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Name="Btn_Open_Kmz"  Content="KMZ/KML" Height="22" Width="120" BorderThickness="1" BorderBrush="White" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Open_Kmz_Click"  >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Popup x:Name="POP_KMZ_TYPE" PopupAnimation="Fade"  Width="120" Height="60" PlacementTarget="{Binding ElementName=renwuSet}" Placement="Bottom" AllowsTransparency="True" StaysOpen="False" IsOpen="False" Grid.ColumnSpan="2" Margin="12,22,8,-56.4">
+                        <StackPanel >
+                            <Button Margin="3" x:Name="BTN_WPT_TYPE" Content="{DynamicResource TITLE_KMZ_WPT_TYPE}" BorderThickness="0" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_WPT_TYPE_Click" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background" Background="DarkCyan">
+                                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Margin="3" x:Name="BTN_BOUND_TYPE" Content="{DynamicResource TITLE_KMZ_BOUND_TYPE}" BorderThickness="0" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_BOUND_TYPE_Click" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background" Background="DarkCyan">
+                                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </Popup>
+                </Grid>
+                <Grid Grid.Column="3" >
+                    <Button Name="Btn_End_Wpt"  Content="O" Height="22" Width="40" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White"  ToolTip="{DynamicResource TITLE_EXIT_WPT_PLAN}"  Click="Btn_End_Wpt_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="10" Margin="0,1,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button Name="Btn_Upload_Forbidden"  Content="{DynamicResource TITLE_UPLOAD_FORBID}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Upload_Forbidden_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Name="Btn_Download_Forbidden"  Content="{DynamicResource TITLE_DOWNLOAD_FORBID}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Download_Forbidden_Click"  >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="11" Margin="0,1,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button Name="Btn_Delete_Forbidden"  Content="{DynamicResource TITLE_DELETE_FORBID}" Height="22" Width="120" BorderThickness="1" BorderBrush="White" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="Btn_Delete_Forbidden_Click"  >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author></author>
+      <authoring_tool>FBX COLLADA exporter</authoring_tool>
+      <comments></comments>
+    </contributor>
+    <created>2015-07-30T06:02:22Z</created>
+    <keywords></keywords>
+    <modified>2015-07-30T06:02:22Z</modified>
+    <revision></revision>
+    <subject></subject>
+    <title></title>
+    <unit meter="1.000000" name="centimeter"></unit>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="_01 - Default" name="_01 - Default">
+      <instance_effect url="#_01 - Default-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="_01 - Default-fx" name="_01 - Default">
+      <profile_COMMON>
+        <technique sid="standard">
+          <phong>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.980392  0.505882 0.000000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.980392  0.505882 0.000000 1.000000</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.740000  0.452706 0.000000 1.000000</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">1.071773</float>
+            </shininess>
+            <reflective>
+              <color sid="reflective">0.000000  0.000000 0.000000 1.000000</color>
+            </reflective>
+            <reflectivity>
+              <float sid="reflectivity">1.000000</float>
+            </reflectivity>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">1.000000  1.000000 1.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">0.000000</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Cylinder045-lib" name="Cylinder045Mesh">
+      <mesh>
+        <source id="Cylinder045-POSITION">
+          <float_array id="Cylinder045-POSITION-array" count="99">
+0.016630 0.030392 -0.109693
+-0.110061 -0.022059 -0.030527
+-0.129950 -0.030293 -0.018130
+-0.107188 -0.020869 0.024533
+0.030207 0.055053 0.039129
+0.028092 0.054404 0.045365
+0.024790 0.053183 0.050681
+0.020552 0.051504 0.055012
+0.015557 0.049436 0.058151
+0.010021 0.047068 0.059963
+0.004196 0.044510 0.060383
+-0.001738 0.041827 0.059204
+0.018160 0.050513 0.056779
+-0.029309 0.011373 -0.004943
+-0.023298 0.013862 -0.003748
+-0.017408 0.016300 -0.004128
+-0.011854 0.018600 -0.005948
+-0.006851 0.020671 -0.009074
+-0.002617 0.022424 -0.013370
+0.000632 0.023769 -0.018701
+0.002681 0.024617 -0.024932
+0.036494 0.038616 -0.122136
+0.059251 0.048038 -0.079470
+0.049816 0.044132 0.103407
+0.009201 0.014930 0.059195
+0.015289 0.017224 0.060406
+0.021219 0.019533 0.060018
+0.026817 0.021775 0.058236
+0.031826 0.023849 0.055124
+0.036030 0.025665 0.050815
+0.039253 0.027145 0.045517
+0.041236 0.028193 0.039291
+0.029426 0.022855 0.056877
+</float_array>
+          <technique_common>
+            <accessor source="#Cylinder045-POSITION-array" count="33" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder045-Normal0">
+          <float_array id="Cylinder045-Normal0-array" count="558">
+-0.233887 0.929259 0.285963
+-0.233887 0.929259 0.285963
+-0.233887 0.929259 0.285963
+-0.282260 0.904507 0.319681
+-0.282260 0.904507 0.319681
+-0.282260 0.904507 0.319681
+-0.349244 0.857468 0.377860
+-0.349244 0.857468 0.377860
+-0.349244 0.857468 0.377860
+-0.439359 0.763953 0.472589
+-0.439359 0.763953 0.472589
+-0.439359 0.763953 0.472589
+-0.544446 0.581338 0.604670
+-0.544446 0.581338 0.604670
+-0.544446 0.581338 0.604670
+-0.532246 0.840872 0.098229
+-0.532246 0.840872 0.098229
+-0.532246 0.840872 0.098229
+-0.437059 0.892911 -0.108112
+-0.437059 0.892911 -0.108112
+-0.437059 0.892912 -0.108112
+-0.277272 0.908649 -0.312213
+-0.277272 0.908649 -0.312213
+-0.277272 0.908649 -0.312213
+-0.315444 0.902599 -0.292933
+-0.315444 0.902599 -0.292933
+-0.315444 0.902599 -0.292933
+-0.349419 0.894824 -0.277843
+-0.349419 0.894824 -0.277843
+-0.349419 0.894824 -0.277843
+-0.383692 0.886365 -0.259107
+-0.383692 0.886365 -0.259107
+-0.383692 0.886365 -0.259107
+-0.404324 0.879957 -0.249395
+-0.404324 0.879957 -0.249395
+-0.404324 0.879957 -0.249395
+-0.435857 0.869853 -0.231050
+-0.435857 0.869853 -0.231050
+-0.435857 0.869853 -0.231050
+-0.444770 0.866495 -0.226642
+-0.444770 0.866495 -0.226642
+-0.444770 0.866495 -0.226642
+-0.467486 0.857996 -0.212839
+-0.467486 0.857996 -0.212839
+-0.467486 0.857996 -0.212839
+-0.494349 0.847223 -0.194505
+-0.494349 0.847223 -0.194505
+-0.494349 0.847223 -0.194505
+-0.480834 0.852607 -0.204595
+-0.480835 0.852607 -0.204595
+-0.480835 0.852607 -0.204595
+-0.524165 0.833088 -0.176676
+-0.524165 0.833088 -0.176676
+-0.524165 0.833088 -0.176676
+-0.516449 0.836982 -0.180946
+-0.516449 0.836982 -0.180946
+-0.516449 0.836982 -0.180946
+-0.570812 0.808365 -0.143941
+-0.570812 0.808365 -0.143941
+-0.570812 0.808365 -0.143941
+-0.552339 0.819097 -0.154924
+-0.552339 0.819098 -0.154924
+-0.552339 0.819098 -0.154924
+-0.626682 0.772718 -0.100882
+-0.626682 0.772718 -0.100882
+-0.626682 0.772718 -0.100882
+-0.597360 0.792938 -0.120048
+-0.597360 0.792938 -0.120048
+-0.597360 0.792938 -0.120048
+-0.673471 0.736722 -0.060637
+-0.673471 0.736722 -0.060637
+-0.673471 0.736722 -0.060637
+-0.437309 0.892797 -0.108045
+-0.437309 0.892797 -0.108045
+-0.437309 0.892797 -0.108045
+-0.202220 0.973466 -0.107102
+-0.202220 0.973466 -0.107102
+-0.202220 0.973466 -0.107102
+0.384177 0.922413 0.039521
+0.384177 0.922413 0.039521
+0.384177 0.922413 0.039521
+0.100694 0.985479 0.136716
+0.100694 0.985479 0.136716
+0.100694 0.985479 0.136716
+-0.051895 0.979859 0.192832
+-0.051895 0.979859 0.192832
+-0.051895 0.979859 0.192832
+-0.142958 0.961918 0.232974
+-0.142958 0.961918 0.232974
+-0.142958 0.961918 0.232974
+-0.196908 0.944504 0.262944
+-0.196908 0.944504 0.262944
+-0.196908 0.944504 0.262944
+0.485053 -0.855997 0.178864
+0.485053 -0.855997 0.178864
+0.485053 -0.855997 0.178864
+0.522941 -0.837768 0.157090
+0.522941 -0.837768 0.157090
+0.522941 -0.837768 0.157090
+0.581710 -0.803024 0.129485
+0.581710 -0.803024 0.129485
+0.581710 -0.803024 0.129485
+0.674799 -0.732278 0.091741
+0.674798 -0.732278 0.091741
+0.674798 -0.732278 0.091741
+0.823926 -0.565880 0.030420
+0.823926 -0.565880 0.030420
+0.823926 -0.565880 0.030420
+0.491519 -0.868009 -0.070487
+0.491519 -0.868009 -0.070487
+0.491519 -0.868009 -0.070487
+0.343513 -0.936493 -0.070561
+0.343513 -0.936493 -0.070561
+0.343513 -0.936493 -0.070561
+0.159642 -0.986326 -0.040928
+0.159642 -0.986326 -0.040928
+0.159642 -0.986326 -0.040928
+0.201723 -0.977169 -0.066701
+0.201723 -0.977169 -0.066701
+0.201723 -0.977169 -0.066701
+0.232497 -0.968525 -0.088907
+0.232497 -0.968525 -0.088907
+0.232497 -0.968525 -0.088907
+0.243073 -0.965302 -0.095437
+0.243073 -0.965302 -0.095437
+0.243073 -0.965302 -0.095437
+0.261373 -0.959070 -0.108948
+0.261373 -0.959070 -0.108948
+0.261373 -0.959070 -0.108948
+0.275536 -0.954055 -0.117729
+0.275536 -0.954054 -0.117729
+0.275536 -0.954054 -0.117729
+0.283811 -0.950839 -0.123923
+0.283811 -0.950839 -0.123923
+0.283811 -0.950839 -0.123923
+0.295770 -0.946185 -0.131358
+0.295770 -0.946185 -0.131358
+0.295770 -0.946185 -0.131358
+0.314606 -0.938545 -0.141973
+0.314607 -0.938545 -0.141973
+0.314606 -0.938545 -0.141973
+0.304664 -0.942565 -0.136934
+0.304664 -0.942565 -0.136934
+0.304664 -0.942565 -0.136934
+0.334014 -0.929694 -0.155253
+0.334014 -0.929694 -0.155253
+0.334014 -0.929694 -0.155253
+0.326233 -0.933407 -0.149410
+0.326233 -0.933407 -0.149410
+0.326233 -0.933407 -0.149410
+0.366960 -0.913641 -0.174930
+0.366960 -0.913641 -0.174930
+0.366960 -0.913641 -0.174930
+0.348895 -0.923146 -0.161473
+0.348895 -0.923146 -0.161473
+0.348895 -0.923146 -0.161473
+0.408380 -0.890869 -0.198943
+0.408380 -0.890869 -0.198943
+0.408380 -0.890869 -0.198943
+0.377595 -0.909031 -0.176308
+0.377595 -0.909031 -0.176308
+0.377595 -0.909031 -0.176308
+0.429951 -0.878221 -0.209452
+0.429951 -0.878221 -0.209452
+0.429951 -0.878221 -0.209452
+0.343625 -0.936441 -0.070704
+0.343625 -0.936441 -0.070704
+0.343625 -0.936441 -0.070704
+0.275709 -0.959059 0.064743
+0.275709 -0.959058 0.064743
+0.275708 -0.959058 0.064743
+0.134181 -0.879092 0.457375
+0.134181 -0.879092 0.457375
+0.134181 -0.879092 0.457375
+0.269874 -0.898708 0.345677
+0.269874 -0.898708 0.345677
+0.269874 -0.898708 0.345677
+0.364891 -0.892410 0.265441
+0.364891 -0.892410 0.265441
+0.364891 -0.892410 0.265441
+0.422238 -0.879326 0.220227
+0.422238 -0.879326 0.220227
+0.422238 -0.879326 0.220227
+0.460016 -0.866332 0.194561
+0.460016 -0.866332 0.194561
+0.460016 -0.866332 0.194561
+</float_array>
+          <technique_common>
+            <accessor source="#Cylinder045-Normal0-array" count="186" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder045-UV0">
+          <float_array id="Cylinder045-UV0-array" count="66">
+1.820535 0.272058
+-2.058697 0.272058
+-2.667304 0.272722
+-2.667230 -0.934313
+0.463750 -3.154897
+0.340618 -3.260247
+0.200857 -3.329948
+0.051085 -3.366005
+-0.102082 -3.366382
+-0.252026 -3.331062
+-0.392132 -3.262050
+-0.515781 -3.157308
+-0.025498 -3.371762
+-0.517666 -1.341460
+-0.394275 -1.446505
+-0.254342 -1.516536
+-0.104484 -1.551551
+0.048683 -1.551551
+0.198541 -1.516536
+0.338474 -1.446505
+0.461865 -1.341460
+2.429142 0.272721
+2.429068 -0.934313
+-0.027901 -4.689545
+-0.519551 -3.154897
+-0.396419 -3.260247
+-0.256659 -3.329948
+-0.106886 -3.366005
+0.046280 -3.366382
+0.196225 -3.331062
+0.336330 -3.262050
+0.459979 -3.157308
+-0.030303 -3.371761
+</float_array>
+          <technique_common>
+            <accessor source="#Cylinder045-UV0-array" count="33" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cylinder045-VERTEX">
+          <input semantic="POSITION" source="#Cylinder045-POSITION"/>
+        </vertices>
+        <triangles count="62" material="_01 - Default">
+          <input semantic="VERTEX" offset="0" source="#Cylinder045-VERTEX"/>
+          <input semantic="NORMAL" offset="1" source="#Cylinder045-Normal0"/>
+          <input semantic="TEXCOORD" offset="2" set="0" source="#Cylinder045-UV0"/>
+          <p> 23 0 23 12 1 12 8 2 8 23 3 23 8 4 8 9 5 9 23 6 23 9 7 9 10 8 10 23 9 23 10 10 10 11 11 11 3 12 3 23 13 23 11 14 11 2 15 2 3 16 3 11 17 11 1 18 1 2 19 2 11 20 11 13 21 13 1 22 1 11 23 11 14 24 14 13 25 13 11 26 11 14 27 14 11 28 11 10 29 10 15 30 15 14 31 14 10 32 10 15 33 15 10 34 10 9 35 9 16 36 16 15 37 15 9 38 9 16 39 16 9 40 9 8 41 8 16 42 16 8 43 8 12 44 12 16 45 16 12 46 12 7 47 7 17 48 17 16 49 16 7 50 7 18 51 18 17 52 17 7 53 7 18 54 18 7 55 7 6 56 6 19 57 19 18 58 18 6 59 6 19 60 19 6 61 6 5 62 5 20 63 20 19 64 19 5 65 5 20 66 20 5 67 5 4 68 4 0 69 0 20 70 20 4 71 4 21 72 21 0 73 0 4 74 4 22 75 22 21 76 21 4 77 4 23 78 23 22 79 22 4 80 4 23 81 23 4 82 4 5 83 5 23 84 23 5 85 5 6 86 6 23 87 23 6 88 6 7 89 7 23 90 23 7 91 7 12 92 12 23 93 23 32 94 32 28 95 28 23 96 23 28 97 28 29 98 29 23 99 23 29 100 29 30 101 30 23 102 23 30 103 30 31 104 31 22 105 22 23 106 23 31 107 31 21 108 21 22 109 22 31 110 31 0 111 0 21 112 21 31 113 31 20 114 20 0 115 0 31 116 31 19 117 19 20 118 20 31 119 31 19 120 19 31 121 31 30 122 30 18 123 18 19 124 19 30 125 30 18 126 18 30 127 30 29 128 29 17 129 17 18 130 18 29 131 29 17 132 17 29 133 29 28 134 28 17 135 17 28 136 28 32 137 32 17 138 17 32 139 32 27 140 27 16 141 16 17 142 17 27 143 27 15 144 15 16 145 16 27 146 27 15 147 15 27 148 27 26 149 26 14 150 14 15 151 15 26 152 26 14 153 14 26 154 26 25 155 25 13 156 13 14 157 14 25 158 25 13 159 13 25 160 25 24 161 24 1 162 1 13 163 13 24 164 24 2 165 2 1 166 1 24 167 24 3 168 3 2 169 2 24 170 24 23 171 23 3 172 3 24 173 24 23 174 23 24 175 24 25 176 25 23 177 23 25 178 25 26 179 26 23 180 23 26 181 26 27 182 27 23 183 23 27 184 27 32 185 32</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="Cylinder045-anim" name="Cylinder045">
+      <animation>
+        <source id="Cylinder045-Matrix-animation-input">
+          <float_array id="Cylinder045-Matrix-animation-input-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#Cylinder045-Matrix-animation-input-array" count="0">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder045-Matrix-animation-output-transform">
+          <float_array id="Cylinder045-Matrix-animation-output-transform-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#Cylinder045-Matrix-animation-output-transform-array" count="0" stride="16">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder045-Interpolations">
+          <Name_array id="Cylinder045-Interpolations-array" count="0">
+</Name_array>
+          <technique_common>
+            <accessor source="#Cylinder045-Interpolations-array" count="0">
+              <param type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="Cylinder045-Matrix-animation-transform">
+          <input semantic="INPUT" source="#Cylinder045-Matrix-animation-input"/>
+          <input semantic="OUTPUT" source="#Cylinder045-Matrix-animation-output-transform"/>
+          <input semantic="INTERPOLATION" source="#Cylinder045-Interpolations"/>
+        </sampler>
+        <channel source="#Cylinder045-Matrix-animation-transform" target="Cylinder045/matrix"/>
+      </animation>
+    </animation>
+    <animation id="instance_3-anim" name="instance_3">
+      <animation>
+        <source id="instance_3-Matrix-animation-input">
+          <float_array id="instance_3-Matrix-animation-input-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_3-Matrix-animation-input-array" count="0">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_3-Matrix-animation-output-transform">
+          <float_array id="instance_3-Matrix-animation-output-transform-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_3-Matrix-animation-output-transform-array" count="0" stride="16">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_3-Interpolations">
+          <Name_array id="instance_3-Interpolations-array" count="0">
+</Name_array>
+          <technique_common>
+            <accessor source="#instance_3-Interpolations-array" count="0">
+              <param type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="instance_3-Matrix-animation-transform">
+          <input semantic="INPUT" source="#instance_3-Matrix-animation-input"/>
+          <input semantic="OUTPUT" source="#instance_3-Matrix-animation-output-transform"/>
+          <input semantic="INTERPOLATION" source="#instance_3-Interpolations"/>
+        </sampler>
+        <channel source="#instance_3-Matrix-animation-transform" target="instance_3/matrix"/>
+      </animation>
+    </animation>
+    <animation id="instance_2-anim" name="instance_2">
+      <animation>
+        <source id="instance_2-Matrix-animation-input">
+          <float_array id="instance_2-Matrix-animation-input-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_2-Matrix-animation-input-array" count="0">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_2-Matrix-animation-output-transform">
+          <float_array id="instance_2-Matrix-animation-output-transform-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_2-Matrix-animation-output-transform-array" count="0" stride="16">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_2-Interpolations">
+          <Name_array id="instance_2-Interpolations-array" count="0">
+</Name_array>
+          <technique_common>
+            <accessor source="#instance_2-Interpolations-array" count="0">
+              <param type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="instance_2-Matrix-animation-transform">
+          <input semantic="INPUT" source="#instance_2-Matrix-animation-input"/>
+          <input semantic="OUTPUT" source="#instance_2-Matrix-animation-output-transform"/>
+          <input semantic="INTERPOLATION" source="#instance_2-Interpolations"/>
+        </sampler>
+        <channel source="#instance_2-Matrix-animation-transform" target="instance_2/matrix"/>
+      </animation>
+    </animation>
+    <animation id="instance_1-anim" name="instance_1">
+      <animation>
+        <source id="instance_1-Matrix-animation-input">
+          <float_array id="instance_1-Matrix-animation-input-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_1-Matrix-animation-input-array" count="0">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_1-Matrix-animation-output-transform">
+          <float_array id="instance_1-Matrix-animation-output-transform-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_1-Matrix-animation-output-transform-array" count="0" stride="16">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_1-Interpolations">
+          <Name_array id="instance_1-Interpolations-array" count="0">
+</Name_array>
+          <technique_common>
+            <accessor source="#instance_1-Interpolations-array" count="0">
+              <param type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="instance_1-Matrix-animation-transform">
+          <input semantic="INPUT" source="#instance_1-Matrix-animation-input"/>
+          <input semantic="OUTPUT" source="#instance_1-Matrix-animation-output-transform"/>
+          <input semantic="INTERPOLATION" source="#instance_1-Interpolations"/>
+        </sampler>
+        <channel source="#instance_1-Matrix-animation-transform" target="instance_1/matrix"/>
+      </animation>
+    </animation>
+    <animation id="instance_0-anim" name="instance_0">
+      <animation>
+        <source id="instance_0-Matrix-animation-input">
+          <float_array id="instance_0-Matrix-animation-input-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_0-Matrix-animation-input-array" count="0">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_0-Matrix-animation-output-transform">
+          <float_array id="instance_0-Matrix-animation-output-transform-array" count="0">
+</float_array>
+          <technique_common>
+            <accessor source="#instance_0-Matrix-animation-output-transform-array" count="0" stride="16">
+              <param type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="instance_0-Interpolations">
+          <Name_array id="instance_0-Interpolations-array" count="0">
+</Name_array>
+          <technique_common>
+            <accessor source="#instance_0-Interpolations-array" count="0">
+              <param type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="instance_0-Matrix-animation-transform">
+          <input semantic="INPUT" source="#instance_0-Matrix-animation-input"/>
+          <input semantic="OUTPUT" source="#instance_0-Matrix-animation-output-transform"/>
+          <input semantic="INTERPOLATION" source="#instance_0-Interpolations"/>
+        </sampler>
+        <channel source="#instance_0-Matrix-animation-transform" target="instance_0/matrix"/>
+      </animation>
+    </animation>
+  </library_animations>
+  <library_visual_scenes>
+    <visual_scene id="" name="">
+      <node name="Cylinder045" id="Cylinder045" sid="Cylinder045">
+        <matrix sid="matrix">-17.132249 -8.875201 -32.116409 1.052358 -29.673825 -15.372214 18.542487 0.259170 -16.178599 37.593152 -0.000013 -0.339071 0.000000 0.000000 0.000000 1.000000</matrix>
+        <instance_geometry url="#Cylinder045-lib">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="_01 - Default" target="#_01 - Default"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="instance_3" id="instance_3" sid="instance_3">
+        <matrix sid="matrix">-1.065258 0.000000 0.000000 -0.812321 -0.000000 -1.065258 0.000000 0.095734 0.000000 0.000000 1.065258 0.847134 0.000000 0.000000 0.000000 1.000000</matrix>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="instance_2" id="instance_2" sid="instance_2">
+        <matrix sid="matrix">-1.065258 0.000000 0.000000 -0.812321 -0.000000 -1.065258 0.000000 0.095734 0.000000 0.000000 1.065258 0.847134 0.000000 0.000000 0.000000 1.000000</matrix>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="instance_1" id="instance_1" sid="instance_1">
+        <matrix sid="matrix">-1.065258 0.000000 0.000000 -0.812321 -0.000000 -1.065258 0.000000 0.095734 0.000000 0.000000 1.065258 0.847134 0.000000 0.000000 0.000000 1.000000</matrix>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <node name="instance_0" id="instance_0" sid="instance_0">
+        <matrix sid="matrix">-1.065258 0.000000 0.000000 -0.812321 -0.000000 -1.065258 0.000000 0.095734 0.000000 0.000000 1.065258 0.847134 0.000000 0.000000 0.000000 1.000000</matrix>
+        <extra>
+          <technique profile="FCOLLADA">
+            <visibility>1.000000</visibility>
+          </technique>
+        </extra>
+      </node>
+      <extra>
+        <technique profile="MAX3D">
+          <frame_rate>30.000000</frame_rate>
+        </technique>
+        <technique profile="FCOLLADA">
+          <start_time>0.000000</start_time>
+          <end_time>3.333333</end_time>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#"></instance_visual_scene>
+  </scene>
+</COLLADA>
+

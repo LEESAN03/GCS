@@ -1,0 +1,71 @@
+﻿<Window x:Class="VIKGroundStation.Window_Replay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="100" Width="800" ResizeMode="NoResize" AllowsTransparency="False" WindowStyle="None" Background="#50103090" WindowStartupLocation="CenterScreen"  MouseDown="Grid_MouseDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="130*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column ="0">
+                    <Button x:Name="BTN_OPEN_REPLAY_DATA" Content="{DynamicResource TITLE_PLAY_BACK_DATA}" BorderThickness="2"  BorderBrush="White" Background="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_OPEN_REPLAY_DATA_Click" />
+                </Grid>
+                <Grid Grid.Column ="3" Margin="3" >
+                    <TextBlock x:Name="TextBlock_Replay_Data_Path"  FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1"  Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column ="0" Margin="3">
+                    <TextBlock x:Name="TextBlock_Replay_Progress"  Text="{DynamicResource TITLE_REPLAY_PROGRESS}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column ="1" Margin="3">
+                    <Slider Height="23"  x:Name="Slider_Replay_Progress"   Delay="0" Maximum="100" SmallChange="0.001" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2"  Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="3">
+                    <TextBlock x:Name="TextBlock_Replay_Speed"  Text="{DynamicResource TITLE_REPLAY_RATE}" FontSize="14" FontWeight="SemiBold" Foreground="White" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1" Margin="3">
+                    <Slider Height="23"  x:Name="Slider_Replay_Rate"    Delay="0" Value="50" Maximum="100" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="3">
+                <Button x:Name="BTN_REPLAY_CONTINUE" Content="{DynamicResource TITLE_BEGIN}" BorderThickness="2" BorderBrush="White" Background="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_REPLAY_CONTINUE_Click" />
+            </Grid>
+            <Grid Grid.Row="1" Margin="3">
+                <Button x:Name="BTN_REPLAY_PAUSE" Content="{DynamicResource TITLE_PAUSE}" BorderThickness="2" BorderBrush="White" Background="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_REPLAY_PAUSE_Click" />
+            </Grid>
+            <Grid Grid.Row="2" Margin="3">
+                <Button x:Name="BTN_REPLAY_EXIT" Content="{DynamicResource TITLE_END}" BorderThickness="2" BorderBrush="White" Background="Transparent" FontSize="14" FontWeight="SemiBold" Foreground="White" Click="BTN_REPLAY_EXIT_Click" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

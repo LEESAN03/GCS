@@ -1,0 +1,17 @@
+2021-01-29 17:45:12,348 [16] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 17:45:13,457 [ 7] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 17:45:13,845 [17] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 17:45:18,306 [18] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 17:45:19,614 [19] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:16:43,043 [ 6] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:16:43,623 [18] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:16:46,622 [16] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:16:47,614 [17] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:16:48,761 [ 7] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:18:08,062 [ 4] INFO  GMapDownload.TileDownloader: Download failed tiles complete.
+2021-01-29 18:28:30,872 [17] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:28:31,251 [18] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:28:37,174 [19] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:28:43,443 [14] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:28:52,407 [16] INFO  GMapDownload.TileDownloader: One thread download complete.
+2021-01-29 18:28:52,798 [ 4] INFO  GMapDownload.TileDownloader: Download failed tiles complete.

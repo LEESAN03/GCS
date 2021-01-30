@@ -1,0 +1,352 @@
+﻿<Page x:Class="VIKGroundStation.Page_Version_Update"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Page_Version_Update">
+
+    <Page.Resources>
+        <Style TargetType="ProgressBar" x:Key="SimpleProgressBar">
+            <Setter Property="Maximum" Value="1" />
+            <Setter Property="Value" Value="0" />
+            <Setter Property="Height" Value="10" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="Root" >
+                            <Border x:Name="PART_Track" Background="{TemplateBinding Background}"                                
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Border  x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}"                                
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="Root" >
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="Black" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="500*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock x:Name="TextBlock_SYSTEM_ID"  Text="飞控系统ID" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" >
+                <TextBox x:Name="TextBox_SYSTEM_ID"  Text="0" Width="80" Height="25" FontSize="15" FontWeight="SemiBold" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2" >
+                <TextBlock x:Name="TextBlock_SYSTEM_ID_NOW"  Text="0"  FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Button Name="Btn_SET_SYSTEM_ID"  Content="{DynamicResource TITLE_SET}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Width="80" Click="Btn_SET_SYSTEM_ID_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Button Name="Btn_Get_Control_Version"  Content="{DynamicResource TITLE_READ}" BorderThickness="1" BorderBrush="White" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Width="80" Click="Btn_Get_Control_Version_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <!-- 显示飞控名称和序列号 -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="20,0,20,0">
+                <TextBlock x:Name="TextBlock_Feikong_Name"  Text="{DynamicResource TITLE_EQUIPMENT_NAME}" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" Margin="20,0,20,0">
+                <TextBlock x:Name="TextBlock_Feikong_Xuliehao"  Text="{DynamicResource TITLE_EQUIPMENT_NO}" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <!-- 显示控制固件的版本 -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="20,0,20,0">
+                <TextBlock x:Name="TextBlock_Current_Controller_Version"  Text="{DynamicResource TITLE_CONTROLLER_CURRENT_VERSION}" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" Margin="20,0,20,0">
+                <TextBlock x:Name="TextBlock_Current_IMU_Version"  Text="{DynamicResource TITLE_IMU_CURRENT_VERSION}" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <!--读取POS-->
+        <Grid Grid.Row="4" Margin="30,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5">
+                <Button Name="Btn_Update_Controller"  Content="{DynamicResource TITLE_UPDATE_CONTROLLER}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Click="Btn_Update_Controller_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ProgressBar  Height="20" x:Name="ProgressBar_Update_Control" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10,0,10,0">
+                <TextBlock x:Name="TextBlock_Control_Update_Percent" Text="0%" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+        </Grid>
+        <!--读取飞行数据-->
+        <Grid Grid.Row="5" Margin="30,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5">
+                <Button Name="Btn_Update_IMU"  Content="{DynamicResource TITLE_UPDATE_IMU}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Click="Btn_Update_IMU_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ProgressBar  Height="20" x:Name="ProgressBar_Update_IMU" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10,0,10,0">
+                <TextBlock x:Name="TextBlock_Update_IMU_Percent" Text="0%" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <!--读取POS-->
+        <Grid Grid.Row="8" Margin="30,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5">
+                <Button Name="Btn_Download_Pos"  Content="{DynamicResource TITLE_DOWN_LOAD_PIC_POS}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Click="Btn_Download_Pos_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ProgressBar  Height="20" x:Name="ProgressBar_Download_Pos" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10,0,10,0">
+                <TextBlock x:Name="TextBlock_Pos_Percent" Text="0%" FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+        </Grid>
+        <!--读取飞行数据-->
+        <Grid Grid.Row="9" Margin="30,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5">
+                <Button Name="Btn_Download_Fly_Data"  Content="{DynamicResource TITLE_DOWN_LOAD_FLY_DATA}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White" Height="30" Click="Btn_Download_Fly_Data_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ProgressBar  Height="20" x:Name="ProgressBar_Download_FLy_Data" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10,0,10,0">
+                <TextBlock x:Name="TextBlock_Fly_Data_Percent" Text="0%" FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Column="3" Margin="0,0,0,0">
+                <TextBlock x:Name="TextBlock_Jiaci" Text="Flight NO." FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+            <Grid Grid.Column="4" Margin="2,5,2,5">
+                <ComboBox Name="Combox_Jiaci"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="15" FontWeight="SemiBold" Width="50">
+                </ComboBox>
+            </Grid>
+        </Grid>
+        <!--读取飞行日志-->
+        <Grid Grid.Row="10" Margin="30,0,30,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="5">
+                <Button Name="Btn_Download_Fly_Log"  Content="{DynamicResource TITLE_DOWN_LOAD_LOG}" BorderThickness="1" BorderBrush="White" Background="#00DDDDDD" FontSize="15" FontWeight="SemiBold" Foreground="White"  Height="30" Click="Btn_Download_Fly_Log_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="43*"/>
+                    <ColumnDefinition Width="236*"/>
+                </Grid.ColumnDefinitions>
+                <ProgressBar  Height="20" x:Name="ProgressBar_Download_FLy_Log" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}" Grid.ColumnSpan="2" Margin="0,6"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10,0,10,0">
+                <TextBlock x:Name="TextBlock_Fly_Log_Percent" Text="0%" FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,19 @@
+2017-03-19 20:13:37,541 [11] INFO  VIKGroundStation.srtm: Getting N39E116.hgt
+2017-03-19 20:13:47,498 [SRTM request runner] INFO  VIKGroundStation.srtm: srtm req http://firmware.diydrones.com/SRTM/
+2017-03-19 20:13:48,768 [SRTM request runner] INFO  VIKGroundStation.srtm: srtm req http://firmware.diydrones.com/SRTM/Africa/
+2017-03-19 20:13:49,943 [SRTM request runner] INFO  VIKGroundStation.srtm: srtm req http://firmware.diydrones.com/SRTM/Australia/
+2017-03-19 20:13:50,832 [SRTM request runner] INFO  VIKGroundStation.srtm: srtm req http://firmware.diydrones.com/SRTM/Eurasia/
+2017-03-19 20:13:51,999 [SRTM request runner] INFO  VIKGroundStation.srtm: Get http://firmware.diydrones.com/SRTM/Eurasia/N39E116.hgt.zip
+2017-03-19 20:13:53,011 [SRTM request runner] INFO  VIKGroundStation.srtm: Got http://firmware.diydrones.com/SRTM/Eurasia/N39E116.hgt.zip 832191
+2017-03-21 15:55:05,240 [11] INFO  VIKGroundStation.srtm: Getting N40E116.hgt
+2017-03-21 15:55:05,521 [SRTM request runner] INFO  VIKGroundStation.srtm: Get http://firmware.diydrones.com/SRTM/Eurasia/N40E116.hgt.zip
+2017-03-21 15:55:07,738 [SRTM request runner] INFO  VIKGroundStation.srtm: Got http://firmware.diydrones.com/SRTM/Eurasia/N40E116.hgt.zip 1648706
+2017-11-20 21:37:40,599 [ 3] INFO  VIKGroundStation.srtm: Getting N37E112.hgt
+2017-11-20 21:37:40,682 [SRTM request runner] INFO  VIKGroundStation.srtm: Get http://firmware.diydrones.com/SRTM/Eurasia/N37E112.hgt.zip
+2017-11-20 21:37:59,538 [SRTM request runner] INFO  VIKGroundStation.srtm: Got http://firmware.diydrones.com/SRTM/Eurasia/N37E112.hgt.zip 1592240
+2017-11-26 13:23:39,551 [ 3] INFO  VIKGroundStation.srtm: Getting N43E125.hgt
+2017-11-26 13:23:39,711 [SRTM request runner] INFO  VIKGroundStation.srtm: Get http://firmware.diydrones.com/SRTM/Eurasia/N43E125.hgt.zip
+2017-11-26 13:23:43,381 [SRTM request runner] INFO  VIKGroundStation.srtm: Got http://firmware.diydrones.com/SRTM/Eurasia/N43E125.hgt.zip 1165846
+2017-11-26 13:23:48,055 [ 3] INFO  VIKGroundStation.srtm: Getting N35E115.hgt
+2017-11-26 13:23:48,504 [SRTM request runner] INFO  VIKGroundStation.srtm: Get http://firmware.diydrones.com/SRTM/Eurasia/N35E115.hgt.zip
+2017-11-26 13:23:51,559 [SRTM request runner] INFO  VIKGroundStation.srtm: Got http://firmware.diydrones.com/SRTM/Eurasia/N35E115.hgt.zip 623990

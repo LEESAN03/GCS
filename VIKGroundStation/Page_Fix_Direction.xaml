@@ -1,0 +1,372 @@
+﻿<Page x:Class="VIKGroundStation.Page_Fix_Direction"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Page_Fix_Direction">
+
+    <Grid Margin="2" Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" >
+                <Button x:Name="MAG_CALIBRATE" Content="{DynamicResource TITLE_CI_CALIBRATE}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="16" Foreground="White" FontWeight="SemiBold"  Height="30" Width="150" Click="MAG_CALIBRATE_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Button x:Name="HORIZONTAL_CALIBRATE" Content="{DynamicResource TITLE_HORIZONTAL_CALIBRATE}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="16" FontWeight="SemiBold" Foreground="White" Height="30" Width="150" Click="HORIZONTAL_CALIBRATE_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3" >
+                <Button x:Name="FORWARD_AN_ZHUANG" Content="{DynamicResource TITLE_FORWARD_AN_ZHUANG}" BorderThickness="2" BorderBrush="White"  FontSize="16" FontWeight="SemiBold" Foreground="White" Height="30" Width="150" Click="FORWARD_AN_ZHUANG_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Button x:Name="RIGHT_AN_ZHUANG" Content="{DynamicResource TITLE_RIGHT_AN_ZHUANG}" BorderThickness="2" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White" Height="30" Width="150" Click="RIGHT_AN_ZHUANG_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Button x:Name="BACK_AN_ZHUANG" Content="{DynamicResource TITLE_BACK_AN_ZHUANG}" BorderThickness="2" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White" Height="30" Width="150" Click="BACK_AN_ZHUANG_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Button x:Name="LEFT_AN_ZHUANG" Content="{DynamicResource TITLE_LEFT_AN_ZHUANG}" BorderThickness="2" BorderBrush="White" Background="#00DDDDDD" FontSize="16" FontWeight="SemiBold" Foreground="White" Height="30" Width="150"  Click="LEFT_AN_ZHUANG_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="400*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <TextBlock Text="{DynamicResource TITLE_GPS_BIAS}" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2" Margin="20">
+                <Image Name="Image_Fix_Direction" Source="Images/gps_fix_pos.png" IsEnabled="False"></Image>
+            </Grid>
+            <Grid Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="250*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Text="GPS_A  X:" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBox Name="TextBox_GPS_X_BIAS"  Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60" 
+                             KeyDown="TextBox_GPS_X_BIAS_KeyDown"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBlock Text="cm" FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <TextBlock Text="Y:" FontSize="16" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBox Name="TextBox_GPS_Y_BIAS" Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60"
+                             KeyDown="TextBox_GPS_Y_BIAS_KeyDown"/>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <TextBlock Text="cm" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="6">
+                    <TextBlock Text="Z:" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="7">
+                    <TextBox Name="TextBox_GPS_Z_BIAS" Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60"
+                             KeyDown="TextBox_GPS_Z_BIAS_KeyDown"/>
+                </Grid>
+                <Grid Grid.Column="8">
+                    <TextBlock Text="cm" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="9" >
+                    <Button x:Name="BTN_GET_GPS_BIAS" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="14" FontWeight="SemiBold" Foreground="White" Height="25"  Width="60" Click="BTN_GET_GPS_BIAS_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="250*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Text="GPS_B  X:" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBox Name="TextBox_GPS_B_X_BIAS"  Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60" />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <TextBlock Text="cm" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <TextBlock Text="Y:" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <TextBox Name="TextBox_GPS_B_Y_BIAS" Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60"/>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <TextBlock Text="cm" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="6">
+                    <TextBlock Text="Z:" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="7">
+                    <TextBox Name="TextBox_GPS_B_Z_BIAS" Text="0" FontSize="14" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center" BorderBrush="White" Background="Black" Foreground="White" Height="20"  Width="60"/>
+                </Grid>
+                <Grid Grid.Column="8">
+                    <TextBlock Text="cm" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="9" >
+                    <Button x:Name="BTN_SET_GPS_BIAS" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="14" FontWeight="SemiBold" Foreground="White" Height="25"  Width="60" Click="BTN_SET_GPS_BIAS_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Text="{DynamicResource TITLE_ANTENNA_DIRECTION}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ComboBox Name="Combox_Gps_Heading"  Height="25" Width="150" FontSize="14" FontWeight="SemiBold"/>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Button x:Name="BTN_GET_GPS_HEADING" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="14" FontWeight="SemiBold" Foreground="White" Height="25"  Width="60" Click="BTN_GET_GPS_HEADING_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="4" >
+                    <Button x:Name="BTN_SET_GPS_HEADING" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White" Background="Black" FontSize="14" FontWeight="SemiBold" Foreground="White" Height="25"  Width="60" Click="BTN_SET_GPS_HEADING_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" TargetName="PART_Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                    <GradientStop Color="Gray" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

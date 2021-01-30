@@ -1,0 +1,1740 @@
+﻿<Page x:Class="VIKGroundStation.Page_ChuiQi_Pwm_Out"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VIKGroundStation"
+      mc:Ignorable="d" 
+      d:DesignHeight="850" d:DesignWidth="800"
+      Title="Page_ChuiQi_Pwm_Out">
+
+    <Page.Resources>
+        <Style TargetType="ProgressBar" x:Key="SimpleProgressBar">
+
+            <Setter Property="Maximum" Value="1" />
+            <Setter Property="Value" Value="0" />
+            <Setter Property="Height" Value="10" />
+            <Setter Property="IsTabStop" Value="False" />
+
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="Root" >
+                            <Border x:Name="PART_Track" Background="{TemplateBinding Background}" 
+                               
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Border  x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}" 
+                               
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="Root" >
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid  Background="Black" Margin="2,50,2,50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="150*"></RowDefinition>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="2" >
+            <TextBlock  Text="---------------------------------------------------------------------------------旋  翼  电  机  检  查---------------------------------------------------------------------------------" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"  Margin="2,0,2,0">
+                <TextBlock  Text="{DynamicResource TITLE_MOTOR1}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="1" Margin="2,0,2,0">
+                <ProgressBar  Height="20" x:Name="Motor1_Output" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}" ></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Height="25" Margin="2,0,2,0">
+                <Button x:Name="Btn_Motor1_Test" Content="{DynamicResource TITLE_TEST}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Motor1_Test_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="Black" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3" Margin="2,0,2,0">
+                <TextBlock  Text="{DynamicResource TITLE_MOTOR2}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4" Margin="2,0,2,0">
+                <ProgressBar  Height="20" x:Name="Motor2_Output" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="5" Height="25" Margin="2,0,2,0">
+                <Button x:Name="Btn_Motor2_Test" Content="{DynamicResource TITLE_TEST}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Motor2_Test_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="Black" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="2,0,2,0">
+                <TextBlock  Text="{DynamicResource TITLE_MOTOR3}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="1" Margin="2,0,2,0">
+                <ProgressBar  Height="20" x:Name="Motor3_Output" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="2" Height="25" Margin="2,0,2,0">
+                <Button x:Name="Btn_Motor3_Test" Content="{DynamicResource TITLE_TEST}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Motor3_Test_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="Black" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3" Margin="2,0,2,0">
+                <TextBlock  Text="{DynamicResource TITLE_MOTOR4}" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            </Grid>
+            <Grid Grid.Column="4" Margin="2,0,2,0">
+                <ProgressBar  Height="20" x:Name="Motor4_Output" Background="LightSteelBlue" Foreground="OrangeRed" Style="{StaticResource SimpleProgressBar}"></ProgressBar>
+            </Grid>
+            <Grid Grid.Column="5" Height="25" Margin="2,0,2,0">
+                <Button x:Name="Btn_Motor4_Test" Content="{DynamicResource TITLE_TEST}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Motor4_Test_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="Black" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="4" Margin="2" >
+            <TextBlock  Text="---------------------------------------------------------------------------------------固  定  翼  通  道  检  查---------------------------------------------------------------------------------------" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Row ="5" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="DarkOliveGreen">
+                <TextBlock  Text="通道" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1" Background="DarkOliveGreen">
+                <TextBlock  Text="当前值" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2" Background="DarkOliveGreen">
+                <TextBlock  Text="最小值" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3" Background="DarkOliveGreen">
+                <TextBlock  Text="中位" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="4" Background="DarkOliveGreen">
+                <TextBlock  Text="最大值" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" Background="DarkOliveGreen">
+            </Grid>
+            <Grid Grid.Column="6" Background="DarkOliveGreen">
+            </Grid>
+            <Grid Grid.Column="7" Background="DarkOliveGreen">
+            </Grid>
+            <Grid Grid.Column="8" Background="DarkOliveGreen">
+            </Grid>
+            <Grid Grid.Column="9" Background="DarkRed">
+                <TextBlock  Text="舵  面  检  查" FontSize="14" FontWeight="SemiBold" Foreground="White" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="6" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="左副翼" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Aileron_Left_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Aileron_Left_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Aileron_Left_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Aileron_Left_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Aileron_Left_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Aileron_Left_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Aileron_Left_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Aileron_Left_Left" Content="左横滚" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Left_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Aileron_Left_Right" Content="右横滚" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Right_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Aileron_Left_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Left_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="7" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="右副翼" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Aileron_Right_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Aileron_Right_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Aileron_Right_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Aileron_Right_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Aileron_Right_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Aileron_Right_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Aileron_Right_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Aileron_Right_Left" Content="左横滚" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Left_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Aileron_Right_Right" Content="右横滚" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Right_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Aileron_Right_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Aileron_Right_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="8" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="左升降" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Left_Elevator_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Left_Elevator_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Left_Elevator_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Left_Elevator_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Left_Elevator_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Left_Elevator_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Left_Elevator_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Left_Elevator_Up" Content="上偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Up_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Left_Elevator_Down" Content="下偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Down_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Left_Elevator_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Elevator_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="9" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="右升降" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Right_Elevator_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Right_Elevator_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Right_Elevator_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Right_Elevator_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Right_Elevator_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Right_Elevator_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Right_Elevator_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Right_Elevator_Up" Content="上偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Up_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Right_Elevator_Down" Content="下偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Down_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Right_Elevator_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Elevator_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="油门" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Throttle" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Throttle_Min" Text="1500" FontSize="14" Width="50"  Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Throttle_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Throttle_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Throttle_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Throttle_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Throttle_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Throttle_Min" Content="小油门" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Min_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Throttle_Max" Content="大油门" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Max_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Throttle_Mid" Content="灭车" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Throttle_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="11" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="方向" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Rudder" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Rudder_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Rudder_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Rudder_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Rudder_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Rudder_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Rudder_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Rudder_Left" Content="左偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Min_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Rudder_Right" Content="右偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Max_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Rudder_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Rudder_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="12" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="左襟翼" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Left_Flap_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Left_Flap_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Left_Flap_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Left_Flap_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Left_Flap_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Left_Flap_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Left_Flap_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Left_Flap_Up" Content="上偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Up_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Left_Flap_Down" Content="下偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Down_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Left_Flap_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Left_Flap_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="13" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="右襟翼" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Right_Flap_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Right_Flap_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Right_Flap_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Right_Flap_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Right_Flap_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Right_Flap_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Right_Flap_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Right_Flap_Up" Content="上偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Up_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Right_Flap_Down" Content="下偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Down_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Right_Flap_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Right_Flap_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row ="14" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBlock  Text="前轮" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Name="TextBlock_Front_Wheel_Out" Text="1500" FontSize="14" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="TextBox_Front_Wheel_Min" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBox Name="TextBox_Front_Wheel_Mid" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <TextBox Name="TextBox_Front_Wheel_Max" Text="1500" FontSize="14" Width="50" Height="20" FontWeight="SemiBold" Foreground="Black" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5" >
+                <Button x:Name="Btn_Front_Wheel_Set" Content="{DynamicResource TITLE_SET}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Set_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="6" >
+                <Button x:Name="Btn_Front_Wheel_Get" Content="{DynamicResource TITLE_READ}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Get_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7">
+                <Button x:Name="Btn_Front_Wheel_Reverse" Content="{DynamicResource TITLE_REVERSE}" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Reverse_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkOliveGreen" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" >
+                <TextBlock  Text="" FontSize="15" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="9">
+                <Button x:Name="Btn_Front_Wheel_Left" Content="左偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Min_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10">
+                <Button x:Name="Btn_Front_Wheel_Right" Content="右偏" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Max_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11">
+                <Button x:Name="Btn_Front_Wheel_Mid" Content="中位" BorderThickness="2" BorderBrush="White"  FontSize="14" FontWeight="SemiBold" Foreground="White"  Height="25"  Width="60" Click="Btn_Front_Wheel_Mid_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" Background="DarkRed" BorderThickness="1" CornerRadius="5,5,5,5" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Border.Background" TargetName="PART_Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Gray" Offset="0.5" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

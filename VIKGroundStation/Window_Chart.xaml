@@ -1,0 +1,129 @@
+﻿<Window x:Class="VIKGroundStation.Window_Chart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VIKGroundStation"
+        mc:Ignorable="d"
+        xmlns:c="http://research.microsoft.com/DynamicDataDisplay/1.0"
+        Height="600" Width="1000" Title="Data Analysis"  FontSize="18" Foreground="White" Background="Black"  WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <ScrollViewer>
+        <Grid Height="2000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="2">
+                    <!--视角居中-->
+                    <Button x:Name="MENUE_BTN_CHART_CENTRAL"  BorderThickness="0" BorderBrush="Black" FontSize="16" Foreground="White" Click="MENUE_BTN_CHART_CENTRAL_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="Images/centralView.png"/>
+                                    </Border.Background>
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <!--放大-->
+                <Grid Grid.Column="1" Margin="2">
+                    <Button x:Name="MENUE_BTN_CHART_ZOOM_IN"  BorderThickness="0" BorderBrush="Black" FontSize="16" Foreground="White" Click="MENUE_BTN_CHART_ZOOM_IN_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="Images/zoom_in.png"/>
+                                    </Border.Background>
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <!--缩小-->
+                <Grid Grid.Column="2" Margin="2">
+                    <Button x:Name="MENUE_BTN_CHART_ZOOM_OUT"  BorderThickness="0" BorderBrush="Black" FontSize="16" FontWeight="SemiBold" Foreground="White" Click="MENUE_BTN_CHART_ZOOM_OUT_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="3" CornerRadius="0" >
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="Images/zoom_out.png"/>
+                                    </Border.Background>
+                                    <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+            </Grid>
+            <!--横滚俯仰角度-->
+            <Grid Grid.Row="1" >
+                <c:ChartPlotter Name="plotter_attitude" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_ROLL_PITCH_ANGLE}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--横滚俯仰陀螺-->
+            <Grid Grid.Row="2">
+                <c:ChartPlotter Name="plotter_xyGyro" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_ROLL_PITCH_GYRO}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--航向-->
+            <Grid Grid.Row="3">
+                <c:ChartPlotter Name="plotter_yaw" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_YAW}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--磁力计-->
+            <Grid Grid.Row="4">
+                <c:ChartPlotter Name="plotter_mag" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_MAGNETOMETER}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--垂直速度-->
+            <Grid Grid.Row="5">
+                <c:ChartPlotter Name="plotter_climb_rate" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_ALTITUDE}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--速度-->
+            <Grid Grid.Row="6">
+                <c:ChartPlotter Name="plotter_speed" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_SPEED}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--pwm_in-->
+            <Grid Grid.Row="7">
+                <c:ChartPlotter Name="plotter_pwm_input" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_PWM_IN}"/>
+                </c:ChartPlotter>
+            </Grid>
+            <!--pwm_out-->
+            <Grid Grid.Row="8">
+                <c:ChartPlotter Name="plotter_pwm_output" Background="Gray">
+                    <c:Header Content="{DynamicResource TITLE_PWM_OUT}"/>
+                </c:ChartPlotter>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

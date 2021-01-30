@@ -1,0 +1,332 @@
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe.config
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Button.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\CheckBox.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Search_True.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Shared.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Slider.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Area_Route.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.baml
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Search_True.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Area_Route.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\App.g.cs
+E:\新版地面\VIK\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.cache
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\App.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Button.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\CheckBox.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.en-US.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.zh-CN.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Shared.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Slider.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\App.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.cache
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.lref
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe.config
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.pdb
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\GMap.NET.WindowsForms.dll
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\bin\Release\ZedGraph.dll
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowSET_Chuizhi.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowSET_Chuizhi.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.baml
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.g.resources
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.Properties.Resources.resources
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.GenerateResource.Cache
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.CoreCompileInputs.cache
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.exe
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.pdb
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.g.cs
+D:\V7飞控\VIK 7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe.config
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.pdb
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\GMap.NET.WindowsForms.dll
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\bin\Release\ZedGraph.dll
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\App.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Button.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\CheckBox.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.en-US.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.zh-CN.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Shared.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Slider.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\App.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.g.cs
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.cache
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.lref
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.baml
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.g.resources
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.Properties.Resources.resources
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.GenerateResource.Cache
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.CoreCompileInputs.cache
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.exe
+D:\V7飞控\VIK_7V_D\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.pdb
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe.config
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.pdb
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\GMap.NET.WindowsForms.dll
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\bin\Release\ZedGraph.dll
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\App.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Button.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\CheckBox.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.en-US.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.zh-CN.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Shared.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Slider.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\App.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Connect_Set_Window.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WindowBanben.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_menu.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Num_Point.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt_Set.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Route.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Set.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_yuntai.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.g.cs
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.cache
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.lref
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_Calibrate.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\Window_sensor.baml
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.g.resources
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.Properties.Resources.resources
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.exe
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.pdb
+C:\Users\Administrator\Desktop\VIKGroundStation\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csprojResolveAssemblyReference.cache
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe.config
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.exe
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\VIKGroundStation.pdb
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\GMap.NET.WindowsForms.dll
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\HUD.dll
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\ICSharpCode.SharpZipLib.dll
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\ZedGraph.dll
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\App.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Button.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\CheckBox.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.en-US.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.zh-CN.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Shared.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Slider.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\App.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Close_true.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Date_Back.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\MessageTimerWindow.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_2D_Map.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Camera_Setting.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fix_Direction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fix_Instruction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fly_Map.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_JiXing_Instruction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Motor_Instruction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Pid_Instruction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Remoter_Calibrate_Instruction.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_System_Set.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Log_Pos_Data.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Task_Function.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Wpt_Map.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Google_Map.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_JiXing_Settings.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Motor_Test.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Pid_Para.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Plane_Settings.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Remoter_Calibrate.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Wpt_Plan.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\WarningMsg.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_ctrl.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_drive.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Fly_Infor.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Function_Indication.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Pt.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_sbus.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_WPT_SHIFT.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\WinSet.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\winSplash.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.cache
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation_MarkupCompile.lref
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\MainWindow.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_2D_Map.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Camera_Setting.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fix_Direction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fix_Instruction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Fly_Map.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_JiXing_Instruction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Motor_Instruction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Pid_Instruction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Remoter_Calibrate_Instruction.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_System_Set.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Log_Pos_Data.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Task_Function.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Wpt_Map.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Google_Map.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_JiXing_Settings.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Motor_Test.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Pid_Para.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Plane_Settings.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Remoter_Calibrate.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Wpt_Plan.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Fly_Infor.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Function_Indication.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.g.resources
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.Properties.Resources.resources
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.GenerateResource.Cache
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csproj.CoreCompileInputs.cache
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.exe
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.pdb
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_System_Manage.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Version_Update.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_System_Manage.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Version_Update.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Par_Setting.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Page_Par_Setting.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\bin\Release\DynamicDataDisplay.dll
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Chart.g.cs
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Window_Chart.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\Resources\StringResource.tr-TR.baml
+D:\V7飞控\VIKGroundStation\VIKGroundStation\obj\Release\VIKGroundStation.csprojResolveAssemblyReference.cache

@@ -1,0 +1,407 @@
+﻿<Window x:Class="VIKGroundStation.Window_ctrl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="75" Width="1000" AllowsTransparency="true"   WindowStyle="None"  WindowStartupLocation="Manual"  ResizeMode="NoResize" ShowInTaskbar="False" Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="9" Margin="2" Background="#50103090" ToolTip="剩余航线次数">
+                <TextBlock Name="TextBlock_Rest_Circle" Text="0" FontSize="15" FontWeight="SemiBold" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="15" Margin="2" Background="#50103090" ToolTip="照片总数">
+                <TextBlock Name="TextBlock_Pic_Num" Text="0" FontSize="15" FontWeight="SemiBold" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="2" Margin="3"  Background="#50103090" ToolTip="{DynamicResource TITLE_DAISU_ENABLE_VOICE}">
+                <Button x:Name="BTN_VOICE"  BorderBrush="Orange"  Click="BTN_VOICE_Click">
+                    <Image Name="image_voice"  Source="Images/no_voice.png" IsEnabled="False"></Image>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Name="GRID_MEASURE" Grid.Column="3" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_MEASURE_DIST}">
+                <Button x:Name="BTN_MESURE"  BorderBrush="Orange"  Click="BTN_MESURE_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/measure.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="4" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_DELETE_PIC_POS}">
+                <Button x:Name="BTN_DELETE_POS"  BorderBrush="Orange" Click="BTN_DELETE_POS_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/DEL_POS.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="5" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_DELETE_FLY_WAY}">
+                <Button x:Name="BTN_DELETE_FLY_WAY"  BorderBrush="Orange" Click="BTN_DELETE_FLY_WAY_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/del_flyway.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="7" Margin="3"  Background="#50103090" ToolTip="{DynamicResource TITLE_UNLOCK}">
+                <Button x:Name="THR_UN_LOCK"  BorderBrush="Orange"  Click="THR_UN_LOCK_Click">
+                    <Image Name="image_lock_status"  Source="Images/dev_lock.png" IsEnabled="False"></Image>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="Lock_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="8" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_AUTO_TAKE_OFF}">
+                <Button x:Name="AUTO_TAKE_OFF"   BorderBrush="Orange" Click="AUTO_TAKE_OFF_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/takeoff.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="9" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_START_WPT}">
+                <Button x:Name="START_WPT"   BorderBrush="Orange" Click="START_WPT_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/cruise.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="10" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_INTERRUPUT_WPT}">
+                <Button x:Name="INTERRUPUT_WPT"  BorderBrush="Orange"  Click="INTERRUPUT_WPT_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/stop_go.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="11" Margin="4" Background="#50103090" ToolTip="{DynamicResource TITLE_DUAN_DIAN}">
+                <Button x:Name="DUAN_DIAN_WPT"  BorderBrush="Orange" Click="DUAN_DIAN_WPT_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/resume.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="12" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_BACK_HOME}">
+                <Button x:Name="BACK_HOME" BorderBrush="Orange" Click="BACK_HOME_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/return.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="13" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_STILL_LAND}">
+                <Button x:Name="STILL_LAND"  BorderBrush="Orange" Click="LAND_NOW_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/landing.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="15" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_TAKE_PIC}">
+                <Button x:Name="BTN_TAKE_PIC"  BorderBrush="Orange" Click="BTN_TAKE_PIC_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/take_pic.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="16" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_OPEN_PARACHUTE}">
+                <Button x:Name="BTN_OPEN_PARACHUTE"  BorderBrush="Orange" Click="BTN_OPEN_PARACHUTE_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/parachute.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="17" Margin="3" Background="#50103090" ToolTip="{DynamicResource TITLE_VIEW_CENTRAL}">
+                <Button x:Name="BTN_CENTEL_VIEW"  BorderBrush="Orange" Click="BTN_CENTEL_VIEWS_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Images/centralView.png"/>
+                                </Border.Background>
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="18" Margin="3"  Background="#50103090" ToolTip="{DynamicResource TITLE_OBSTACLE_RADAR}">
+                <Button x:Name="BTN_OB_RADAR"  BorderBrush="Orange"  Click="BTN_OB_RADAR_Click">
+                    <Image Name="image_ob_radar"  Source="Images/ob_radar_on.png" IsEnabled="False"></Image>
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="2"  CornerRadius="3" Name="PART_Background">
+                                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                    <Setter Property="UIElement.Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect BlurRadius="8" Color="Orange" Direction="0" Opacity="100" RenderingBias="Performance" ShadowDepth="0" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
+

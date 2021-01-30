@@ -1,0 +1,1698 @@
+<html>
+<head>
+  <title>Sample</title>
+<style type="text/css">
+
+body,td,th {
+        margin: 0px;
+}
+</style>
+  <script type="text/javascript" src="jsapi.js"> </script>
+  <script type="text/javascript" src="default.I.js"> </script>
+  <script type="text/javascript" src="kml.js"> </script>
+  <script type="text/javascript">
+    var ge;
+    var Lat_Const_Xishu = 111319.54;
+    var g_iLineEdit = 0; //0 不做任何操作，1插入航点 2编辑航点 3 删除航点  4 测量距离
+    var measurePtIndex = 0;  // 0  结束    1 -- 画第一个点    2 -- 画第二个点
+    var flyWayIndex = 0;    // 航迹的个数
+    var g_lineMeasure = null;
+    var g_iLineEditParam = -1; //插入航点索引 -1 在最后插入
+    var qiya_Alt = 50; // 航迹点气压高度
+    var level_Alt = 0;  // 第一个航点的海拔高度
+    var g_kmlObject;
+    var g_crafteObj = null; //飞机模型
+    var g_crafteLabel = null; //飞机高度标签
+    var g_crafteLabelAlt = 10;
+    var plane_Alt_Abosulate_Relative = 0;  // 0---飞机的高度为相对高度；  1--- 飞机的高度为绝对高度
+    //编辑航点存储信息
+    var dragInfo = null;
+    //添加航迹点
+    var g_ptList = new Array();   // 航点队列
+    var tagList = new Array();    // 航线距离队列
+    var flyWayList = new Array();  // 航迹队列
+    var picPosList = new Array();  // 拍照点队列  
+    var measurePtList = new Array();  // 测量距离点队列
+    var measureTagList = new Array();  // 测距显示队列
+	var flyPointList = new Array();    // 显示指点标记
+	var kmzPtList = new Array();      // 加载KMZ文件的点
+	var boundPtList = new Array();    // 加载边界点
+    //添加的航迹线 对象
+    var g_lineObj = null;
+	var g_lineKmz = null;
+	var g_lineBound = null;
+	var g_linePreSkyWay = null;
+    var g_craftURL = window.location.href;
+    g_craftURL = g_craftURL.substring(0, g_craftURL.lastIndexOf("/")) + "/res/craft2.dae";
+	
+	var viewChanged = 0;
+	var mouseDownLon = 0;
+	var mouseDownLat = 0;
+	var mouseUpLon = 0;
+	var mouseUpLat = 0;
+	
+    function init() 
+    {
+       google.earth.createInstance('map3d', initCB, failureCB);
+	}
+
+    function recordMousPos(event) 
+    {
+        var curAlt = event.getAltitude();
+        var curLat = event.getLatitude();
+        var curLon = event.getLongitude();
+        window.external.OnExternalMouseMove(curLon, curLat, curAlt);
+    }
+
+    /***********************************************************************************
+    函数名称：onMouseMove(event)
+    功能：响应鼠标移动事件并向外界传递事件消息    
+    ***********************************************************************************/
+    function onMouseMove(event) 
+    {
+        //鼠标移动时触发
+        if (g_iLineEdit == 2)
+        {//进入编辑航点状态
+            if (dragInfo) 
+            {
+                event.preventDefault();
+                var curAlt = event.getAltitude();
+                var curLat = event.getLatitude();
+                var curLon = event.getLongitude();
+
+                MovePt(curLon, curLat, dragInfo.ptIdx);
+                dragInfo.dragged = true;
+            }
+        }
+    }
+	
+    /***********************************************************************************
+    函数名称：onMouseUp(event)
+    功能：响应鼠标弹起事件并向外界传递事件消息    
+    ***********************************************************************************/
+    function onMouseUp(event) 
+    {
+        //鼠标松开触发
+        if (dragInfo) 
+        {
+            if (dragInfo.dragged) 
+            {
+                // If the placemark was dragged, prevent balloons from popping up.
+                event.preventDefault();
+                var curAlt = event.getAltitude();
+                var curLat = event.getLatitude();
+                var curLon = event.getLongitude();
+				// 这个是以0为起始索引的
+                window.external.OnExternalMouseUp(curLon, curLat, dragInfo.ptIdx);
+                g_iLineEdit = 0;
+            }
+            dragInfo = null;
+        }
+    }
+
+    /***********************************************************************************
+    函数名称：onMouseDown(event)
+    功能：响应鼠标按下事件并向外界传递事件消息    
+    ***********************************************************************************/
+    function onMouseDown(event) 
+    {
+        //鼠标按下触发
+        //进入编辑航点状态
+        if (event.getTarget().getType() == 'KmlPlacemark' &&
+             event.getTarget().getGeometry().getType() == 'KmlPoint') 
+        {
+           var placemark = event.getTarget();
+           var index = -1;
+           //查找点索引值
+
+           for (var i = 0; i < g_ptList.length; i++) 
+           {
+              if (placemark.equals(g_ptList[i].placemark)) 
+              {
+                  g_iLineEdit = 2;
+                  index = i;
+                  g_iLineEditParam = index;
+                  dragInfo = {placemark: event.getTarget(), dragged: true, ptIdx: index};
+                  break;
+              }
+           }                
+        }
+		viewChanged = 0;
+    }
+
+    /***********************************************************************************
+    函数名称：onMouseClick(event)
+    功能：响应鼠标点击事件并向外界传递事件消息    
+    ***********************************************************************************/
+    function onMouseClick(event) 
+    {
+		if(parseInt(viewChanged) > 1)
+			return;
+			
+        //鼠标单击事件
+        var curAlt = event.getAltitude();
+        var curLat = event.getLatitude();
+        var curLon = event.getLongitude();
+        var pointAlt = 0;      // 航点的高度
+        var index = 0;
+       
+		
+        if (g_iLineEdit == 1) 
+        {
+            if (g_iLineEditParam == -1) 
+            {
+                //从最后插入数据
+                index = g_ptList.length;
+                // 将第一个航点的海拔作为所有航点的海拔
+                if (index == 0)           
+                    level_Alt = curAlt;
+            }
+            else 
+            {
+                //从指定位置插入
+                if (g_iLineEditParam > g_ptList.length)
+                    index = g_ptList.length;
+                else if (g_iLineEditParam < 0)
+                    index = 0;
+                else
+                    index = g_iLineEditParam;
+
+                // 如果是从头开始添加，则添加第一个点的时候记录改点海拔
+                if((g_iLineEditParam == 0) && (g_ptList.length == 0))
+                    level_Alt = curAlt;                    
+            }
+            // 航点的海拔高度 = 第一个航点的海拔 + 气压高度
+            pointAlt = qiya_Alt + level_Alt;   
+        }
+        else if (g_iLineEdit == 4)    // 测量距离
+        {
+            AddMeasurePt(curLon, curLat, measurePtIndex);
+        }
+		else if(g_iLineEdit == 6)    // 添加边界
+		{
+			if(boundPtList.length == 0)
+			{
+				level_Alt = curAlt;
+			}
+			g_iLineEditParam = -1;
+			//index = boundPtList.length;
+			
+			// 航点的海拔高度 = 第一个航点的海拔 + 气压高度
+            pointAlt = qiya_Alt + level_Alt; 
+		}
+
+		window.external.OnExternalMouseClick(curLon, curLat, g_iLineEdit, g_iLineEditParam, level_Alt);
+
+        if(g_iLineEdit == 1)         // 添加航点
+		{
+            AddPt(curLon, curLat, pointAlt, index);
+		}
+		else if(g_iLineEdit == 5)    // 指点飞行
+		{
+			AddZhiDianPt(curLon, curLat);
+		}
+		else if(g_iLineEdit == 6)   // 添加自动规划的边界
+		{
+			//AddBoundPt(curLon, curLat, pointAlt, index);
+		}		
+    }
+
+    /***********************************************************************************
+    函数名称：onViewChanged(event)
+    功能：响应视角切换事件
+    ***********************************************************************************/
+    function onViewChanged(event) 
+    {
+		viewChanged = viewChanged + 1;		
+    }
+
+    /***********************************************************************************
+    函数名称：initCB(instance) 
+    功能：初始化googleearth地图显示
+    ***********************************************************************************/
+    function initCB(instance) 
+    {
+      ge = instance;
+      ge.getWindow().setVisibility(true);
+
+      // add a navigation control
+      ge.getNavigationControl().setVisibility(ge.VISIBILITY_AUTO);     // 设置导航控件可视
+      //ge.getOptions().setOverviewMapVisibility(true);
+      ge.getOptions().setStatusBarVisibility(true);                    // 设置状态栏可视
+      ge.getOptions().setScaleLegendVisibility(true);                  // 设置比例尺可视
+      //ge.getOptions().setGridVisibility(true); 
+
+      // add some layers
+      ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, true);   // 显示地界
+      //ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, true);     // 显示道路
+      ge.getLayerRoot().enableLayerById(ge.LAYER_TERRAIN, true);   // 显示3D地形
+      ge.getLayerRoot().enableLayerById(ge.LAYER_BUILDINGS, true); // 显示3D建筑
+
+      // Listen to the mousemove event on the globe.
+      google.earth.addEventListener(ge.getGlobe(), 'mousemove', onMouseMove);
+      google.earth.addEventListener(ge.getGlobe(), 'click', onMouseClick);
+      google.earth.addEventListener(ge.getGlobe(), 'mousedown', onMouseDown);
+      google.earth.addEventListener(ge.getGlobe(), 'mouseup', onMouseUp);
+      google.earth.addEventListener(ge.getView(), 'viewchangeend', onViewChanged);
+	  
+      ge.getOptions().setScaleLegendVisibility(true)//显示比例尺
+      ge.getOptions().setStatusBarVisibility(true); //显示Google earth下方控件条的函数
+      ge.getOptions().setAtmosphereVisibility(false); //用于在地球的大气层中显示散射光线。
+      ge.getOptions().setOverviewMapVisibility(false); //用于在右下角显示整个地球的插页地图。当前视口在该插页地图上显示为一个红色矩形。
+      ge.getOptions().setGridVisibility(false); //显示经纬线
+
+      window.external.OnExternalInitOver();
+    }
+
+	/***********************************************************************************
+    功能：初始化googleearth地图的视角
+    ***********************************************************************************/
+    function initLook(lon, lat) 
+    {
+        var la = ge.createLookAt('');
+        la.set(parseFloat(lat), parseFloat(lon), 500, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, -20, 900);
+        ge.getView().setAbstractView(la); 
+    } 
+
+    function failureCB(errorCode) 
+    {
+    }
+    google.setOnLoadCallback(init);
+
+    function writeFile(filename, filecontent) 
+    {
+        var fso, f, s;
+        fso = new ActiveXObject("Scripting.FileSystemObject");
+        f = fso.OpenTextFile(filename, 8, true);
+        f.WriteLine(filecontent);
+        f.Close();
+        alert('ok');
+    }
+    
+    /***********************************************************************************
+    函数名称：setUAVLineState(state, param) 
+    功能：设置航线编辑状态   
+    参数：0 不做任何操作，1添加航点 2编辑航点 3 删除航点   4 距离测量  5指点飞行  6边界规划
+    ***********************************************************************************/
+    function setUAVLineState(state, param) 
+    {
+        if (state >= 0 && state <= 6) 
+        {
+            g_iLineEdit = state;
+            g_iLineEditParam = param;
+        }
+
+        if (state == 3)
+        {
+            DelPt(param);
+        }
+    }
+
+	
+	/***********************************************************************************
+    功   能：设置航线的高度参数  
+    参   数：
+	返   回：
+    ***********************************************************************************/
+	function SetWptAltPara(argSetAlt)
+	{
+		qiya_Alt = parseInt(argSetAlt);
+	}
+	
+    /***********************************************************************************
+    函数名称：setWayPointAlt(setAlt, wptIndex) 
+    功能：改变航点的高度
+    参数：setAlt: 设定的航点高度
+          wptIndex: 需要改变高度的航点的编号，如果是-1，则表示所有航点高度均改变    
+    ***********************************************************************************/
+    function setWayPointAlt(setAlt, wptIndex) 
+    {
+        var j;
+        var pointAlt = 0;
+        if (g_ptList.length > 0) 
+        {
+			if(g_lineObj != null)
+				g_lineObj.getCoordinates().clear();
+                
+            // 重新绘制航点信息
+            // 获取第一个航点的
+            if (wptIndex == -1) 
+            {
+                pointAlt = level_Alt + parseFloat(setAlt);
+
+                for (j = 0; j < g_ptList.length; j++) 
+                {
+                    g_ptList[j].placemark.setName((j + 1).toString() + "(" + setAlt + "m)");
+                    g_ptList[j].placemark.getGeometry().setAltitude(pointAlt);
+                    g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), pointAlt);
+                }
+                for (j = 0; j < tagList.length; j++) 
+                {
+                    tagList[j].point.setAltitude(pointAlt);
+                }
+            }
+            // 如果是单独改变某一个航点的高度
+            else 
+            {
+                // 更新航线信息
+                for (j = 0; j < g_ptList.length; j++) 
+                {
+                    // 更改指定航点的高度，其余航点高度不变
+                    if (j == wptIndex) 
+                    {
+                        g_ptList[j].placemark.setName((j + 1).toString() + "(" + setAlt + "m)");
+                        g_ptList[j].placemark.getGeometry().setAltitude(level_Alt + parseFloat(setAlt));
+                        g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), level_Alt + parseInt(setAlt));
+                    }
+                    else 
+                    {
+                        g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), g_ptList[j].point.getAltitude()); 
+                    }
+                }
+
+                var indexTemp = parseInt(wptIndex);   // 将字符转换为int
+                // 更新距离链表taglist信息
+                // 如果是更改第一个航点的高度
+                if (indexTemp == 0) 
+                {
+                    tagList[0].point.setAltitude((level_Alt + parseFloat(setAlt) + g_ptList[1].point.getAltitude()) / 2);
+                    tagList[0].placemark.getGeometry().setAltitude((level_Alt + parseFloat(setAlt) + g_ptList[1].point.getAltitude()) / 2);
+                }
+                // 更改最后一个航点的高度
+                else if (indexTemp == (g_ptList.length - 1)) 
+                {
+                    tagList[indexTemp - 1].point.setAltitude((g_ptList[indexTemp - 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+                    tagList[indexTemp - 1].placemark.getGeometry().setAltitude((g_ptList[indexTemp - 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+                }
+                // 更改中间航点的高度
+                else 
+                {
+                    tagList[indexTemp - 1].point.setAltitude((g_ptList[indexTemp - 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+                    tagList[indexTemp - 1].placemark.getGeometry().setAltitude((g_ptList[indexTemp - 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+
+                    tagList[indexTemp].point.setAltitude((g_ptList[indexTemp + 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+                    tagList[indexTemp].placemark.getGeometry().setAltitude((g_ptList[indexTemp + 1].point.getAltitude() + level_Alt + parseFloat(setAlt)) / 2);
+                }
+            }
+        }
+    }
+
+    /***********************************************************************************
+    函数名称：updataCraftLocation(lon, lat, alt) 
+    功能：创建飞机模型
+    参数：lon, lat, alt, heading, tilt, roll, view, bViewFlyWay 依次为：
+          经度、纬度、气压高度、航向、俯仰、横滚、是否切换视角、是否显示航迹       
+    ***********************************************************************************/
+    function updataCraftLocation(lon, lat, alt, heading, tilt, roll, view, bViewFlyWay) 
+    {
+        if (bViewFlyWay == 1) 
+        {
+            var label = ge.createPlacemark('');
+            label.setName("");
+            var icon = ge.createIcon('');
+            var iconURL = window.location.href;
+            iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/placemark_flyway.png";
+            icon.setHref(iconURL);
+            var style = ge.createStyle(''); //create a new style
+            style.getIconStyle().setIcon(icon); //apply the icon to the style
+            label.setStyleSelector(style); //apply the style to the placemark
+        }
+
+        if (g_crafteObj == null) 
+        {
+            createCrafte(lon, lat, alt, heading, tilt, roll);
+        }
+        else 
+        {
+            // 如果飞机是相对高度，后来添加了航线，则将飞机高度变为绝对高度
+            if((level_Alt != 0) && (plane_Alt_Abosulate_Relative == 0)) 
+            {
+				g_crafteObj.setAltitudeMode(ge.ALTITUDE_ABSOLUTE); 
+                plane_Alt_Abosulate_Relative = 1;
+            }
+			// 如果没有绝对高度，则将高度强行显示在地面以上
+			if((plane_Alt_Abosulate_Relative == 0) && (alt < 0))
+			{
+				alt = 0;
+			}			
+
+            g_crafteObj.getLocation().setLatLngAlt(parseFloat(lat), parseFloat(lon), level_Alt + parseInt(alt));
+            g_crafteObj.getOrientation().set(parseFloat(heading), parseFloat(tilt), parseFloat(roll));
+            g_crafteLabel.setName(alt + "m");
+            g_crafteLabel.getGeometry().setLatLngAlt(parseFloat(lat), parseFloat(lon), level_Alt + parseInt(alt));
+
+            if (bViewFlyWay == 1) 
+            {
+                var point = ge.createPoint('');
+                if (level_Alt == 0)
+                    point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+                else
+                    point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+
+                point.setLatitude(parseFloat(lat));
+                point.setLongitude(parseFloat(lon));
+                point.setAltitude(level_Alt + parseInt(alt));
+                point.setTessellate(true);
+                label.setGeometry(point);
+                ge.getFeatures().appendChild(label);
+
+                var pt =
+                {
+                    point: point,
+                    placemark: label
+                };
+                // 这里由于航迹是在不停的添加，时间长了会导致运行速度严重变慢
+                // 这里记了1800个点后（约1小时），开始覆盖前面的点，前面的点将会删掉
+                if(flyWayList.length < 18000)     // 小于1800个点的时候就一直记录
+                {
+                    flyWayList.splice(flyWayIndex, 0, pt); 
+                    flyWayIndex++;
+                }
+                else                       
+                {
+                   if(flyWayIndex >= 18000)
+                      flyWayIndex = 0;
+
+                   ge.getFeatures().removeChild(flyWayList[flyWayIndex].placemark);
+                   flyWayList.splice(flyWayIndex, 1, pt);   
+                   flyWayIndex++;   
+                      
+                }
+           }
+           var lookAt = ge.getView().copyAsCamera(ge.ALTITUDE_RELATIVE_TO_GROUND);
+           var camera_Alt = lookAt.getAltitude();
+
+
+		   var modeSize = 10 + (camera_Alt - 6000) * 0.003;
+		   if(modeSize <=1)
+			  modeSize = 1;
+			   
+           g_crafteObj.getScale().set(modeSize, modeSize, modeSize);
+        }
+
+        if (view == 1) 
+        {
+            var la = ge.createLookAt('');
+            la.set(lat, lon, alt + 100, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, -20, 900);
+            la.setTilt(0);
+            ge.getView().setAbstractView(la);
+        }
+    }
+	
+	/***********************************************************************************
+    功能：删除飞行轨迹
+    参数：无    
+    ***********************************************************************************/
+	function Del_Fly_Way()
+	{
+	   for (var i = flyWayList.length-1; i >= 0; i--) 
+       {
+           ge.getFeatures().removeChild(flyWayList[i].placemark);
+		   flyWayList.splice(i, 1);
+       } 
+	   flyWayIndex = 0;	
+	}
+			
+		
+		
+    // ========================= 创建飞机模型 经度，纬度，高度 航向，俯仰，横滚 ======================
+    function createCrafte(lon, lat, alt, heading, tilt, roll) 
+    {
+        if (g_crafteObj == null) 
+        {
+            var placemark = ge.createPlacemark('');
+            var model = ge.createModel('');
+            // 说明是没有航线的回放，这是无法确定level_Alt,所以采用相对高度
+            if(level_Alt == 0)
+                model.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+            else
+                model.setAltitudeMode(ge.ALTITUDE_ABSOLUTE); 
+
+            ge.getFeatures().appendChild(placemark);
+            var loc = ge.createLocation('');
+            model.setLocation(loc);
+            model.getOrientation().set(heading, tilt, roll);
+            model.getScale().set(10, 10, 10);
+            var link = ge.createLink('');
+
+            // A textured model created in Sketchup and exported as Collada.
+            link.setHref(g_craftURL);
+            model.setLink(link);
+            loc.setLatitude(parseFloat(lat));
+            loc.setLongitude(parseFloat(lon));
+            loc.setAltitude(level_Alt + parseInt(alt));
+            placemark.setGeometry(model);
+            g_crafteObj = model;
+
+            var label = ge.createPlacemark('');
+            //label.setName(alt + "m");
+            var icon = ge.createIcon('');
+            var iconURL = window.location.href;
+            iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/empty.png";
+            icon.setHref(iconURL);
+            var style = ge.createStyle(''); //create a new style
+            style.getIconStyle().setIcon(icon); //apply the icon to the style
+			style.getLabelStyle().getColor().set('ffffff00');
+            label.setStyleSelector(style); //apply the style to the placemarks
+
+            // Set the placemark's location.
+            var point = ge.createPoint('');
+            if (level_Alt == 0) 
+            {
+                point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+                plane_Alt_Abosulate_Relative = 0;
+            }
+            else 
+            {
+                point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+                plane_Alt_Abosulate_Relative = 1;
+            }
+
+            point.setLatitude(parseFloat(lat));
+            point.setLongitude(parseFloat(lon));
+            point.setAltitude(level_Alt + parseInt(alt) + g_crafteLabelAlt);
+            point.setTessellate(true);
+            ge.getFeatures().appendChild(label);
+            label.setGeometry(point);
+
+            g_crafteLabel = label;
+        }
+    }
+
+    /***********************************************************************************
+    函数名称：MeasureDist(bStart) 
+    功能：测量距离
+    参数：bStart: 开始还是停止
+    ***********************************************************************************/
+    function MeasureDist(bStart) 
+    {
+        if (parseInt(bStart) == 1) 
+        {
+            g_iLineEdit = 4;
+            measurePtIndex = 1;    // 开始测量
+        }
+        else if (parseInt(bStart) == 0) 
+        {
+            g_iLineEdit = 0;
+            measurePtIndex = 0;     // 结束测量  
+            for (var i = measurePtList.length - 1; i >= 0; i--) 
+            {
+                ge.getFeatures().removeChild(measurePtList[i].placemark);
+                measurePtList.splice(i, 1);
+            }
+
+            // 删除measureTagList
+            if (measureTagList.length > 0) 
+            {
+                ge.getFeatures().removeChild(measureTagList[0].placemark);
+                measureTagList.splice(0, 1);
+            }
+
+            if (g_lineMeasure != null)
+                g_lineMeasure.getCoordinates().clear();              
+        }
+    }
+
+	/***********************************************************************************
+	功   能：添加指点
+	参   数：
+	返   回：
+	***********************************************************************************/
+	function AddZhiDianPt(curLon, curLat)
+	{
+		var placemark = ge.createPlacemark('');
+        //设置图标为空           
+        var icon = ge.createIcon('');
+        var iconURL = window.location.href;
+        iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/purple-circle.png";
+        icon.setHref(iconURL);
+    
+		var style = ge.createStyle(''); //create a new style
+        style.getIconStyle().setIcon(icon); //apply the icon to the style
+        style.getLabelStyle().getColor().set('ff00ff7f');
+        placemark.setStyleSelector(style); //apply the style to the placemark   
+
+        // Set the placemark's location.
+        var ptID = Guid(); //赋值标示符
+        var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+        point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+        point.setLatitude(curLat);
+        point.setLongitude(curLon);
+        point.setAltitude(0);
+        point.setTessellate(true);
+
+        placemark.setGeometry(point);
+        var pt =
+        {
+            point: point,
+            placemark: placemark,
+            markID: ptID
+        };
+		// 先清除队列
+		if(flyPointList.length > 0)
+		{
+			ge.getFeatures().removeChild(flyPointList[0].placemark);
+			flyPointList.splice(0, 1);
+		}
+		flyPointList.splice(0, 0, pt);
+		ge.getFeatures().appendChild(placemark);			
+	}
+    
+	/***********************************************************************************
+	功   能：删除指点标记
+	参   数：
+	返   回：
+	***********************************************************************************/
+	function DeleteZhiDianPt()
+	{
+		if(flyPointList.length > 0)
+		{
+			ge.getFeatures().removeChild(flyPointList[0].placemark);
+			flyPointList.splice(0, 1);
+		}
+	}
+	
+	/***********************************************************************************
+    函数名称：AddMeasurePt(curLon, curLat, PtIndex) 
+    功能：添加距离测量点
+    参数：curLon, curLat, PtIndex: 依次为测量点经度、纬度、测量点序号
+    ***********************************************************************************/
+    function AddMeasurePt(curLon, curLat, PtIndex)
+    {
+        if (g_lineMeasure == null) 
+        {
+            // create the line string placemark
+            var lineStringPlacemark = ge.createPlacemark('');
+
+            // create the line string geometry
+            var lineString = ge.createLineString('');
+            lineString.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+            lineStringPlacemark.setGeometry(lineString);
+
+            lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+
+            var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+            lineStyle.setWidth(2);
+            lineStyle.getColor().set('aa00ff00');  // aabbggrr format
+
+            lineString.setTessellate(true);
+            lineString.setExtrude(true);
+            g_lineMeasure = lineString;
+            //g_lineObjPlacemark = lineStringPlacemark;
+            ge.getFeatures().appendChild(lineStringPlacemark);
+        }
+        if (g_lineMeasure) 
+        {
+            var placemark = ge.createPlacemark('');
+            //设置图标为空           
+            var icon = ge.createIcon('');
+            var iconURL = window.location.href;
+            iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/measure.png";
+            icon.setHref(iconURL);
+            var style = ge.createStyle(''); //create a new style
+            style.getIconStyle().setIcon(icon); //apply the icon to the style
+            style.getLabelStyle().getColor().set('ff00ff7f');
+            placemark.setStyleSelector(style); //apply the style to the placemark   
+
+            // Set the placemark's location.
+            var ptID = Guid(); //赋值标示符
+            var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+            point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+            point.setLatitude(curLat);
+            point.setLongitude(curLon);
+            point.setAltitude(0);
+            point.setTessellate(true);
+
+            placemark.setGeometry(point);
+            var pt =
+            {
+                point: point,
+                placemark: placemark,
+                markID: ptID
+            };
+            // 添加第一个测量点
+            if (PtIndex == 1) 
+            {
+                // 如果队列里有点，则先将队列清除
+                for(var i = measurePtList.length-1; i>=0; i--) 
+                {
+                    ge.getFeatures().removeChild(measurePtList[i].placemark);
+                    measurePtList.splice(i, 1);
+                }
+                g_lineMeasure.getCoordinates().clear();
+                // 删除measureTagList
+                if (measureTagList.length > 0) 
+                {
+                    ge.getFeatures().removeChild(measureTagList[0].placemark);
+                    measureTagList.splice(0, 1);               
+                }
+                measurePtList.splice(PtIndex - 1, 0, pt);
+                ge.getFeatures().appendChild(placemark);
+                measurePtIndex = 2;
+            }
+            else if (PtIndex == 2) 
+            {
+               measurePtList.splice(PtIndex - 1, 0, pt);
+               ge.getFeatures().appendChild(placemark);
+               g_lineMeasure.getCoordinates().clear();
+
+               // 显示测量距离的起点和终点
+               for (var j = 0; j < measurePtList.length; j++) 
+               {               
+                   if(j==0)
+                       measurePtList[j].placemark.setName("start");
+                   else if (j == 1)
+                       measurePtList[j].placemark.setName("end");
+                   g_lineMeasure.getCoordinates().pushLatLngAlt(measurePtList[j].point.getLatitude(), measurePtList[j].point.getLongitude(), 0);
+               }
+               measurePtIndex = 1;
+
+               // 显示距离数字
+               var tagplacemark = ge.createPlacemark('');
+               //设置图标为空           
+               var icon = ge.createIcon('');
+               var iconURL = window.location.href;
+               iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/empty.png";
+               icon.setHref(iconURL);
+               var style = ge.createStyle(''); //create a new style
+               style.getIconStyle().setIcon(icon); //apply the icon to the style
+               style.getLabelStyle().getColor().set('ff00ff00');
+               tagplacemark.setStyleSelector(style); //apply the style to the placemark         
+
+               var tagptIDg = Guid();
+               var tagpoint = ge.createPoint(tagptIDg);
+               tagpoint.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+               var tempDist;
+
+               tagpoint.setLatitude((parseFloat(curLat) + measurePtList[0].point.getLatitude()) / 2);
+               tagpoint.setLongitude((parseFloat(curLon) + measurePtList[0].point.getLongitude()) / 2);
+               tagpoint.setAltitude(0);
+
+               var mLat = (parseFloat(curLat) - measurePtList[0].point.getLatitude()) * Lat_Const_Xishu;
+               var mLon = (parseFloat(curLon) - measurePtList[0].point.getLongitude()) * Math.cos(((measurePtList[0].point.getLatitude() + parseFloat(curLat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+
+               tempDist = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+               tagplacemark.setName(tempDist + "m");
+               tagplacemark.setGeometry(tagpoint);
+
+               var tagpt =
+            	{
+            	    point: tagpoint,
+            	    placemark: tagplacemark,
+            	    markID: tagptIDg
+            	};
+
+               measureTagList.splice(0, 1, tagpt);
+               ge.getFeatures().appendChild(tagplacemark);
+            } 
+        }
+    }
+	
+    /***********************************************************************************
+    函数名称：AddPt(lon, lat, alt, index) 
+    功能：添加航点
+    参数：lon，lat, alt, index: 依次为航点经度、纬度、高度、序号
+    ***********************************************************************************/
+    function AddPt(lon, lat, alt, index) 
+    {
+        //添加航迹点
+        if (g_lineObj == null) 
+        {
+            // create the line string placemark
+            var lineStringPlacemark = ge.createPlacemark('');
+
+            // create the line string geometry
+            var lineString = ge.createLineString('');
+            lineString.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+            lineStringPlacemark.setGeometry(lineString);
+													
+            lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+            
+            var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+            lineStyle.setWidth(3);
+            lineStyle.getColor().set('aa00ffff');  // aabbggrr format
+            var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
+            polyStyle.getColor().set('7f4080ff');
+
+            lineString.setTessellate(true);
+            lineString.setExtrude(true);
+            g_lineObj = lineString;
+            ge.getFeatures().appendChild(lineStringPlacemark);
+        }
+        if (g_lineObj) 
+        {
+            //从指定位置插入
+            if (index > g_ptList.length)//尾部插入
+                index = g_ptList.length;
+            else if (index < 0)//头部插入
+                index = 0;
+
+            var placemark = ge.createPlacemark(''); //创建地标
+
+            // 定义航点的显示样式
+            var icon_G = ge.createIcon('');
+            var iconURL_G = window.location.href;
+            iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/grn-pushpin.png";
+            icon_G.setHref(iconURL_G);
+            var style_G = ge.createStyle(''); //create a new style
+            style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+            placemark.setStyleSelector(style_G); //apply the style to the placemark 
+
+            // Set the placemark's location.
+            var ptID = Guid();//赋值标示符
+            var point = ge.createPoint(ptID);//创建点，设置点的经纬度高度
+            point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+            point.setLatitude(lat);
+            point.setLongitude(lon);
+            point.setAltitude(alt);
+            point.setTessellate(true);
+
+            placemark.setGeometry(point);
+            placemark.setName((parseInt(index) + 1).toString() + "(" + qiya_Alt.toString() + "m)");
+
+            var pt = 
+            {
+                point: point,
+                placemark: placemark,
+                markID: ptID
+            };
+            g_ptList.splice(index, 0, pt);         
+            ge.getFeatures().appendChild(placemark);
+            g_lineObj.getCoordinates().clear();
+ 
+            for (var j = 0; j < g_ptList.length; j++) 
+            {
+                g_ptList[j].placemark.setName((j + 1).toString() + "(" + qiya_Alt.toString() + "m)");
+                g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), g_ptList[j].point.getAltitude());
+            }
+            
+            //=============== 设置两地表距离的空地标建立===================
+            var tagplacemark = ge.createPlacemark(''); 
+            //设置图标为空           
+            var icon = ge.createIcon('');
+            var iconURL = window.location.href;
+            iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/empty.png";
+            icon.setHref(iconURL);
+            var style = ge.createStyle(''); //create a new style
+            style.getIconStyle().setIcon(icon); //apply the icon to the style
+            style.getLabelStyle().getColor().set('ff00ff7f');
+            tagplacemark.setStyleSelector(style); //apply the style to the placemark         
+            
+            var tagptIDg = Guid();
+            var tagpoint = ge.createPoint(tagptIDg);
+            tagpoint.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+            var temp1;
+
+            // ================= 开始添加航线距离 =================
+            if (g_iLineEditParam == -1 && (g_ptList.length > 1))    // 从结尾开始添加
+            {
+                tagpoint.setLatitude((parseFloat(lat) + g_ptList[g_ptList.length - 2].point.getLatitude()) / 2);
+                tagpoint.setLongitude((parseFloat(lon) + g_ptList[g_ptList.length - 2].point.getLongitude()) / 2);
+                tagpoint.setAltitude(alt);
+
+                var mLat = (parseFloat(lat) - g_ptList[g_ptList.length - 2].point.getLatitude()) * Lat_Const_Xishu;
+                var mLon = (parseFloat(lon) - g_ptList[g_ptList.length - 2].point.getLongitude()) * Math.cos(((g_ptList[length - 2].point.getLatitude() + parseFloat(lat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+      
+                temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+                tagplacemark.setName(temp1 + "m");
+                tagplacemark.setGeometry(tagpoint);
+                
+                var tagpt =
+            	{
+            	    point: tagpoint,
+            	    placemark: tagplacemark,
+            	    markID: tagptIDg
+            	};
+            		 
+            	tagList.splice(tagList.length, 0, tagpt);
+            	ge.getFeatures().appendChild(tagplacemark);
+            }
+            else if (g_iLineEditParam == 0 && (g_ptList.length > 0))     // 从头开始添加
+            {
+                tagpoint.setLatitude((parseFloat(lat) + g_ptList[1].point.getLatitude()) / 2);
+                tagpoint.setLongitude((parseFloat(lon) + g_ptList[1].point.getLongitude()) / 2);
+                tagpoint.setAltitude(alt);
+
+                var mLat = (parseFloat(lat) - g_ptList[1].point.getLatitude()) * Lat_Const_Xishu;
+                var mLon = (parseFloat(lon) - g_ptList[1].point.getLongitude()) * Math.cos(((g_ptList[1].point.getLatitude() + parseFloat(lat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+              
+                temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+                tagplacemark.setName(temp1 + "m");                
+                tagplacemark.setGeometry(tagpoint);
+                
+                var tagpt =
+            	{
+            	    point: tagpoint,
+            	    placemark: tagplacemark,
+            	    markID: tagptIDg
+            	};
+            	tagList.splice(0, 0, tagpt);
+            	ge.getFeatures().appendChild(tagplacemark);
+            		 
+            }
+            else if((g_iLineEditParam > 0) && (g_ptList.length > 1)&&(index<g_ptList.length-1))     //从中间插入
+            {
+            	//移动插入点后显示前半部分；
+            	tagList[index-1].placemark.getGeometry().setLatLngAlt((parseFloat(lat) + g_ptList[index-1].point.getLatitude()) / 2, (parseFloat(lon) + g_ptList[index-1].point.getLongitude()) / 2, (parseFloat(alt) + g_ptList[index-1].point.getAltitude()) / 2);
+            		
+            	//计算
+            	var mLat = (parseFloat(lat) - g_ptList[index - 1].point.getLatitude()) * Lat_Const_Xishu;
+            	var mLon = (parseFloat(lon) - g_ptList[index - 1].point.getLongitude()) * Math.cos(((g_ptList[index - 1].point.getLatitude() + parseFloat(lat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+             
+                temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+                //显示
+                tagList[index-1].placemark.setName( temp1 + "m");   		 
+            		 
+            		 
+            	//插入点后半部分的显示
+            	var indexP = parseInt(index);
+                tagpoint.setLatitude((parseFloat(lat) + g_ptList[indexP+1].point.getLatitude()) / 2);
+                tagpoint.setLongitude((parseFloat(lon) + g_ptList[indexP+1].point.getLongitude()) / 2);
+          
+                tagpoint.setAltitude(alt);
+                
+                //计算
+                var mLat = (g_ptList[indexP + 1].point.getLatitude() - parseFloat(lat)) * Lat_Const_Xishu;
+                var mLon = (g_ptList[indexP + 1].point.getLongitude() - parseFloat(lon)) * Math.cos(((g_ptList[indexP + 1].point.getLatitude() + parseFloat(lat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+
+                temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+                tagplacemark.setName(temp1 + "m"); 
+                                
+                tagplacemark.setGeometry(tagpoint);
+                var tagpt1 =
+            	{
+            	     point: tagpoint,
+            	     placemark: tagplacemark,
+            	     markID: tagptIDg
+            	};
+            		 
+            	tagList.splice(index, 0, tagpt1);
+            	ge.getFeatures().appendChild(tagplacemark);               
+            }
+        }
+    }
+
+    /***********************************************************************************
+     函数名称：AddSkyWay(lon, lat, alt, index) 
+     功能：添加航线
+     参数：lon，lat, alt, index: 依次为航点经度、纬度、高度、序号
+    ***********************************************************************************/
+    function AddSkyWay(lon, lat, alt, levelAlt, index) 
+    {
+		// 将第一个航点的海拔高度和气压高度作为默认海拔高度和气压高度
+		level_Alt = parseInt(levelAlt);
+		
+		//添加航迹点
+		if (g_lineObj == null) 
+		{		 
+			// create the line string placemark
+			var lineStringPlacemark = ge.createPlacemark('');
+
+			// create the line string geometry
+			var lineString = ge.createLineString('');
+			if(level_Alt > 0)
+				lineString.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			else
+				lineString.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			lineStringPlacemark.setGeometry(lineString);
+			lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+
+			var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+			lineStyle.setWidth(3);
+			lineStyle.getColor().set('aa00ffff');  // aabbggrr format
+			var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
+			polyStyle.getColor().set('7f4080ff');
+
+			lineString.setTessellate(true);
+			lineString.setExtrude(true);
+			g_lineObj = lineString;
+			ge.getFeatures().appendChild(lineStringPlacemark);
+		}
+		if (g_lineObj) 
+		{
+			var wptAlt_absolute = level_Alt + parseInt(alt);  
+			//从指定位置插入
+			if (index > g_ptList.length)//尾部插入
+				index = g_ptList.length;
+			else if (index < 0)//头部插入
+				index = 0;
+
+			var placemark = ge.createPlacemark(''); //创建地标
+
+			// 定义航点的显示样式
+			var icon_G = ge.createIcon('');
+			var iconURL_G = window.location.href;
+			iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/grn-pushpin.png";
+			icon_G.setHref(iconURL_G);
+			var style_G = ge.createStyle(''); //create a new style
+			style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+			placemark.setStyleSelector(style_G); //apply the style to the placemark 
+
+			// Set the placemark's location.
+			var ptID = Guid(); //赋值标示符
+			var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+		 
+			if(level_Alt > 0)
+				point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			else
+				point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			point.setLatitude(lat);
+			point.setLongitude(lon);
+			// 航点的实际高度等于海拔高度+对地高度
+			point.setAltitude(wptAlt_absolute);   
+			point.setTessellate(true);
+
+			placemark.setGeometry(point);
+			placemark.setName((parseInt(index) + 1).toString() + "(" + alt + "m)");
+
+			var pt =
+			{
+				point: point,
+				placemark: placemark,
+				markID: ptID
+			};
+			g_ptList.splice(index, 0, pt);
+			ge.getFeatures().appendChild(placemark);
+
+            g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[index].point.getLatitude(), g_ptList[index].point.getLongitude(), g_ptList[index].point.getAltitude());
+
+			//================== 设置两地表距离的空地标建立===================
+			var tagplacemark = ge.createPlacemark('');
+			//设置图标为空
+			var icon = ge.createIcon('');
+			var iconURL = window.location.href;
+			iconURL = iconURL.substring(0, iconURL.lastIndexOf("/")) + "/res/empty.png";
+			icon.setHref(iconURL);
+			var style = ge.createStyle(''); //create a new style
+			style.getIconStyle().setIcon(icon); //apply the icon to the style
+			style.getLabelStyle().getColor().set('ff00ff7f');
+			tagplacemark.setStyleSelector(style); //apply the style to the placemark         
+
+			var tagptIDg = Guid();
+			var tagpoint = ge.createPoint(tagptIDg);
+			tagpoint.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			var temp1;
+
+			// ================= 开始添加航线距离 =================
+			if (g_ptList.length > 1)    // 从结尾开始添加
+			{
+				tagpoint.setLatitude((parseFloat(lat) + g_ptList[g_ptList.length - 2].point.getLatitude()) / 2);
+				tagpoint.setLongitude((parseFloat(lon) + g_ptList[g_ptList.length - 2].point.getLongitude()) / 2);
+				tagpoint.setAltitude(wptAlt_absolute);
+
+				var mLat = (parseFloat(lat) - g_ptList[g_ptList.length - 2].point.getLatitude()) * Lat_Const_Xishu;
+				var mLon = (parseFloat(lon) - g_ptList[g_ptList.length - 2].point.getLongitude()) * Math.cos(((g_ptList[length - 2].point.getLatitude() + parseFloat(lat)) / 2) * 0.0174532925) * Lat_Const_Xishu;
+
+				temp1 = parseInt(Math.pow((mLat * mLat + mLon * mLon), 1 / 2));
+				tagplacemark.setName(temp1 + "m");
+				tagplacemark.setGeometry(tagpoint);
+
+				var tagpt =
+				{
+					point: tagpoint,
+					placemark: tagplacemark,
+					markID: tagptIDg
+				};
+
+				tagList.splice(tagList.length, 0, tagpt);
+				ge.getFeatures().appendChild(tagplacemark);
+			}
+		}
+	}
+
+	/***********************************************************************************
+     函数名称：AddPreSkyWay(lon, lat, alt, index) 
+     功能：添加航线
+     参数：lon，lat, alt, index: 依次为航点经度、纬度、高度、序号
+    ***********************************************************************************/
+    function AddPreSkyWay(lon, lat, alt, levelAlt, index, totalCount) 
+    {
+		//添加航迹点
+		if (g_linePreSkyWay == null) 
+		{
+			// 将第一个航点的海拔高度和气压高度作为默认海拔高度和气压高度
+			level_Alt = parseInt(levelAlt);
+		 
+			// create the line string placemark
+			var lineStringPlacemark = ge.createPlacemark('');
+
+			// create the line string geometry
+			var lineString = ge.createLineString('');
+			if(level_Alt > 0)
+				lineString.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			else
+				lineString.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			lineStringPlacemark.setGeometry(lineString);
+			lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+
+			var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+			lineStyle.setWidth(2);
+			lineStyle.getColor().set('aa0000ff');  // aabbggrr format
+			var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
+			polyStyle.getColor().set('7f0000ff');
+
+			lineString.setTessellate(true);
+			lineString.setExtrude(true);
+			g_linePreSkyWay = lineString;
+			ge.getFeatures().appendChild(lineStringPlacemark);
+		}
+		if (g_linePreSkyWay) 
+		{
+			var wptAlt_absolute = level_Alt + parseInt(alt);  
+			//从指定位置插入
+			if (index > g_ptList.length)//尾部插入
+				index = g_ptList.length;
+			else if (index < 0)//头部插入
+				index = 0;
+
+			var placemark = ge.createPlacemark(''); //创建地标
+
+			// 定义航点的显示样式
+			var icon_G = ge.createIcon('');
+			var iconURL_G = window.location.href;
+			iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/empty.png";
+			icon_G.setHref(iconURL_G);
+			var style_G = ge.createStyle(''); //create a new style
+			style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+			placemark.setStyleSelector(style_G); //apply the style to the placemark 
+
+			// Set the placemark's location.
+			var ptID = Guid(); //赋值标示符
+			var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+		 
+			if(level_Alt > 0)
+				point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			else
+				point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			point.setLatitude(lat);
+			point.setLongitude(lon);
+			// 航点的实际高度等于海拔高度+对地高度
+			point.setAltitude(wptAlt_absolute);   
+			point.setTessellate(true);
+
+			placemark.setGeometry(point);
+			if(index == 0)
+				placemark.setName("S");
+			else if(index == (parseInt(totalCount)-1))
+				placemark.setName("E");
+
+			var pt =
+			{
+				point: point,
+				placemark: placemark,
+				markID: ptID
+			};
+			g_ptList.splice(index, 0, pt);
+			ge.getFeatures().appendChild(placemark);
+
+			g_linePreSkyWay.getCoordinates().pushLatLngAlt(g_ptList[index].point.getLatitude(), g_ptList[index].point.getLongitude(), g_ptList[index].point.getAltitude());
+		}
+	}
+	
+	/***********************************************************************************
+     函数名称：AddSkyWay(lon, lat, alt, index) 
+     功能：添加航线
+     参数：lon，lat, alt, index: 依次为航点经度、纬度、高度、序号
+    ***********************************************************************************/
+    function AddKmz(lon, lat, index) 
+    {
+		//添加航迹点
+		if (g_lineKmz == null) 
+		{		 
+			// create the line string placemark
+			var lineStringPlacemark = ge.createPlacemark('');
+
+			// create the line string geometry
+			var lineString = ge.createLineString('');
+			lineString.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			lineStringPlacemark.setGeometry(lineString);
+			lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+
+			var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+			lineStyle.setWidth(2);
+			lineStyle.getColor().set('aaffff00');  // aabbggrr format
+			//var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
+			//polyStyle.getColor().set('7f00ff00');
+	
+			lineString.setTessellate(true);
+			lineString.setExtrude(true);
+			g_lineKmz = lineString;
+			ge.getFeatures().appendChild(lineStringPlacemark);
+		}
+		if (g_lineKmz) 
+		{
+			//从指定位置插入
+			if (index > kmzPtList.length)//尾部插入
+				index = kmzPtList.length;
+			else if (index < 0)//头部插入
+				index = 0;
+
+			var placemark = ge.createPlacemark(''); //创建地标
+
+			// 定义航点的显示样式
+			var icon_G = ge.createIcon('');
+			var iconURL_G = window.location.href;
+			iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/empty.png";
+			icon_G.setHref(iconURL_G);
+			var style_G = ge.createStyle(''); //create a new style
+			style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+			placemark.setStyleSelector(style_G); //apply the style to the placemark 
+
+			// Set the placemark's location.
+			var ptID = Guid(); //赋值标示符
+			var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+		 
+			point.setAltitudeMode(ge.ALTITUDE_RELATIVE_TO_GROUND);
+			
+			point.setLatitude(lat);
+			point.setLongitude(lon);
+			// 航点的实际高度等于海拔高度+对地高度
+			point.setAltitude(10);   
+			point.setTessellate(true);
+
+			placemark.setGeometry(point);
+			//placemark.setName((parseInt(index) + 1).toString() + "(" + alt + "m)");
+
+			var pt =
+			{
+				point: point,
+				placemark: placemark,
+				markID: ptID
+			};
+			kmzPtList.splice(index, 0, pt);
+			ge.getFeatures().appendChild(placemark);
+
+			
+            g_lineKmz.getCoordinates().pushLatLngAlt(kmzPtList[index].point.getLatitude(), kmzPtList[index].point.getLongitude(), kmzPtList[index].point.getAltitude());
+		}
+	}
+ 
+	/***********************************************************************************
+     函数名称：AddBoundPt(lon, lat, alt, index)
+     功能：添加自动规划的区域
+     参数：lon，lat, alt, index: 依次为航点经度、纬度、高度、序号
+    ***********************************************************************************/
+    function AddBoundPt(lon, lat, alt, levelAlt, index) 
+    {
+		//添加航迹点
+		if (g_lineBound == null) 
+		{		 
+			level_Alt = parseInt(levelAlt);
+			
+			// create the line string placemark
+			var lineStringPlacemark = ge.createPlacemark('');
+
+			// create the line string geometry
+			var lineString = ge.createLineString('');
+			lineString.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			
+			lineStringPlacemark.setGeometry(lineString);
+			lineStringPlacemark.setStyleSelector(ge.createStyle(''));
+
+			var lineStyle = lineStringPlacemark.getStyleSelector().getLineStyle();
+			lineStyle.setWidth(2);
+			lineStyle.getColor().set('aaffff00');  // aabbggrr format
+			//var polyStyle = lineStringPlacemark.getStyleSelector().getPolyStyle();
+			//polyStyle.getColor().set('7fffff00');
+	
+			lineString.setTessellate(true);
+			lineString.setExtrude(true);
+			g_lineBound = lineString;
+			ge.getFeatures().appendChild(lineStringPlacemark);
+		}
+		if (g_lineBound) 
+		{
+			var wptAlt_absolute = level_Alt + parseInt(alt);  
+			//从指定位置插入
+			if (index > boundPtList.length)//尾部插入
+				index = boundPtList.length;
+			else if (index < 0)//头部插入
+				index = 0;
+
+			var placemark = ge.createPlacemark(''); //创建地标
+
+			// 定义航点的显示样式
+			var icon_G = ge.createIcon('');
+			var iconURL_G = window.location.href;
+			iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/empty.png";
+			icon_G.setHref(iconURL_G);
+			var style_G = ge.createStyle(''); //create a new style
+			style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+			placemark.setStyleSelector(style_G); //apply the style to the placemark 
+
+			// Set the placemark's location.
+			var ptID = Guid(); //赋值标示符
+			var point = ge.createPoint(ptID); //创建点，设置点的经纬度高度
+		 
+			point.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+			
+			point.setLatitude(lat);
+			point.setLongitude(lon);
+			// 航点的实际高度等于海拔高度+对地高度
+			point.setAltitude(wptAlt_absolute);   
+			point.setTessellate(true);
+
+			placemark.setGeometry(point);
+
+			var pt =
+			{
+				point: point,
+				placemark: placemark,
+				markID: ptID
+			};
+			boundPtList.splice(index, 0, pt);
+			ge.getFeatures().appendChild(placemark);
+
+			g_lineBound.getCoordinates().clear();
+			for (var j = 0; j < boundPtList.length; j++)
+			{
+				g_lineBound.getCoordinates().pushLatLngAlt(boundPtList[j].point.getLatitude(), boundPtList[j].point.getLongitude(), boundPtList[j].point.getAltitude());
+			}
+			// 添加第一个边界点形成闭环
+			g_lineBound.getCoordinates().pushLatLngAlt(boundPtList[0].point.getLatitude(), boundPtList[0].point.getLongitude(), boundPtList[0].point.getAltitude());
+		}
+	}
+	
+	
+	/***********************************************************************************
+	函数名称：AddPicPos(lon, lat) 
+	功能：添加航线
+	参数：lon，lat: 依次为航点经度、纬度、高度、序号
+	***********************************************************************************/
+	function AddPicPos(lon, lat, alt) 
+	{
+		//=============== 设置两地表距离的空地标建立===================
+		var picplacemark = ge.createPlacemark('');
+		//设置图标为空           
+		var iconPic = ge.createIcon('');
+		var iconURL_Pic = window.location.href;
+		iconURL_Pic = iconURL_Pic.substring(0, iconURL_Pic.lastIndexOf("/")) + "/res/placemark_pic.png";
+		iconPic.setHref(iconURL_Pic);
+		var stylePic = ge.createStyle(''); //create a new style
+		stylePic.getIconStyle().setIcon(iconPic); //apply the icon to the style
+		stylePic.getLabelStyle().getColor().set('ff00ff7f');
+		picplacemark.setStyleSelector(stylePic); //apply the style to the placemark         
+	
+		var picptIDg = Guid();
+		var picpoint = ge.createPoint(picptIDg);
+
+		picpoint.setAltitudeMode(ge.ALTITUDE_ABSOLUTE);
+		picpoint.setLatitude(parseFloat(lat));
+		picpoint.setLongitude(parseFloat(lon));
+		picpoint.setAltitude(parseFloat(alt));
+		// picpoint.setTessellate(true);
+		picplacemark.setGeometry(picpoint);
+		var picpt =
+		{
+			point: picpoint,
+			placemark: picplacemark,
+			markID: picptIDg
+		};
+		picPosList.splice(picPosList.length, 0, picpt);
+		ge.getFeatures().appendChild(picplacemark);
+	}
+
+	/***********************************************************************************
+	函数名称：DelPicPos(lon, lat) 
+	功能：添加航线
+	参数：lon，lat: 依次为航点经度、纬度、高度、序号
+	***********************************************************************************/
+	function DelPicPos( ) 
+	{
+       for (var i = picPosList.length-1; i >= 0; i--) 
+       {
+           ge.getFeatures().removeChild(picPosList[i].placemark);
+           picPosList.splice(i, 1);
+       }
+	}
+    
+    // =========================== 更新观察视角 ======================================
+    function updataLookat(lon, lat, alt, rang) 
+    {
+        var la = ge.createLookAt('');
+        la.set(lat, lon, alt, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, -20, rang);
+        ge.getView().setAbstractView(la);
+    }
+
+	/***********************************************************************************
+    函数名称：DelPt(index)
+    功能：删除航点
+    参数：index: 航点序号
+    ***********************************************************************************/
+	function DelAllPt()
+	{
+		for (var i = g_ptList.length-1; i >= 0; i--) 
+		{
+			ge.getFeatures().removeChild(g_ptList[i].placemark);
+			g_ptList.splice(i, 1);
+			if(i >= 1)
+			{
+				ge.getFeatures().removeChild(tagList[i-1].placemark);
+				tagList.splice(i-1, 1);
+			}
+		} 
+		if(g_lineObj != null)
+		{
+			g_lineObj.getCoordinates().clear();
+			g_lineObj = null;
+		}
+	}
+	
+	/***********************************************************************************
+    函数名称：DelAllPrePt(index)
+    功能：删除所有预览航线
+    参数：
+    ***********************************************************************************/
+	function DelAllPrePt()
+	{
+       for (var i = g_ptList.length-1; i >= 0; i--) 
+       {
+           ge.getFeatures().removeChild(g_ptList[i].placemark);
+		   g_ptList.splice(i, 1);
+       } 
+	   if(g_linePreSkyWay != null)
+		  g_linePreSkyWay.getCoordinates().clear();
+	}
+	
+	/***********************************************************************************
+    函数名臣：DelAllBoundPt()
+    功能：删除所有的边界点
+    参数：
+    ***********************************************************************************/
+	function DelAllBoundPt()
+	{
+       for (var i = boundPtList.length-1; i >= 0; i--) 
+       {
+           ge.getFeatures().removeChild(boundPtList[i].placemark);
+		   boundPtList.splice(i, 1);
+       } 
+	   if(g_lineBound != null)
+		  g_lineBound.getCoordinates().clear();
+	}
+	
+	
+    /***********************************************************************************
+    函数名称：DelPt(index)
+    功能：删除航点
+    参数：index: 航点序号
+    ***********************************************************************************/
+    function DelPt(index) 
+    {
+       if (index == 0 && (g_ptList.length > 1))//从头删除；
+       {
+    	    ge.getFeatures().removeChild(tagList[index].placemark);
+    	    tagList.splice(index, 1);
+    	    ge.getFeatures().removeChild(g_ptList[index].placemark);
+            g_ptList.splice(index, 1);
+            //更新线数据
+            g_lineObj.getCoordinates().clear();
+            for (var j = 0; j < g_ptList.length; j++) 
+            {
+                g_ptList[j].placemark.setName((j + 1).toString() + "(" + qiya_Alt.toString() + "m)");
+                g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), g_ptList[j].point.getAltitude());
+            }
+    	}
+    	else if (index == 0 && (g_ptList.length ==1))//只剩一个地标的情况；
+    	{
+    	    ge.getFeatures().removeChild(g_ptList[index].placemark);
+            g_ptList.splice(index, 1);
+            //更新线数据
+            g_lineObj.getCoordinates().clear();   		
+    	}
+        else if((g_ptList.length > 1)&&(index == g_ptList.length-1))//尾部删除
+    	{
+    		ge.getFeatures().removeChild(tagList[index-1].placemark);
+    		tagList.splice(index - 1, 1);
+   	  	    ge.getFeatures().removeChild(g_ptList[index].placemark);
+            g_ptList.splice(index, 1);
+            //更新线数据
+            g_lineObj.getCoordinates().clear();
+            for (var j = 0; j < g_ptList.length; j++) 
+            {
+                g_ptList[j].placemark.setName((j + 1).toString() + "(" + qiya_Alt.toString() + "m)");
+                g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), g_ptList[j].point.getAltitude());
+            }					
+    	}
+        else if((index >0) && (g_ptList.length > 2)&&(index<g_ptList.length-1)) //中间删除；
+        {
+            ge.getFeatures().removeChild(g_ptList[index].placemark);
+            g_ptList.splice(index, 1);
+            //更新线数据
+            g_lineObj.getCoordinates().clear();
+            for (var j = 0; j < g_ptList.length; j++) 
+            {
+                g_ptList[j].placemark.setName((j + 1).toString() + "(" + qiya_Alt.toString() + "m)");
+                g_lineObj.getCoordinates().pushLatLngAlt(g_ptList[j].point.getLatitude(), g_ptList[j].point.getLongitude(), g_ptList[j].point.getAltitude());
+            }
+            tagList[index - 1].placemark.getGeometry().setLatLngAlt((g_ptList[index].point.getLatitude() + g_ptList[index - 1].point.getLatitude()) / 2,
+                                                            (g_ptList[index].point.getLongitude() + g_ptList[index - 1].point.getLongitude()) / 2, 
+                                                      (g_ptList[index].point.getAltitude() + g_ptList[index-1].point.getAltitude()) / 2);
+            var mLat = (g_ptList[index].point.getLatitude() - g_ptList[index - 1].point.getLatitude()) * Lat_Const_Xishu;
+            var mLon = (g_ptList[index].point.getLongitude() - g_ptList[index - 1].point.getLongitude()) * Math.cos(((g_ptList[index - 1].point.getLatitude() + g_ptList[index].point.getLatitude()) / 2) * 0.0174532925) * Lat_Const_Xishu;
+
+            var temp1;
+            temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+              //显示
+            tagList[index-1].placemark.setName( temp1 + "m");            
+            ge.getFeatures().removeChild(tagList[index].placemark);
+
+            tagList.splice(index, 1);
+        }
+    }
+
+    /***********************************************************************************
+    函数名称：MovePt(lon, lat, index) 
+    功能：移动航点
+    参数：lon，lat, index: 依次为航点经度、纬度、序号
+    ***********************************************************************************/
+    function MovePt(lon, lat, index) 
+    {        
+        if (index >= 0 && index < g_ptList.length && g_ptList.length > 1) 
+        {
+        	if(index == 0)//起点移动
+        	{
+				g_ptList[0].placemark.getGeometry().setLatitude(lat);
+				g_ptList[0].placemark.getGeometry().setLongitude(lon);
+				g_lineObj.getCoordinates().setLatLngAlt(index, lat, lon, g_ptList[0].point.getAltitude());
+
+				var mLat = (g_ptList[0].point.getLatitude() - g_ptList[1].point.getLatitude()) * Lat_Const_Xishu;
+				var mLon = (g_ptList[0].point.getLongitude() - g_ptList[1].point.getLongitude()) * Math.cos(((g_ptList[1].point.getLatitude() + g_ptList[0].point.getLatitude()) / 2) * 0.0174532925) * Lat_Const_Xishu;
+				temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+				tagList[0].placemark.setName(temp1 + "m");
+				tagList[0].placemark.getGeometry().setLatLngAlt((g_ptList[0].point.getLatitude() + g_ptList[1].point.getLatitude()) / 2, (g_ptList[0].point.getLongitude() + g_ptList[1].point.getLongitude()) / 2, (g_ptList[0].point.getAltitude() + g_ptList[1].point.getAltitude()) / 2);
+			}
+			else if(index == g_ptList.length-1)//终点移动；
+			{
+				g_ptList[index].placemark.getGeometry().setLatitude(lat);
+				g_ptList[index].placemark.getGeometry().setLongitude(lon);
+				g_lineObj.getCoordinates().setLatLngAlt(index, lat, lon, g_ptList[index].point.getAltitude());
+
+				var mLat = (g_ptList[index].point.getLatitude() - g_ptList[index - 1].point.getLatitude()) * Lat_Const_Xishu;
+				var mLon = (g_ptList[index].point.getLongitude() - g_ptList[index - 1].point.getLongitude()) * Math.cos(((g_ptList[index - 1].point.getLatitude() + g_ptList[index].point.getLatitude()) / 2) * 0.0174532925) * Lat_Const_Xishu;
+				temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+				tagList[index - 1].placemark.setName(temp1 + "m");
+				tagList[index - 1].placemark.getGeometry().setLatLngAlt((g_ptList[index].point.getLatitude() + g_ptList[index - 1].point.getLatitude()) / 2, (g_ptList[index].point.getLongitude() + g_ptList[index - 1].point.getLongitude()) / 2, (g_ptList[index].point.getAltitude() + g_ptList[index - 1].point.getAltitude()) / 2);
+			}
+			else if((index>0)&&(index<g_ptList.length)&&(g_ptList.length > 2))//中间移动
+			{
+				g_ptList[index].placemark.getGeometry().setLatitude(lat);
+				g_ptList[index].placemark.getGeometry().setLongitude(lon);
+            
+				g_lineObj.getCoordinates().setLatLngAlt(index, lat, lon, g_ptList[index].point.getAltitude());
+
+				var mLat = (g_ptList[index].point.getLatitude() - g_ptList[index - 1].point.getLatitude()) * Lat_Const_Xishu;
+				var mLon = (g_ptList[index].point.getLongitude() - g_ptList[index - 1].point.getLongitude()) * Math.cos(((g_ptList[index - 1].point.getLatitude() + g_ptList[index].point.getLatitude()) / 2) * 0.0174532925) * Lat_Const_Xishu;
+				temp1 = parseInt((Math.pow((mLat * mLat + mLon * mLon), 1 / 2)));
+				tagList[index - 1].placemark.setName(temp1 + "m");
+				tagList[index - 1].placemark.getGeometry().setLatLngAlt((g_ptList[index].point.getLatitude() + g_ptList[index - 1].point.getLatitude()) / 2, (g_ptList[index].point.getLongitude() + g_ptList[index - 1].point.getLongitude()) / 2, (g_ptList[index].point.getAltitude() + g_ptList[index - 1].point.getAltitude()) / 2);
+            
+                var indexM = parseInt(index);
+				var mLat = (g_ptList[index].point.getLatitude() - g_ptList[indexM + 1].point.getLatitude()) * Lat_Const_Xishu;
+				var mLon = (g_ptList[index].point.getLongitude() - g_ptList[indexM + 1].point.getLongitude()) * Math.cos(((g_ptList[indexM + 1].point.getLatitude() + g_ptList[index].point.getLatitude()) / 2) * 0.0174532925) * Lat_Const_Xishu;
+				var mAlt = g_ptList[index].point.getAltitude()- g_ptList[indexM + 1].point.getAltitude();
+            
+				temp1 = parseFloat(parseInt((Math.pow((mLat * mLat + mLon * mLon + mAlt * mAlt), 1 / 2))));
+				tagList[index].placemark.getGeometry().setLatLngAlt((g_ptList[index].point.getLatitude() + g_ptList[indexM + 1].point.getLatitude()) / 2, (g_ptList[index].point.getLongitude() + g_ptList[indexM + 1].point.getLongitude()) / 2, (g_ptList[index].point.getAltitude() + g_ptList[indexM + 1].point.getAltitude()) / 2);        
+				tagList[index].placemark.setName(temp1 + "m");                 	
+			}
+        }
+		// 如果只有一个航点，则仅仅移动航点的位置就可以
+		else if(index >= 0 && g_ptList.length == 1)
+		{
+			g_ptList[0].placemark.getGeometry().setLatitude(lat);
+			g_ptList[0].placemark.getGeometry().setLongitude(lon);
+		}
+    }
+
+    /***********************************************************************************
+    函数名称：SkyWayRed()
+    功能：改变航点的颜色
+    参数：color：  1--红色  2--黄色    
+          index:  需要改变颜色的航点的序号， -1--所有航点
+    ***********************************************************************************/
+    function SkyWayColor(color, index) 
+    {
+        var i;
+        // 将所有航点的颜色变为红色
+        if ((index == -1) && (color == 1)) 
+        {
+            var icon_R = ge.createIcon('');
+            var iconURL_R = window.location.href;
+            iconURL_R = iconURL_R.substring(0, iconURL_R.lastIndexOf("/")) + "/res/red-pushpin.png";
+            icon_R.setHref(iconURL_R);
+            var style_R = ge.createStyle(''); //create a new style
+            style_R.getIconStyle().setIcon(icon_R); //apply the icon to the style
+            //   style_R.getLabelStyle().getColor().set('ff00ff7f');
+            for (i = 0; i < g_ptList.length; i++) 
+            {
+                g_ptList[i].placemark.setStyleSelector(style_R);
+            }
+        }
+        // 将指定航点的颜色变为绿色
+        else if ((index >= 0) && (color == 2))
+        {
+
+            var icon_G = ge.createIcon('');
+            var iconURL_G = window.location.href;
+            iconURL_G = iconURL_G.substring(0, iconURL_G.lastIndexOf("/")) + "/res/grn-pushpin.png";
+            icon_G.setHref(iconURL_G);
+            var style_G = ge.createStyle(''); //create a new style
+            style_G.getIconStyle().setIcon(icon_G); //apply the icon to the style
+            //   style_R.getLabelStyle().getColor().set('ff00ff7f');
+
+            g_ptList[index].placemark.setStyleSelector(style_G);
+        }
+    }
+
+    function S4() 
+    {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+    
+    // ============== then to call it, plus stitch in '4' in the third group ===================
+    function Guid() 
+    {
+        return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+    }
+
+    function reloadKml(kmlString) 
+	{
+      if (!kmlString)
+             return;
+      var str = eval(kmlString);
+       // alert(str);
+      var kmlObject = ge.parseKml(str);
+      ge.getFeatures().appendChild(kmlObject);
+    }
+
+  </script>
+</head>
+<body>
+    <div id="map3d" style="margin:0; height: 100%; width: 100%;"></div>
+</body>
+</html>

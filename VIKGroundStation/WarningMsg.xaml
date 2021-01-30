@@ -1,0 +1,8 @@
+﻿<Window x:Class="VIKGroundStation.WarningMsg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WarningMsg" Height="50"  Width="450" AllowsTransparency="True" WindowStyle="None" Background="#00000000" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid>
+        <TextBlock Name="Msg_Warnning_Type" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text=""  FontSize="28"  Foreground="Red" FontWeight="Bold"/>
+    </Grid>
+</Window>

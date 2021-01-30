@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Item>
+    <IdAllNum>2</IdAllNum>
+  </Item>
+  <Item1>
+    <Name_ID>camera_1</Name_ID>
+    <Pang_CCD_Num>6000</Pang_CCD_Num>
+    <Hang_CCD_Num>5000</Hang_CCD_Num>
+    <Xiang_Yuan_Size>3</Xiang_Yuan_Size>
+    <Jiao_Ju>10</Jiao_Ju>
+    <Pic_Mode>1</Pic_Mode>
+    <Trigger_Time>200</Trigger_Time>
+    <Pwm_On_Time>1800</Pwm_On_Time>
+    <Pwm_Off_Time>1200</Pwm_Off_Time>
+  </Item1>
+  <Item2>
+    <Name_ID>camera_2</Name_ID>
+    <Pang_CCD_Num>6000</Pang_CCD_Num>
+    <Hang_CCD_Num>5000</Hang_CCD_Num>
+    <Xiang_Yuan_Size>3</Xiang_Yuan_Size>
+    <Jiao_Ju>11</Jiao_Ju>
+    <Pic_Mode>2</Pic_Mode>
+    <Trigger_Time>200</Trigger_Time>
+    <Pwm_On_Time>1800</Pwm_On_Time>
+    <Pwm_Off_Time>1200</Pwm_Off_Time>
+  </Item2>
+</Root>
